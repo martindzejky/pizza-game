@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://csvqhx2i2qaju"]
+[gd_scene load_steps=2 format=3 uid="uid://csvqhx2i2qaju"]
+
+[ext_resource type="AudioStream" uid="uid://bwbb5bc7slksv" path="res://music/beat.wav" id="1_7u1yu"]
 
 [node name="start" type="Node2D"]
+
+[node name="beat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7u1yu")
+autoplay = true
