@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://byysliwit3wgn"]
+
+[ext_resource type="FontFile" uid="uid://ce7kblhnlrfpd" path="res://fonts/JoganSoft-rgwKy.otf" id="1_87cys"]
+
+[resource]
+default_font = ExtResource("1_87cys")

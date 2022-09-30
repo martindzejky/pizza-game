@@ -1,8 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://csvqhx2i2qaju"]
+[gd_scene load_steps=4 format=3 uid="uid://bbae4y17js5x4"]
 
 [ext_resource type="AudioStream" uid="uid://bwbb5bc7slksv" path="res://music/beat.wav" id="1_7u1yu"]
+[ext_resource type="Script" path="res://scripts/beat-scale.gd" id="1_ekeep"]
 
-[node name="start" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_4a1rc"]
+font_size = 40
+
+[node name="start" type="Node"]
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="ui"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 56.0
+grow_horizontal = 2
+pivot_offset = Vector2(240, 30)
+text = "Untitled Game"
+label_settings = SubResource("LabelSettings_4a1rc")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_ekeep")
 
 [node name="beat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_7u1yu")

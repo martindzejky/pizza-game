@@ -30,6 +30,10 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom="res://ui/theme.tres"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
