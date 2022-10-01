@@ -81,3 +81,8 @@ func useOrDrop() -> void:
             if obj.has_method("insertDough"):
                 if obj.insertDough(self):
                     return
+
+        if obj.is_in_group("plate"):
+            if obj.has_method("insertDough"):
+                if obj.insertDough(self):
+                    return
