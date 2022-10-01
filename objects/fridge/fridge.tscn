@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5itk"]
 size = Vector2(120, 80)
 
-[node name="fridge" type="Sprite2D"]
+[node name="fridge" type="Sprite2D" groups=["fridge"]]
 texture = ExtResource("1_m8jrv")
 centered = false
 script = ExtResource("2_kx2wi")
@@ -18,6 +18,7 @@ dough = ExtResource("4_fe6d4")
 
 [node name="clickArea" type="Area2D" parent="."]
 position = Vector2(60, 40)
+monitoring = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 shape = SubResource("RectangleShape2D_m5itk")

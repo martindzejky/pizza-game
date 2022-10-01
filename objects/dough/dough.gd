@@ -13,7 +13,9 @@ const COOK_PROGRESS_DESTROYED = 10.0
 
 
 
-func _progress(delta):
+func _process(delta):
+    super(delta)
+
     # update sprite frame based on progress
     if progress >= $sprite.hframes:
         queue_free()
@@ -46,9 +48,6 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
                 elif Hand.isEmpty():
                     Hand.pick(self)
 
-                else:
-                    pass
-                    # TODO: interactions with other objects
 
 func onHitByDoughTool():
     progress += 1
@@ -66,4 +65,14 @@ func isCookDestroyed():
     return cookProgress >= COOK_PROGRESS_DESTROYED
 
 func useOrDrop() -> void:
-    pass
+    var overlappingAreas = $useArea.get_overlapping_areas()
+
+    # filter self
+    overlappingAreas = overlappingAreas.filter(func(area): return area.get_parent() != self)
+
+    if overlappingAreas.size() <= 0:
+        Hand.drop()
+        return
+
+    for area in overlappingAreas:
+        var obj = area.get_parent()

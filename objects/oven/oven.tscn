@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8e28"]
 size = Vector2(140, 80)
 
-[node name="oven" type="Sprite2D"]
+[node name="oven" type="Sprite2D" groups=["oven"]]
 texture = ExtResource("1_38136")
 centered = false
 script = ExtResource("2_7ix8b")
@@ -16,6 +16,7 @@ openSprite = ExtResource("3_0nkvk")
 
 [node name="clickArea" type="Area2D" parent="."]
 position = Vector2(60, 40)
+monitoring = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 position = Vector2(10, 0)

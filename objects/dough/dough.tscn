@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://k3ssjquq313h"]
+[gd_scene load_steps=5 format=3 uid="uid://k3ssjquq313h"]
 
 [ext_resource type="Script" path="res://objects/dough/dough.gd" id="1_lfh2g"]
 [ext_resource type="Texture2D" uid="uid://bjubtkw5ihv2n" path="res://sprites/dough.png" id="1_pxcur"]
+[ext_resource type="Shape2D" uid="uid://csn561acrh2n7" path="res://shapes/use-area-circle-shape.tres" id="3_aujhw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dosf0"]
-radius = 23.0217
+[sub_resource type="CircleShape2D" id="CircleShape2D_l6653"]
+radius = 29.0
 
 [node name="dough" type="Node2D" groups=["dough"]]
 script = ExtResource("1_lfh2g")
@@ -14,8 +15,15 @@ texture = ExtResource("1_pxcur")
 hframes = 6
 
 [node name="clickArea" type="Area2D" parent="."]
+monitoring = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
-shape = SubResource("CircleShape2D_dosf0")
+shape = SubResource("CircleShape2D_l6653")
+
+[node name="useArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="shape" type="CollisionShape2D" parent="useArea"]
+shape = ExtResource("3_aujhw")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

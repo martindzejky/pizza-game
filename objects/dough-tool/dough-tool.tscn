@@ -1,23 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1jgjnmmcqyjw"]
+[gd_scene load_steps=5 format=3 uid="uid://b1jgjnmmcqyjw"]
 
 [ext_resource type="Texture2D" uid="uid://fo0fntv5ipk1" path="res://sprites/dough-tool.png" id="1_ans6e"]
 [ext_resource type="Script" path="res://objects/dough-tool/dough-tool.gd" id="2_mmsdm"]
+[ext_resource type="Shape2D" uid="uid://csn561acrh2n7" path="res://shapes/use-area-circle-shape.tres" id="3_5qur1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdpfp"]
-radius = 11.1803
+radius = 23.0
 
 [node name="dough-tool" type="Sprite2D" groups=["dough-tool", "tool"]]
 texture = ExtResource("1_ans6e")
 script = ExtResource("2_mmsdm")
 
 [node name="clickArea" type="Area2D" parent="."]
+monitoring = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 shape = SubResource("CircleShape2D_hdpfp")
 
 [node name="useArea" type="Area2D" parent="."]
+monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="useArea"]
-shape = SubResource("CircleShape2D_hdpfp")
+shape = ExtResource("3_5qur1")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

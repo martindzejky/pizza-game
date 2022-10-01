@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rhnj"]
 radius = 17.0294
 
-[node name="dough-fridge" type="Node2D" groups=["dough", "dough-fridge"]]
+[node name="dough-fridge" type="Node2D" groups=["dough-fridge"]]
 script = ExtResource("1_w1jy1")
 doughObject = ExtResource("2_2b4e1")
 
@@ -17,6 +17,8 @@ offset = Vector2(0, -16)
 hframes = 6
 
 [node name="clickArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 position = Vector2(0, -10)
