@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ce7kblhnlrfpd"
-path="res://.godot/imported/JoganSoft-rgwKy.otf-ee64eb07bafd3f103af06317ba6c3ba4.fontdata"
+uid="uid://bvi0ecruwqscv"
+path="res://.godot/imported/PixeloidSans-nR3g1.ttf-831b00828d476291cb17dbdbdfe35c92.fontdata"
 
 [deps]
 
-source_file="res://fonts/JoganSoft-rgwKy.otf"
-dest_files=["res://.godot/imported/JoganSoft-rgwKy.otf-ee64eb07bafd3f103af06317ba6c3ba4.fontdata"]
+source_file="res://fonts/PixeloidSans-nR3g1.ttf"
+dest_files=["res://.godot/imported/PixeloidSans-nR3g1.ttf-831b00828d476291cb17dbdbdfe35c92.fontdata"]
 
 [params]
 

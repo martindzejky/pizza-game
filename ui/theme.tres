@@ -1,10 +1,12 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://byysliwit3wgn"]
 
-[ext_resource type="FontFile" uid="uid://ce7kblhnlrfpd" path="res://fonts/JoganSoft-rgwKy.otf" id="1_87cys"]
+[ext_resource type="FontFile" uid="uid://cjg6wbdr4j87q" path="res://fonts/PixeloidMono-1G8ae.ttf" id="1_xbbro"]
 
 [resource]
-default_font = ExtResource("1_87cys")
+default_font = ExtResource("1_xbbro")
 BoxContainer/constants/separation = 10
+Button/font_sizes/font_size = 18
+Label/font_sizes/font_size = 18
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10

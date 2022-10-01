@@ -1,2 +1,2 @@
-﻿license: Freeware, Non-Commercial
-link: https://www.fontspace.com/jogan-soft-font-f80664
+license: SIL Open Font License (OFL)
+link: https://www.fontspace.com/pixeloid-font-f69232

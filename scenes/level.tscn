@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dehfhkt6r8u7n"]
+
+[ext_resource type="Texture2D" uid="uid://bdit8hunfh1gu" path="res://sprites/oven.png" id="1_sdicm"]
+[ext_resource type="Texture2D" uid="uid://cwqfkpqounhk6" path="res://sprites/fridge.png" id="2_hlmog"]
+[ext_resource type="Texture2D" uid="uid://dey134524wtmg" path="res://sprites/table.png" id="3_7mybh"]
+[ext_resource type="Texture2D" uid="uid://d0rpti4hw6n1c" path="res://sprites/mushroom-box.png" id="3_olhiv"]
+
+[node name="level" type="Node"]
+
+[node name="camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="top" type="Node2D" parent="."]
+
+[node name="oven" type="Sprite2D" parent="top"]
+texture = ExtResource("1_sdicm")
+centered = false
+
+[node name="fridge" type="Sprite2D" parent="top"]
+position = Vector2(140, 0)
+texture = ExtResource("2_hlmog")
+centered = false
+
+[node name="boxes" type="Node2D" parent="top"]
+position = Vector2(240, 0)
+
+[node name="mushroom" type="Sprite2D" parent="top/boxes"]
+position = Vector2(0, 40)
+texture = ExtResource("3_olhiv")
+centered = false
+
+[node name="table" type="Sprite2D" parent="."]
+position = Vector2(0, 80)
+texture = ExtResource("3_7mybh")
+centered = false
