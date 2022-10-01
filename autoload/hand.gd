@@ -11,7 +11,7 @@ func pick(node: Node):
 func drop():
     # Wait for the next frame to drop the node. That is so in the current frame other nodes
     # can react to the fact that the node is being dropped.
-    await get_tree().create_timer(0)
+    await get_tree().create_timer(0).timeout
     carring = null
 
 func isEmpty() -> bool:
