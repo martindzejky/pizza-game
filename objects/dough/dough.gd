@@ -3,13 +3,20 @@ extends Pickable
 
 # from raw to pizza dough
 const PROGRESS_READY = 4
-const PROGRESS_DESTROYED = 5
+# TODO: PROGRESS_WELL_MADE for bonus points
+const PROGRESS_OVERDONE = 5
 @export var progress := 0
 
 # cooking in the oven
+const COOK_PROGRESS_RAW = 1.0
 const COOK_PROGRESS_READY = 8.0
-const COOK_PROGRESS_DESTROYED = 10.0
+# TODO: COOK_PROGRESS_WELL_MADE for bonus points
+const COOK_PROGRESS_OVERCOOKED = 10.0
 @export var cookProgress := 0.0
+
+# damage from hitting cooked dough
+const MAX_DAMAGE = 3
+@export var damage := 0
 
 
 
@@ -28,12 +35,12 @@ func _process(delta):
 
     if cookProgress <= COOK_PROGRESS_READY:
         color = lerp(1.0, 0.7, cookProgress / COOK_PROGRESS_READY)
-    elif cookProgress <= COOK_PROGRESS_DESTROYED:
-        color = lerp(0.7, 0.3, (cookProgress - COOK_PROGRESS_READY) / (COOK_PROGRESS_DESTROYED - COOK_PROGRESS_READY))
+    elif cookProgress <= COOK_PROGRESS_OVERCOOKED:
+        color = lerp(0.7, 0.3, (cookProgress - COOK_PROGRESS_READY) / (COOK_PROGRESS_OVERCOOKED - COOK_PROGRESS_READY))
     else:
         color = 0.3
 
-    $sprite.modulate = Color(color, color, color, 1)
+    $sprite.self_modulate = Color(color, color, color, 1)
 
 
 func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
@@ -50,19 +57,29 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
 
 
 func onHitByDoughTool():
-    progress += 1
+    if isRaw():
+        progress += 1
+    else:
+        damage += 1
+
+        if damage >= MAX_DAMAGE:
+            # TODO: spawn pieces of dough
+            queue_free()
+
+func isRaw():
+    return cookProgress < COOK_PROGRESS_RAW
 
 func isReady():
-    return progress >= PROGRESS_READY
+    return progress >= PROGRESS_READY and progress < PROGRESS_OVERDONE
 
-func isDestroyed():
-    return progress >= PROGRESS_DESTROYED
+func isOverdone():
+    return progress >= PROGRESS_OVERDONE
 
 func isCookReady():
-    return cookProgress >= COOK_PROGRESS_READY
+    return cookProgress >= COOK_PROGRESS_READY and cookProgress < COOK_PROGRESS_OVERCOOKED
 
-func isCookDestroyed():
-    return cookProgress >= COOK_PROGRESS_DESTROYED
+func isCookOvercooked():
+    return cookProgress >= COOK_PROGRESS_OVERCOOKED
 
 func useOrDrop() -> void:
     var overlappingAreas = $useArea.get_overlapping_areas()
