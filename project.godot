@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"ExitBtnsssss",
 "language": &"GDScript",
 "path": "res://ui/exit-btn.gd"
+}, {
+"base": "Node2D",
+"class": &"Pickable",
+"language": &"GDScript",
+"path": "res://scripts/pickable.gd"
 }]
 _global_script_class_icons={
-"ExitBtnsssss": ""
+"ExitBtnsssss": "",
+"Pickable": ""
 }
 
 [application]
@@ -30,6 +36,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Randomizer="*res://autoload/randomizer.gd"
+Hand="*res://autoload/hand.gd"
 
 [display]
 

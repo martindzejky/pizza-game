@@ -10,6 +10,7 @@ var isOpen: bool = false
 
 func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if viewport.is_input_handled(): return
+    if not Hand.isEmpty(): return
 
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT:
@@ -33,5 +34,5 @@ func close() -> void:
     isOpen = false
     texture = closedSprite
 
-    for dough in get_tree().get_nodes_in_group("dough-fridge"):
-        dough.queue_free()
+    for node in get_tree().get_nodes_in_group("dough-fridge"):
+        node.queue_free()

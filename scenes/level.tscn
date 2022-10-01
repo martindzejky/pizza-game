@@ -12,6 +12,7 @@ anchor_mode = 0
 current = true
 
 [node name="top" type="Node2D" parent="."]
+z_index = -10
 
 [node name="oven" type="Sprite2D" parent="top"]
 texture = ExtResource("1_sdicm")
@@ -29,7 +30,7 @@ position = Vector2(0, 40)
 texture = ExtResource("3_olhiv")
 centered = false
 
-[node name="table" type="Sprite2D" parent="."]
+[node name="table" type="Sprite2D" parent="." groups=["table"]]
 position = Vector2(0, 80)
 texture = ExtResource("3_7mybh")
 centered = false
