@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6cvlq2crfmo0"]
+
+[ext_resource type="Texture2D" uid="uid://cwqfkpqounhk6" path="res://sprites/fridge.png" id="1_m8jrv"]
+[ext_resource type="Script" path="res://objects/fridge/fridge.gd" id="2_kx2wi"]
+[ext_resource type="Texture2D" uid="uid://27uc1od6otaj" path="res://sprites/fridge-open.png" id="3_3qr2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5itk"]
+size = Vector2(120, 80)
+
+[node name="fridge" type="Sprite2D"]
+texture = ExtResource("1_m8jrv")
+centered = false
+script = ExtResource("2_kx2wi")
+closedSprite = ExtResource("1_m8jrv")
+openSprite = ExtResource("3_3qr2c")
+
+[node name="click-area" type="Area2D" parent="."]
+position = Vector2(60, 40)
+
+[node name="shape" type="CollisionShape2D" parent="click-area"]
+shape = SubResource("RectangleShape2D_m5itk")
+
+[connection signal="input_event" from="click-area" to="." method="_onInputEvent"]
