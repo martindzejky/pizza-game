@@ -16,6 +16,12 @@ func _process(delta: float) -> void:
 
             node.cookProgress += delta
 
+            # cook all ingredients on the dough
+            for doughNode in node.get_children():
+                if not doughNode.is_in_group("ingredient"): continue
+
+                doughNode.cookProgress += delta
+
 
 func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if viewport.is_input_handled(): return
