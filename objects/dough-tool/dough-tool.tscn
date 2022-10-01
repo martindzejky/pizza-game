@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1jgjnmmcqyjw"]
+
+[ext_resource type="Texture2D" uid="uid://fo0fntv5ipk1" path="res://sprites/dough-tool.png" id="1_ans6e"]
+[ext_resource type="Script" path="res://objects/dough-tool/dough-tool.gd" id="2_mmsdm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hl2l2"]
+radius = 9.18453
+height = 45.2524
+
+[node name="dough-tool" type="Sprite2D" groups=["dough-tool", "tool"]]
+texture = ExtResource("1_ans6e")
+script = ExtResource("2_mmsdm")
+
+[node name="clickArea" type="Area2D" parent="."]
+rotation = -0.77499
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+shape = SubResource("CapsuleShape2D_hl2l2")
+
+[connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
