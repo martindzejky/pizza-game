@@ -49,16 +49,17 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT:
             if not event.pressed:
-                viewport.set_input_as_handled()
-
                 if Hand.isEmpty():
                     Hand.pick(self)
+                    viewport.set_input_as_handled()
 
                 elif Hand.isCarryingDoughTool():
                     onHitByDoughTool()
+                    viewport.set_input_as_handled()
 
                 elif Hand.isCarryingIngredient():
-                    insertIngredient()
+                    if insertIngredient():
+                        viewport.set_input_as_handled()
 
 
 func onHitByDoughTool():
@@ -87,9 +88,9 @@ func isCookOvercooked():
     return cookProgress >= COOK_PROGRESS_OVERCOOKED
 
 
-func insertIngredient() -> void:
+func insertIngredient() -> bool:
     var ingredient = Hand.drop()
-    if not ingredient: return
+    if not ingredient: return false
 
     var previousTransform = ingredient.get_global_transform()
 
@@ -102,3 +103,5 @@ func insertIngredient() -> void:
     # disable interactive areas, the ingredient is now part of the dough
     ingredient.get_node("clickArea").queue_free()
     ingredient.get_node("useArea").queue_free()
+
+    return true

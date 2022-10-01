@@ -15,8 +15,10 @@ current = true
 z_index = -10
 
 [node name="oven" parent="top" instance=ExtResource("1_v5n6d")]
+process_priority = 1
 
 [node name="fridge" parent="top" instance=ExtResource("2_i6w8l")]
+process_priority = 1
 position = Vector2(140, 0)
 z_index = 1
 

@@ -11,8 +11,9 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT:
             if not event.pressed:
-                # destroy this object
                 viewport.set_input_as_handled()
+
+                # destroy this object
                 queue_free()
 
                 # spawn a new dough that is picked

@@ -39,12 +39,14 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT:
             if not event.pressed:
-                viewport.set_input_as_handled()
 
                 if Hand.isEmpty():
                     Hand.pick(self)
+                    viewport.set_input_as_handled()
 
                 elif Hand.isCarryingDoughTool():
+                    viewport.set_input_as_handled()
+
                     # TODO: particles
                     queue_free()
 

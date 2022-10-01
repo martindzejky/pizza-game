@@ -29,12 +29,14 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT:
             if not event.pressed:
-                viewport.set_input_as_handled()
 
                 if Hand.isCarryingDough():
-                    insertDough()
+                    if insertDough():
+                        viewport.set_input_as_handled()
 
                 elif Hand.isEmpty():
+                    viewport.set_input_as_handled()
+
                     if isOpen:
                         close()
                     else:
@@ -59,19 +61,21 @@ func close() -> void:
             node.visible = false
 
 
-func insertDough() -> void:
-    if not isOpen: return
+func insertDough() -> bool:
+    if not isOpen: return false
 
     # only one dough can be inside at a time
     for node in get_children():
         if node.is_in_group("dough"):
-            return
+            return false
 
     var dough = Hand.drop()
-    if not dough: return
+    if not dough: return false
 
     if dough.get_parent():
         dough.get_parent().remove_child(dough)
 
     add_child(dough)
     dough.set_global_transform($point.get_global_transform())
+
+    return true
