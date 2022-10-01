@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbae4y17js5x4"]
+[gd_scene load_steps=3 format=3 uid="uid://bbae4y17js5x4"]
 
-[ext_resource type="AudioStream" uid="uid://bwbb5bc7slksv" path="res://music/beat.wav" id="1_7u1yu"]
-[ext_resource type="Script" path="res://scripts/beat-scale.gd" id="1_ekeep"]
+[ext_resource type="Script" path="res://ui/exit-btn.gd" id="2_0d7lr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4a1rc"]
 font_size = 40
@@ -21,15 +20,48 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 10.0
-offset_bottom = 56.0
+offset_bottom = 64.0
 grow_horizontal = 2
 pivot_offset = Vector2(240, 30)
 text = "Untitled Game"
 label_settings = SubResource("LabelSettings_4a1rc")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("1_ekeep")
 
-[node name="beat" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_7u1yu")
-autoplay = true
+[node name="buttons" type="MarginContainer" parent="ui"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="vbox" type="VBoxContainer" parent="ui/buttons"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 460.0
+offset_bottom = 78.0
+alignment = 2
+
+[node name="start" type="Button" parent="ui/buttons/vbox"]
+layout_mode = 2
+offset_right = 440.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+
+[node name="exit" type="Button" parent="ui/buttons/vbox"]
+layout_mode = 2
+offset_top = 39.0
+offset_right = 440.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit"
+script = ExtResource("2_0d7lr")
+
+[connection signal="pressed" from="ui/buttons/vbox/exit" to="ui/buttons/vbox/exit" method="_onClicked"]

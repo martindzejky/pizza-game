@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Control",
+"class": &"ExitBtnsssss",
+"language": &"GDScript",
+"path": "res://ui/exit-btn.gd"
+}]
+_global_script_class_icons={
+"ExitBtnsssss": ""
+}
+
 [application]
 
 config/name="Ludum Dare 51"
@@ -20,7 +30,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Randomizer="*res://autoload/randomizer.gd"
-Beat="*res://autoload/beat.gd"
 
 [display]
 
