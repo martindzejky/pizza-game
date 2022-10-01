@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dehfhkt6r8u7n"]
+[gd_scene load_steps=6 format=3 uid="uid://dehfhkt6r8u7n"]
 
+[ext_resource type="PackedScene" uid="uid://b8eyata53lsrj" path="res://objects/clock/clock.tscn" id="1_pib6w"]
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
 [ext_resource type="PackedScene" uid="uid://dhrhb8gv5s7nu" path="res://objects/fridge/fridge.tscn" id="2_i6w8l"]
 [ext_resource type="PackedScene" uid="uid://dn7bu1xyy7y4y" path="res://objects/mushroom-box/mushroom-box.tscn" id="3_x8ajh"]
@@ -10,6 +11,9 @@
 [node name="camera" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
+
+[node name="clock" parent="." instance=ExtResource("1_pib6w")]
+position = Vector2(452, 29)
 
 [node name="top" type="Node2D" parent="."]
 z_index = -10
