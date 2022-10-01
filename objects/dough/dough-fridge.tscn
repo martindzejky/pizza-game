@@ -1,9 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3hqp0hbr7y6r"]
+[gd_scene load_steps=4 format=3 uid="uid://b3hqp0hbr7y6r"]
 
 [ext_resource type="Texture2D" uid="uid://bjubtkw5ihv2n" path="res://sprites/dough.png" id="1_pxcur"]
+[ext_resource type="Script" path="res://objects/dough/dough-fridge.gd" id="1_w1jy1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rhnj"]
+radius = 17.0294
 
 [node name="dough-fridge" type="Node2D" groups=["dough", "dough-fridge"]]
+script = ExtResource("1_w1jy1")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pxcur")
 offset = Vector2(0, -16)
+
+[node name="clickArea" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_6rhnj")
+
+[connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
