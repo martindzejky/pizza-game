@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6cvlq2crfmo0"]
+[gd_scene load_steps=6 format=3 uid="uid://dhrhb8gv5s7nu"]
 
 [ext_resource type="Texture2D" uid="uid://cwqfkpqounhk6" path="res://sprites/fridge.png" id="1_m8jrv"]
 [ext_resource type="Script" path="res://objects/fridge/fridge.gd" id="2_kx2wi"]
 [ext_resource type="Texture2D" uid="uid://27uc1od6otaj" path="res://sprites/fridge-open.png" id="3_3qr2c"]
+[ext_resource type="PackedScene" uid="uid://b3hqp0hbr7y6r" path="res://objects/dough/dough-fridge.tscn" id="4_fe6d4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5itk"]
 size = Vector2(120, 80)
@@ -13,11 +14,15 @@ centered = false
 script = ExtResource("2_kx2wi")
 closedSprite = ExtResource("1_m8jrv")
 openSprite = ExtResource("3_3qr2c")
+dough = ExtResource("4_fe6d4")
 
-[node name="click-area" type="Area2D" parent="."]
+[node name="clickArea" type="Area2D" parent="."]
 position = Vector2(60, 40)
 
-[node name="shape" type="CollisionShape2D" parent="click-area"]
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
 shape = SubResource("RectangleShape2D_m5itk")
 
-[connection signal="input_event" from="click-area" to="." method="_onInputEvent"]
+[node name="spawnPoint" type="Marker2D" parent="."]
+position = Vector2(49, 73)
+
+[connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

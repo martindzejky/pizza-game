@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://k3ssjquq313h"]
+
+[ext_resource type="Texture2D" uid="uid://bjubtkw5ihv2n" path="res://sprites/dough.png" id="1_pxcur"]
+
+[node name="dough-fridge" type="Node2D" groups=["dough"]]
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_pxcur")

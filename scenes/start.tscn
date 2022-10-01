@@ -27,9 +27,9 @@ offset_right = 470.0
 offset_bottom = 260.0
 
 [node name="title" type="Label" parent="ui/margin/items"]
-offset_top = 48.0
+offset_top = 47.0
 offset_right = 460.0
-offset_bottom = 71.0
+offset_bottom = 72.0
 grow_horizontal = 2
 pivot_offset = Vector2(240, 30)
 size_flags_vertical = 6
