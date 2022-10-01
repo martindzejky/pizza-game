@@ -15,53 +15,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="title" type="Label" parent="ui"]
+[node name="margin" type="MarginContainer" parent="ui"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="items" type="VBoxContainer" parent="ui/margin"]
+layout_mode = 2
+offset_left = 20.0
 offset_top = 10.0
-offset_bottom = 64.0
+offset_right = 258.0
+offset_bottom = 260.0
+
+[node name="title" type="Label" parent="ui/margin/items"]
+layout_mode = 2
+offset_top = 33.0
+offset_right = 238.0
+offset_bottom = 87.0
 grow_horizontal = 2
 pivot_offset = Vector2(240, 30)
+size_flags_vertical = 6
 text = "Untitled Game"
 label_settings = SubResource("LabelSettings_4a1rc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="buttons" type="MarginContainer" parent="ui"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -62.0
+[node name="btns" type="VBoxContainer" parent="ui/margin/items"]
+layout_mode = 2
+offset_top = 130.0
+offset_right = 238.0
+offset_bottom = 250.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+size_flags_vertical = 3
+alignment = 1
 
-[node name="vbox" type="VBoxContainer" parent="ui/buttons"]
+[node name="start" type="Button" parent="ui/margin/items/btns"]
 layout_mode = 2
-offset_left = 20.0
-offset_top = 10.0
-offset_right = 460.0
-offset_bottom = 78.0
-alignment = 2
-
-[node name="start" type="Button" parent="ui/buttons/vbox"]
-layout_mode = 2
-offset_right = 440.0
-offset_bottom = 29.0
+offset_top = 26.0
+offset_right = 238.0
+offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Start"
 
-[node name="exit" type="Button" parent="ui/buttons/vbox"]
+[node name="exit" type="Button" parent="ui/margin/items/btns"]
 layout_mode = 2
-offset_top = 39.0
-offset_right = 440.0
-offset_bottom = 68.0
+offset_top = 65.0
+offset_right = 238.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Exit"
 script = ExtResource("2_0d7lr")
 
-[connection signal="pressed" from="ui/buttons/vbox/exit" to="ui/buttons/vbox/exit" method="_onClicked"]
+[connection signal="pressed" from="ui/margin/items/btns/exit" to="ui/margin/items/btns/exit" method="_onClicked"]
