@@ -10,6 +10,7 @@ var isOpen := false
 
 func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if viewport.is_input_handled(): return
+    # cannot put anything into the fridge
     if not Hand.isEmpty(): return
 
     if event is InputEventMouseButton:

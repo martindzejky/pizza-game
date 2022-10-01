@@ -2,6 +2,10 @@ extends Node2D
 class_name Pickable
 
 
+signal picked
+signal dropped
+
+
 @export var isPicked := false
 
 

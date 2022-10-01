@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dehfhkt6r8u7n"]
+[gd_scene load_steps=6 format=3 uid="uid://dehfhkt6r8u7n"]
 
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
 [ext_resource type="PackedScene" uid="uid://dhrhb8gv5s7nu" path="res://objects/fridge/fridge.tscn" id="2_i6w8l"]
 [ext_resource type="Texture2D" uid="uid://dey134524wtmg" path="res://sprites/table.png" id="3_7mybh"]
 [ext_resource type="Texture2D" uid="uid://d0rpti4hw6n1c" path="res://sprites/mushroom-box.png" id="3_olhiv"]
+[ext_resource type="Texture2D" uid="uid://fo0fntv5ipk1" path="res://sprites/dough-tool.png" id="5_xto58"]
 
 [node name="level" type="Node"]
 
@@ -32,3 +33,7 @@ centered = false
 position = Vector2(0, 80)
 texture = ExtResource("3_7mybh")
 centered = false
+
+[node name="dough-tool" type="Sprite2D" parent="table"]
+position = Vector2(421, 152)
+texture = ExtResource("5_xto58")

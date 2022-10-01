@@ -18,3 +18,4 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
                     # spawn a new dough that is picked
                     var dough = doughObject.instantiate()
                     get_tree().call_group("table", "add_child", dough)
+                    Hand.pick(dough)
