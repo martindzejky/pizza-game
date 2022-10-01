@@ -36,3 +36,6 @@ centered = false
 
 [node name="dough-tool" parent="table" instance=ExtResource("5_pgbvw")]
 position = Vector2(430, 154)
+
+[node name="hand" type="Node2D" parent="." groups=["hand"]]
+z_index = 10

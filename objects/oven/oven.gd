@@ -19,10 +19,6 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
                     else:
                         open()
 
-                else:
-                    # TODO: interactions
-                    pass
-
 func open() -> void:
     isOpen = true
     texture = openSprite

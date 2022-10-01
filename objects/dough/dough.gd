@@ -76,3 +76,7 @@ func useOrDrop() -> void:
 
     for area in overlappingAreas:
         var obj = area.get_parent()
+
+        if obj.is_in_group("oven"):
+            # TODO
+            return
