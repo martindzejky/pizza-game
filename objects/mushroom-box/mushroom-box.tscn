@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn7bu1xyy7y4y"]
+
+[ext_resource type="Texture2D" uid="uid://d0rpti4hw6n1c" path="res://sprites/mushroom-box.png" id="1_bmxc0"]
+[ext_resource type="Script" path="res://objects/mushroom-box/mushroom-box.gd" id="2_i2of8"]
+[ext_resource type="PackedScene" uid="uid://4nv348kfwqsq" path="res://objects/mushroom/mushroom.tscn" id="3_uop2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yt4ro"]
+size = Vector2(40, 40)
+
+[node name="mushroom-box" type="Sprite2D"]
+texture = ExtResource("1_bmxc0")
+centered = false
+script = ExtResource("2_i2of8")
+ingredient = ExtResource("3_uop2w")
+
+[node name="clickArea" type="Area2D" parent="."]
+position = Vector2(20, 20)
+monitoring = false
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+shape = SubResource("RectangleShape2D_yt4ro")
+
+[connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

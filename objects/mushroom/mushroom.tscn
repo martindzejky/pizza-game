@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://4nv348kfwqsq"]
+
+[ext_resource type="Script" path="res://objects/mushroom/mushroom.gd" id="1_y36d4"]
+[ext_resource type="Texture2D" uid="uid://bfukq7miagkve" path="res://sprites/mushroom.png" id="2_d5b08"]
+[ext_resource type="Shape2D" uid="uid://csn561acrh2n7" path="res://shapes/use-area-circle-shape.tres" id="3_np64o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uv58m"]
+radius = 10.0499
+
+[node name="mushroom" type="Node2D" groups=["ingredient", "mushroom"]]
+script = ExtResource("1_y36d4")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_d5b08")
+
+[node name="clickArea" type="Area2D" parent="."]
+monitoring = false
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+shape = SubResource("CircleShape2D_uv58m")
+
+[node name="useArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="shape" type="CollisionShape2D" parent="useArea"]
+shape = ExtResource("3_np64o")
+
+[connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

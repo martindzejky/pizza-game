@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
 [ext_resource type="PackedScene" uid="uid://dhrhb8gv5s7nu" path="res://objects/fridge/fridge.tscn" id="2_i6w8l"]
 [ext_resource type="Texture2D" uid="uid://dey134524wtmg" path="res://sprites/table.png" id="3_7mybh"]
-[ext_resource type="Texture2D" uid="uid://d0rpti4hw6n1c" path="res://sprites/mushroom-box.png" id="3_olhiv"]
+[ext_resource type="PackedScene" uid="uid://dn7bu1xyy7y4y" path="res://objects/mushroom-box/mushroom-box.tscn" id="3_x8ajh"]
 [ext_resource type="PackedScene" uid="uid://b1jgjnmmcqyjw" path="res://objects/dough-tool/dough-tool.tscn" id="5_pgbvw"]
 [ext_resource type="PackedScene" uid="uid://fx24ebvovfv4" path="res://objects/plate/plate.tscn" id="5_qji8x"]
 
@@ -25,10 +25,8 @@ z_index = 1
 [node name="boxes" type="Node2D" parent="top"]
 position = Vector2(240, 0)
 
-[node name="mushroom" type="Sprite2D" parent="top/boxes"]
+[node name="mushroom-box" parent="top/boxes" instance=ExtResource("3_x8ajh")]
 position = Vector2(0, 40)
-texture = ExtResource("3_olhiv")
-centered = false
 
 [node name="table" type="Sprite2D" parent="." groups=["table"]]
 position = Vector2(0, 80)

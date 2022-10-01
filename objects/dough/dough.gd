@@ -105,3 +105,19 @@ func useOrDrop() -> void:
             if obj.has_method("insertDough"):
                 if obj.insertDough(self):
                     return
+
+func insertIngredient(ingredient: Pickable) -> bool:
+    if not ingredient.is_in_group("ingredient"): return false
+
+    if ingredient.isPicked:
+        Hand.drop()
+
+    var previousTransform = ingredient.get_global_transform()
+
+    if ingredient.get_parent():
+        ingredient.get_parent().remove_child(ingredient)
+
+    add_child(ingredient)
+    ingredient.set_global_transform(previousTransform)
+
+    return true
