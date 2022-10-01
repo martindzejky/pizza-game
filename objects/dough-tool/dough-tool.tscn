@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://objects/dough-tool/dough-tool.gd" id="2_mmsdm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdpfp"]
-radius = 23.0217
+radius = 11.1803
 
 [node name="dough-tool" type="Sprite2D" groups=["dough-tool", "tool"]]
 texture = ExtResource("1_ans6e")
@@ -13,6 +13,11 @@ script = ExtResource("2_mmsdm")
 [node name="clickArea" type="Area2D" parent="."]
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
+shape = SubResource("CircleShape2D_hdpfp")
+
+[node name="useArea" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="useArea"]
 shape = SubResource("CircleShape2D_hdpfp")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

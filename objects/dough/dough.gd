@@ -21,3 +21,18 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
                 else:
                     pass
                     # TODO: interactions with other objects
+
+func onHitByDoughTool():
+    progress += 1
+
+    if progress >= $sprite.hframes:
+        queue_free()
+        return
+
+    $sprite.frame = progress
+
+func isReady():
+    return progress == PROGRESS_READY
+
+func isDestroyed():
+    return progress >= PROGRESS_DESTROYED
