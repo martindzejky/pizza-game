@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dehfhkt6r8u7n"]
+[gd_scene load_steps=7 format=3 uid="uid://dehfhkt6r8u7n"]
 
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
 [ext_resource type="PackedScene" uid="uid://dhrhb8gv5s7nu" path="res://objects/fridge/fridge.tscn" id="2_i6w8l"]
 [ext_resource type="Texture2D" uid="uid://dey134524wtmg" path="res://sprites/table.png" id="3_7mybh"]
 [ext_resource type="Texture2D" uid="uid://d0rpti4hw6n1c" path="res://sprites/mushroom-box.png" id="3_olhiv"]
 [ext_resource type="PackedScene" uid="uid://b1jgjnmmcqyjw" path="res://objects/dough-tool/dough-tool.tscn" id="5_pgbvw"]
+[ext_resource type="PackedScene" uid="uid://fx24ebvovfv4" path="res://objects/plate/plate.tscn" id="5_qji8x"]
 
 [node name="level" type="Node"]
 
@@ -33,6 +34,9 @@ centered = false
 position = Vector2(0, 80)
 texture = ExtResource("3_7mybh")
 centered = false
+
+[node name="plate" parent="table" instance=ExtResource("5_qji8x")]
+position = Vector2(447, 45)
 
 [node name="dough-tool" parent="table" instance=ExtResource("5_pgbvw")]
 position = Vector2(430, 154)

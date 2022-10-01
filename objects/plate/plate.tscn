@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://fx24ebvovfv4"]
+
+[ext_resource type="Texture2D" uid="uid://cw2yu0lu7xc3r" path="res://sprites/plate.png" id="1_ya2rm"]
+[ext_resource type="Script" path="res://objects/plate/plate.gd" id="2_qtcx6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekduq"]
+radius = 33.0
+
+[node name="plate" type="Sprite2D" groups=["plate"]]
+texture = ExtResource("1_ya2rm")
+script = ExtResource("2_qtcx6")
+
+[node name="clickArea" type="Area2D" parent="."]
+monitoring = false
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+shape = SubResource("CircleShape2D_ekduq")
