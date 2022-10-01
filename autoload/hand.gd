@@ -2,6 +2,8 @@ extends Node
 
 # stores global state about what is currently being carried in hand
 
+const Z_INDEX = 100
+
 var carrying: Pickable
 
 
@@ -16,6 +18,9 @@ func pick(node: Pickable):
     if node.has_signal("picked"):
         node.emit_signal("picked")
 
+    if "z_index" in node:
+        node.z_index += Z_INDEX
+
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func drop():
@@ -26,6 +31,14 @@ func drop():
     carrying.isPicked = false
     if carrying.has_signal("dropped"):
         carrying.emit_signal("dropped")
+
+    if "z_index" in carrying:
+        carrying.z_index -= Z_INDEX
+
+    # move the node to the end of the list of children so it is rendered on top
+    var parent = carrying.get_parent()
+    if parent:
+        parent.move_child(carrying, -1)
 
     carrying = null
 
