@@ -65,6 +65,7 @@ script = ExtResource("2_qtcx6")
 
 [node name="clickArea" type="Area2D" parent="plate"]
 monitoring = false
+monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="plate/clickArea"]
 shape = SubResource("CircleShape2D_ekduq")
@@ -73,3 +74,5 @@ shape = SubResource("CircleShape2D_ekduq")
 libraries = {
 "": SubResource("AnimationLibrary_r1un2")
 }
+
+[connection signal="input_event" from="plate/clickArea" to="plate" method="_onInputEvent"]

@@ -1,16 +1,29 @@
 extends Sprite2D
 
 
-func insertDough(dough: Pickable) -> bool:
-    if $submitAnimation.is_playing(): return false
+
+func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
+    if viewport.is_input_handled(): return
+
+    if event is InputEventMouseButton:
+        if event.button_index == MOUSE_BUTTON_LEFT:
+            if not event.pressed:
+                viewport.set_input_as_handled()
+
+                if Hand.isCarryingDough():
+                    insertDough()
+
+
+func insertDough() -> void:
+    if $submitAnimation.is_playing(): return
 
     # only one dough can be on the plate
     for node in get_children():
         if node.is_in_group("dough"):
-            return false
+            return
 
-    if dough.isPicked:
-        Hand.drop()
+    var dough = Hand.drop()
+    if not dough: return
 
     if dough.get_parent():
         dough.get_parent().remove_child(dough)
@@ -19,8 +32,6 @@ func insertDough(dough: Pickable) -> bool:
     dough.set_global_transform(get_global_transform())
 
     $submitAnimation.play("submit")
-
-    return true
 
 func submitPizza() -> void:
     # TODO: score the pizza and make a screenshot of it

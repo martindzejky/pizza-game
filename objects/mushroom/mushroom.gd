@@ -41,35 +41,13 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
             if not event.pressed:
                 viewport.set_input_as_handled()
 
-                if isPicked:
-                    useOrDrop()
-
-                elif Hand.isEmpty():
+                if Hand.isEmpty():
                     Hand.pick(self)
 
+                elif Hand.isCarryingDoughTool():
+                    # TODO: particles
+                    queue_free()
 
-func useOrDrop() -> void:
-    var overlappingAreas = $useArea.get_overlapping_areas()
-
-    # filter self
-    overlappingAreas = overlappingAreas.filter(func(area): return area.get_parent() != self)
-
-    if overlappingAreas.size() <= 0:
-        Hand.drop()
-        return
-
-    for area in overlappingAreas:
-        var obj = area.get_parent()
-
-        if obj.is_in_group("dough"):
-            if obj.has_method("insertIngredient"):
-                if obj.insertIngredient(self):
-
-                    # disable interactive areas, the ingredient is now part of the dough
-                    $clickArea.queue_free()
-                    $useArea.queue_free()
-
-                    return
 
 func isRaw():
     return cookProgress < COOK_PROGRESS_RAW

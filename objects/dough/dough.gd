@@ -51,11 +51,14 @@ func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
             if not event.pressed:
                 viewport.set_input_as_handled()
 
-                if isPicked:
-                    useOrDrop()
-
-                elif Hand.isEmpty():
+                if Hand.isEmpty():
                     Hand.pick(self)
+
+                elif Hand.isCarryingDoughTool():
+                    onHitByDoughTool()
+
+                elif Hand.isCarryingIngredient():
+                    insertIngredient()
 
 
 func onHitByDoughTool():
@@ -83,34 +86,10 @@ func isCookReady():
 func isCookOvercooked():
     return cookProgress >= COOK_PROGRESS_OVERCOOKED
 
-func useOrDrop() -> void:
-    var overlappingAreas = $useArea.get_overlapping_areas()
 
-    # filter self
-    overlappingAreas = overlappingAreas.filter(func(area): return area.get_parent() != self)
-
-    if overlappingAreas.size() <= 0:
-        Hand.drop()
-        return
-
-    for area in overlappingAreas:
-        var obj = area.get_parent()
-
-        if obj.is_in_group("oven"):
-            if obj.has_method("insertDough"):
-                if obj.insertDough(self):
-                    return
-
-        if obj.is_in_group("plate"):
-            if obj.has_method("insertDough"):
-                if obj.insertDough(self):
-                    return
-
-func insertIngredient(ingredient: Pickable) -> bool:
-    if not ingredient.is_in_group("ingredient"): return false
-
-    if ingredient.isPicked:
-        Hand.drop()
+func insertIngredient() -> void:
+    var ingredient = Hand.drop()
+    if not ingredient: return
 
     var previousTransform = ingredient.get_global_transform()
 
@@ -120,4 +99,6 @@ func insertIngredient(ingredient: Pickable) -> bool:
     add_child(ingredient)
     ingredient.set_global_transform(previousTransform)
 
-    return true
+    # disable interactive areas, the ingredient is now part of the dough
+    ingredient.get_node("clickArea").queue_free()
+    ingredient.get_node("useArea").queue_free()

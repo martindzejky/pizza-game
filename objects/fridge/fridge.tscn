@@ -19,6 +19,7 @@ dough = ExtResource("4_fe6d4")
 [node name="clickArea" type="Area2D" parent="."]
 position = Vector2(60, 40)
 monitoring = false
+monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 position = Vector2(-10, 0)

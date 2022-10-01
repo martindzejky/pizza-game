@@ -16,6 +16,7 @@ ingredient = ExtResource("3_uop2w")
 [node name="clickArea" type="Area2D" parent="."]
 position = Vector2(20, 20)
 monitoring = false
+monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 shape = SubResource("RectangleShape2D_yt4ro")

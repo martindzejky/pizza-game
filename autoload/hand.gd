@@ -5,7 +5,7 @@ extends Node
 var carrying: Pickable
 
 
-func pick(node: Pickable):
+func pick(node: Pickable) -> void:
     if carrying:
         print("Tried to carry two things at once")
         return
@@ -25,7 +25,7 @@ func pick(node: Pickable):
 
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-func drop():
+func drop() -> Pickable:
     carrying.isPicked = false
     if carrying.has_signal("dropped") and carrying.is_inside_tree():
         carrying.emit_signal("dropped")
@@ -39,14 +39,25 @@ func drop():
 
     # Wait for the next frame to drop the node. That is so in the current frame other nodes
     # can react to the fact that the node is still being carried.
-    await get_tree().create_timer(0).timeout
+    # TODO: disabled
+    # await get_tree().create_timer(0).timeout
 
+    var wasCarrying = carrying
     carrying = null
 
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+    return wasCarrying
+
+
 func isEmpty() -> bool:
     return not carrying
 
+func isCarryingDough() -> bool:
+    return carrying and carrying.is_in_group("dough")
+
 func isCarryingDoughTool() -> bool:
     return carrying and carrying.is_in_group("dough-tool")
+
+func isCarryingIngredient() -> bool:
+    return carrying and carrying.is_in_group("ingredient")

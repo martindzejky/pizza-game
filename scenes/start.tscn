@@ -14,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="margin" type="MarginContainer" parent="ui"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,12 +22,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="items" type="VBoxContainer" parent="ui/margin"]
+layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 470.0
 offset_bottom = 260.0
 
 [node name="title" type="Label" parent="ui/margin/items"]
+layout_mode = 2
 offset_top = 47.0
 offset_right = 460.0
 offset_bottom = 72.0
@@ -38,6 +41,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="btns" type="VBoxContainer" parent="ui/margin/items"]
+layout_mode = 2
 offset_top = 130.0
 offset_right = 460.0
 offset_bottom = 250.0
@@ -47,6 +51,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="start" type="Button" parent="ui/margin/items/btns"]
+layout_mode = 2
 offset_top = 25.0
 offset_right = 460.0
 offset_bottom = 55.0
@@ -56,6 +61,7 @@ text = "Start"
 script = ExtResource("1_iqrhl")
 
 [node name="exit" type="Button" parent="ui/margin/items/btns"]
+layout_mode = 2
 offset_top = 65.0
 offset_right = 460.0
 offset_bottom = 95.0
