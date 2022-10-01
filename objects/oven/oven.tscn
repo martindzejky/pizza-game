@@ -16,6 +16,7 @@ openSprite = ExtResource("3_0nkvk")
 
 [node name="clickArea" type="Area2D" parent="."]
 position = Vector2(60, 40)
+rotation = -0.00229882
 monitoring = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]

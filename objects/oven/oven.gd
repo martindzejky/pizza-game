@@ -6,6 +6,17 @@ extends Sprite2D
 
 var isOpen := false
 
+
+func _process(delta: float) -> void:
+    if not isOpen:
+
+        # cook all dough inside
+        for node in get_children():
+            if not node.is_in_group("dough"): continue
+
+            node.cookProgress += delta
+
+
 func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if viewport.is_input_handled(): return
 
