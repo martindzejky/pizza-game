@@ -1,16 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://k3ssjquq313h"]
 
+[ext_resource type="Script" path="res://objects/dough/dough.gd" id="1_lfh2g"]
 [ext_resource type="Texture2D" uid="uid://bjubtkw5ihv2n" path="res://sprites/dough.png" id="1_pxcur"]
-[ext_resource type="Script" path="res://objects/dough/dough.gd" id="1_qr6cc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dosf0"]
 radius = 23.0217
 
-[node name="dough-fridge" type="Node2D" groups=["dough"]]
-script = ExtResource("1_qr6cc")
+[node name="dough" type="Node2D" groups=["dough"]]
+script = ExtResource("1_lfh2g")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pxcur")
+hframes = 6
 
 [node name="clickArea" type="Area2D" parent="."]
 
