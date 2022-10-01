@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://4fei2hjxp84l"]
+[gd_scene load_steps=4 format=3 uid="uid://4fei2hjxp84l"]
 
+[ext_resource type="PackedScene" uid="uid://brwmjnnpq7kye" path="res://ui/pizza-gallery.tscn" id="1_auhlt"]
 [ext_resource type="Script" path="res://ui/start-btn.gd" id="1_iqrhl"]
 [ext_resource type="Script" path="res://ui/exit-btn.gd" id="2_0d7lr"]
 
@@ -38,12 +39,8 @@ text = "All done for today!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TODO" type="Container" parent="ui/margin/items"]
+[node name="pizza-gallery" parent="ui/margin/items" instance=ExtResource("1_auhlt")]
 layout_mode = 2
-offset_top = 35.0
-offset_right = 460.0
-offset_bottom = 210.0
-size_flags_vertical = 3
 
 [node name="btns" type="HBoxContainer" parent="ui/margin/items"]
 layout_mode = 2

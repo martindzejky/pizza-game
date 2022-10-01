@@ -31,6 +31,9 @@ func insertDough() -> bool:
     add_child(dough)
     dough.set_global_transform(get_global_transform())
 
+    # disable click area to stop further interactions
+    dough.get_node("clickArea").queue_free()
+
     $submitAnimation.play("submit")
 
     return true
@@ -41,4 +44,8 @@ func submitPizza() -> void:
 
     for node in get_children():
         if node.is_in_group("dough"):
-            node.queue_free()
+
+            if node.get_parent():
+                node.get_parent().remove_child(node)
+
+            Pizzas.add_child(node)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://brwmjnnpq7kye"]
+
+[ext_resource type="Script" path="res://ui/pizza-gallery.gd" id="1_48nfw"]
+
+[node name="pizza-gallery" type="GridContainer"]
+offset_top = 35.0
+offset_right = 460.0
+offset_bottom = 210.0
+size_flags_vertical = 3
+columns = 4
+script = ExtResource("1_48nfw")

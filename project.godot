@@ -37,6 +37,7 @@ config/icon="res://icon.svg"
 
 Randomizer="*res://autoload/randomizer.gd"
 Hand="*res://autoload/hand.gd"
+Pizzas="*res://autoload/pizzas.gd"
 
 [display]
 
