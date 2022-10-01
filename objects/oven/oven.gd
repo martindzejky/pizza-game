@@ -3,36 +3,30 @@ extends Sprite2D
 @export var closedSprite: Texture2D
 @export var openSprite: Texture2D
 
-@export var dough: PackedScene
 
 var isOpen := false
 
-
 func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
     if viewport.is_input_handled(): return
-    if not Hand.isEmpty(): return
 
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT:
             if not event.pressed:
-                if isOpen:
-                    close()
-                else:
-                    open()
 
-# open the fridge and spawn a new dough
+                if Hand.isEmpty():
+                    if isOpen:
+                        close()
+                    else:
+                        open()
+
+                else:
+                    # TODO: interactions
+                    pass
+
 func open() -> void:
     isOpen = true
     texture = openSprite
 
-    var newDough = dough.instantiate()
-    newDough.transform = $spawnPoint.transform
-    add_child(newDough)
-
-# close the fridge and destroy the dough inside if there is any
 func close() -> void:
     isOpen = false
     texture = closedSprite
-
-    for node in get_tree().get_nodes_in_group("dough-fridge"):
-        node.queue_free()

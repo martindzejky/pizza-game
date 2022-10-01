@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://db820lg5ebwsq"]
+
+[ext_resource type="Texture2D" uid="uid://bdit8hunfh1gu" path="res://sprites/oven.png" id="1_38136"]
+[ext_resource type="Script" path="res://objects/oven/oven.gd" id="2_7ix8b"]
+[ext_resource type="Texture2D" uid="uid://smywby7uqd7g" path="res://sprites/oven-open.png" id="3_0nkvk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8e28"]
+size = Vector2(140, 80)
+
+[node name="oven" type="Sprite2D"]
+texture = ExtResource("1_38136")
+centered = false
+script = ExtResource("2_7ix8b")
+closedSprite = ExtResource("1_38136")
+openSprite = ExtResource("3_0nkvk")
+
+[node name="clickArea" type="Area2D" parent="."]
+position = Vector2(60, 40)
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_p8e28")
+
+[node name="spawnPoint" type="Marker2D" parent="."]
+position = Vector2(69, 56)
+
+[connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
