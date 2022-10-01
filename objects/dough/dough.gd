@@ -78,5 +78,6 @@ func useOrDrop() -> void:
         var obj = area.get_parent()
 
         if obj.is_in_group("oven"):
-            # TODO
-            return
+            if obj.has_method("insertDough"):
+                if obj.insertDough(self):
+                    return

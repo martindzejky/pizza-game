@@ -13,7 +13,7 @@ func pick(node: Pickable):
     carrying = node
 
     node.isPicked = true
-    if node.has_signal("picked"):
+    if node.has_signal("picked") and node.is_inside_tree():
         node.emit_signal("picked")
 
     # move to hand node to be rendered on top
@@ -26,12 +26,8 @@ func pick(node: Pickable):
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func drop():
-    # Wait for the next frame to drop the node. That is so in the current frame other nodes
-    # can react to the fact that the node is still being carried.
-    await get_tree().create_timer(0).timeout
-
     carrying.isPicked = false
-    if carrying.has_signal("dropped"):
+    if carrying.has_signal("dropped") and carrying.is_inside_tree():
         carrying.emit_signal("dropped")
 
     # move back to table node
@@ -40,6 +36,10 @@ func drop():
         carrying.get_parent().remove_child(carrying)
     get_tree().call_group("table", "add_child", carrying)
     carrying.set_global_transform(globalTransform)
+
+    # Wait for the next frame to drop the node. That is so in the current frame other nodes
+    # can react to the fact that the node is still being carried.
+    await get_tree().create_timer(0).timeout
 
     carrying = null
 

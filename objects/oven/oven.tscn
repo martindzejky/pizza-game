@@ -22,7 +22,7 @@ monitoring = false
 position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_p8e28")
 
-[node name="spawnPoint" type="Marker2D" parent="."]
+[node name="point" type="Marker2D" parent="."]
 position = Vector2(69, 56)
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
