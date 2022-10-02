@@ -22,6 +22,7 @@ func _onClick() -> bool:
 # open the fridge and spawn a new dough
 func open() -> void:
     $particles.emitting = true
+    $openSound.play()
 
     isOpen = true
     texture = openSprite
@@ -33,6 +34,7 @@ func open() -> void:
 # close the fridge and destroy the dough inside if there is any
 func close() -> void:
     $particles.emitting = false
+    $closeSound.play()
 
     isOpen = false
     texture = closedSprite
