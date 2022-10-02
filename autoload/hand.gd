@@ -61,3 +61,83 @@ func isCarryingDoughTool() -> bool:
 
 func isCarryingIngredient() -> bool:
     return carrying and carrying.is_in_group("ingredient")
+
+
+
+
+
+# --------------------
+# Click handing. Custom implementation because Godot's click events are not ordered (seem random, probably a bug?).
+# https://github.com/godotengine/godot/issues/23051
+
+
+func _unhandled_input(event: InputEvent) -> void:
+
+    # only care about left mouse clicks (on release)
+    if not event is InputEventMouseButton: return
+    if event.button_index != MOUSE_BUTTON_LEFT: return
+    if not event.is_pressed(): return
+
+    print("click!")
+
+    # get global mouse position
+    var mousePos = get_viewport().get_mouse_position()
+    print("mousePos: ", mousePos)
+
+    var clickNodes = get_tree().get_nodes_in_group("click").duplicate()
+    clickNodes.reverse()
+
+    for node in clickNodes:
+        if not node.is_inside_tree(): continue
+
+        var clickArea = node.get_node("clickArea")
+        if not clickArea:
+            push_warning("node in 'click' group has no clickArea: ", node)
+            continue
+
+        var owners = clickArea.get_shape_owners()
+        if owners.size() == 0:
+            push_warning("node in 'click' group has no shape owners: ", clickArea)
+            continue
+
+        var shapeCount = clickArea.shape_owner_get_shape_count(owners[0])
+        if shapeCount < 1:
+            push_warning("node in 'click' group has no shapes: ", clickArea)
+            continue
+
+        var shape = clickArea.shape_owner_get_shape(owners[0], 0)
+        if not shape:
+            push_warning("node in 'click' group has no shape: ", clickArea)
+            continue
+
+        # supports only one shape per node!
+
+
+        var shapeTransform = clickArea.shape_owner_get_transform(owners[0])
+
+        if shape is CircleShape2D:
+            var position = clickArea.global_position + shapeTransform.origin
+            var distanceToMouse = position.distance_to(mousePos)
+
+            if distanceToMouse > shape.radius:
+                continue
+
+        elif shape is RectangleShape2D:
+            var rect = Rect2()
+            rect.position = clickArea.global_position + shapeTransform.origin - shape.size/2
+            rect.size = shape.size
+
+            if not rect.has_point(mousePos):
+                continue
+
+        else:
+            push_warning("node in 'click' group has unsupported shape: ", shape)
+
+
+        print("click on ", node)
+        if node.has_method("_onClick"):
+            node.onClick()
+        else:
+            push_warning("node in 'click' group has no _onClick method: ", node)
+
+        break

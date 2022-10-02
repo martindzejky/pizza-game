@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_uv58m"]
 radius = 10.0499
 
-[node name="ingredient" type="Node2D" groups=["ingredient"]]
+[node name="ingredient" type="Node2D" groups=["click", "ingredient"]]
 script = ExtResource("1_sbffm")
 
 [node name="sprite" type="Sprite2D" parent="."]

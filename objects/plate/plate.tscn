@@ -59,7 +59,7 @@ _data = {
 
 [node name="plate-pos" type="Node2D"]
 
-[node name="plate" type="Sprite2D" parent="." groups=["plate"]]
+[node name="plate" type="Sprite2D" parent="." groups=["click", "plate"]]
 texture = ExtResource("1_ya2rm")
 script = ExtResource("2_qtcx6")
 

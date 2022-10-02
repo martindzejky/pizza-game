@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5itk"]
 size = Vector2(90, 80)
 
-[node name="fridge" type="Sprite2D" groups=["fridge"]]
+[node name="fridge" type="Sprite2D" groups=["click", "fridge"]]
 texture = ExtResource("1_m8jrv")
 centered = false
 script = ExtResource("2_kx2wi")

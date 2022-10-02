@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6653"]
 radius = 29.0
 
-[node name="dough" type="Node2D" groups=["dough"]]
+[node name="dough" type="Node2D" groups=["click", "dough"]]
 script = ExtResource("1_lfh2g")
 
 [node name="sprite" type="Sprite2D" parent="."]

@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdpfp"]
 radius = 23.0
 
-[node name="dough-tool" type="Sprite2D" groups=["dough-tool", "tool"]]
+[node name="dough-tool" type="Sprite2D" groups=["click", "dough-tool", "tool"]]
 texture = ExtResource("1_ans6e")
 script = ExtResource("2_mmsdm")
 

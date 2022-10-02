@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwx6pe72g61d1"]
+[gd_scene load_steps=7 format=3 uid="uid://dwx6pe72g61d1"]
 
 [ext_resource type="Texture2D" uid="uid://dey134524wtmg" path="res://sprites/table.png" id="1_qoc6o"]
 [ext_resource type="PackedScene" uid="uid://fx24ebvovfv4" path="res://objects/plate/plate.tscn" id="2_eynit"]
 [ext_resource type="Script" path="res://objects/table/table.gd" id="2_vk3s4"]
 [ext_resource type="PackedScene" uid="uid://b1jgjnmmcqyjw" path="res://objects/dough-tool/dough-tool.tscn" id="3_fm40i"]
+[ext_resource type="PackedScene" uid="uid://k3ssjquq313h" path="res://objects/dough/dough.tscn" id="4_xcqvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmpfi"]
 size = Vector2(480, 200)
 
-[node name="table" type="Sprite2D" groups=["table"]]
+[node name="table" type="Sprite2D" groups=["click", "table"]]
 texture = ExtResource("1_qoc6o")
 centered = false
 script = ExtResource("2_vk3s4")
@@ -24,7 +25,19 @@ shape = SubResource("RectangleShape2D_qmpfi")
 [node name="plate" parent="." instance=ExtResource("2_eynit")]
 position = Vector2(447, 45)
 
+[node name="dough" parent="." instance=ExtResource("4_xcqvc")]
+position = Vector2(374, 111)
+
+[node name="dough2" parent="." instance=ExtResource("4_xcqvc")]
+position = Vector2(448, 53)
+
+[node name="dough3" parent="." instance=ExtResource("4_xcqvc")]
+position = Vector2(438, 149)
+
 [node name="dough-tool" parent="." instance=ExtResource("3_fm40i")]
 position = Vector2(430, 154)
+
+[node name="dough4" parent="." instance=ExtResource("4_xcqvc")]
+position = Vector2(413, 157)
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

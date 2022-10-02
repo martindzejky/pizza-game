@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
 [ext_resource type="Script" path="res://scripts/reset-pizzas.gd" id="1_ybgt5"]
 [ext_resource type="PackedScene" uid="uid://dhrhb8gv5s7nu" path="res://objects/fridge/fridge.tscn" id="2_i6w8l"]
-[ext_resource type="PackedScene" path="res://objects/mushroom-box/mushroom-box.tscn" id="3_x8ajh"]
+[ext_resource type="PackedScene" uid="uid://b8j5aiovste6u" path="res://objects/mushroom-box/mushroom-box.tscn" id="3_x8ajh"]
 [ext_resource type="PackedScene" uid="uid://dwx6pe72g61d1" path="res://objects/table/table.tscn" id="4_tetf8"]
 [ext_resource type="Texture2D" uid="uid://dce13dywqd8my" path="res://sprites/boxes.png" id="5_2qcfs"]
 [ext_resource type="PackedScene" uid="uid://cxs3415am8mfp" path="res://objects/ingredients/mushroom.tscn" id="7_t30ub"]

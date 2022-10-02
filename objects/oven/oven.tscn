@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8e28"]
 size = Vector2(115.009, 80)
 
-[node name="oven" type="Sprite2D" groups=["oven"]]
+[node name="oven" type="Sprite2D" groups=["click", "oven"]]
 texture = ExtResource("1_38136")
 centered = false
 script = ExtResource("2_7ix8b")
