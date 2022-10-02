@@ -9,6 +9,12 @@ func _ready():
 # If there's no order, the score is 0. Scoring is 0 (worst) - 5 (best).
 func score(pizza: Node):
 
+    if pizza.isRaw():
+        # who would eat that...
+        pizza.score = 0
+        print("Raw pizza!")
+        return
+
     var openOrders = get_tree().get_nodes_in_group("order")
 
     if openOrders.size() == 0:

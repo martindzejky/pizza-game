@@ -14,3 +14,5 @@ func _ready():
 
         var stars = picture.get_node("rating/center/stars")
         stars.region_rect.size.x = floor(pizza.score * 16)
+
+        add_child(picture)
