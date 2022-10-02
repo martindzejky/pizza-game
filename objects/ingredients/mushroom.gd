@@ -55,3 +55,11 @@ func isCookReady():
 
 func isCookOvercooked():
     return cookProgress >= COOK_PROGRESS_OVERCOOKED
+
+func getCookProgress():
+    var p = float(cookProgress) - COOK_PROGRESS_READY
+    if p < 0: return 0.0
+
+    p = p / (COOK_PROGRESS_OVERCOOKED - COOK_PROGRESS_READY)
+
+    return clamp(1.0 - p / 2, 0.0, 1.0)
