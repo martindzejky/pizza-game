@@ -30,7 +30,7 @@ func _process(delta):
     else:
         color = 0.2
 
-    $sprite.self_modulate = Color(color, color, color, 1)
+    $sprite.self_modulate = Color(color, color, color, $sprite.self_modulate.a)
 
 
 func _onClick() -> bool:

@@ -122,6 +122,11 @@ func insertIngredient() -> bool:
     ingredient.set_global_transform(previousTransform)
 
     # disable interactive areas, the ingredient is now part of the dough
+    ingredient.remove_from_group("click")
     ingredient.get_node("clickArea").queue_free()
+
+    # fade out a little
+    var color = ingredient.get_node("sprite").self_modulate
+    ingredient.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
 
     return true
