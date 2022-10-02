@@ -8,13 +8,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8e28"]
 size = Vector2(115.009, 80)
 
-[sub_resource type="Gradient" id="Gradient_v6m6o"]
+[sub_resource type="Gradient" id="Gradient_k84y5"]
 colors = PackedColorArray(1, 1, 1, 0.219608, 1, 1, 1, 0.8)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cdm2l"]
-gradient = SubResource("Gradient_v6m6o")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bhvt6"]
+gradient = SubResource("Gradient_k84y5")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0pt4y"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2c40k"]
 lifetime_randomness = 0.58
 emission_shape = 3
 emission_box_extents = Vector3(55, 38, 0)
@@ -25,10 +25,11 @@ initial_velocity_min = 1.0
 initial_velocity_max = 3.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-angle_min = -11.4
-angle_max = 15.7
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.6
 color = Color(1, 1, 1, 0.694118)
-color_initial_ramp = SubResource("GradientTexture1D_cdm2l")
+color_initial_ramp = SubResource("GradientTexture1D_bhvt6")
 
 [node name="oven" type="Sprite2D" groups=["click", "oven"]]
 texture = ExtResource("1_38136")
@@ -57,7 +58,7 @@ emitting = false
 amount = 3
 lifetime = 5.0
 randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_0pt4y")
+process_material = SubResource("ParticleProcessMaterial_2c40k")
 texture = ExtResource("4_b4fx7")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
