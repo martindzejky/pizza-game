@@ -103,6 +103,5 @@ func insertIngredient() -> bool:
 
     # disable interactive areas, the ingredient is now part of the dough
     ingredient.get_node("clickArea").queue_free()
-    ingredient.get_node("useArea").queue_free()
 
     return true
