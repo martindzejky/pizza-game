@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://rhaovn1wj3cy"]
+[gd_scene load_steps=6 format=3 uid="uid://rhaovn1wj3cy"]
 
 [ext_resource type="Texture2D" uid="uid://c87o1ymgjbtyr" path="res://sprites/tomato.png" id="1_qlm3m"]
 [ext_resource type="Script" path="res://objects/tomato/tomato.gd" id="1_wgtpv"]
 [ext_resource type="Texture2D" uid="uid://cncb4bnbw0vn6" path="res://sprites/tomato-spoon.png" id="3_g877s"]
+[ext_resource type="PackedScene" uid="uid://de30ij3cwuahr" path="res://objects/spoon/spoon.tscn" id="4_3rara"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrg4b"]
 radius = 34.0147
@@ -11,6 +12,7 @@ radius = 34.0147
 script = ExtResource("1_wgtpv")
 withoutSpoon = ExtResource("1_qlm3m")
 withSpoon = ExtResource("3_g877s")
+spoonObj = ExtResource("4_3rara")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_g877s")
