@@ -12,8 +12,14 @@ func wiggle(node: Node) -> void:
     if node.has_node("sprite"):
         node = node.get_node("sprite")
 
-    tween.tween_property(node, "scale", Vector2(-0.04, 0.08), 0.1).from_current().as_relative()
-    tween.tween_property(node, "scale", Vector2(0.08, -0.04), 0.1).from_current().as_relative()
-    tween.tween_property(node, "scale", Vector2(-0.02, 0.04), 0.06).from_current().as_relative()
-    tween.tween_property(node, "scale", Vector2(0.04, -0.02), 0.06).from_current().as_relative()
-    tween.tween_property(node, "scale", Vector2(1, 1), 0.02).from_current()
+    if node.has_meta("wiggle"):
+        var old = node.get_meta("wiggle")
+        if old.has_method("kill"):
+            old.kill()
+
+    node.set_meta("wiggle", tween)
+
+    tween.tween_property(node, "scale", Vector2(0.96, 1.08), 0.07).from(Vector2(1, 1))
+    tween.tween_property(node, "scale", Vector2(1.08, 0.96), 0.05).from_current()
+    tween.tween_property(node, "scale", Vector2(0.98, 1.04), 0.03).from_current()
+    tween.tween_property(node, "scale", Vector2(1, 1), 0.01).from_current()
