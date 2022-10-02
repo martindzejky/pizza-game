@@ -22,8 +22,8 @@ func _ready():
     # enter transition
 
     var x = -20
-    var newX = 20 + randf() * 10
-    var y = -20 + randf() * 40
+    var newX = 20 + randf() * 30
+    var y = -80 + randf() * 160
     var time = 0.2 + randf() * 0.4
 
     var tween := create_tween()
