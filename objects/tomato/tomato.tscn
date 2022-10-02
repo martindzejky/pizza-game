@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrg4b"]
 radius = 34.0147
 
-[node name="tomato" type="Node2D"]
+[node name="tomato" type="Node2D" groups=["click", "tomato"]]
 script = ExtResource("1_wgtpv")
 withoutSpoon = ExtResource("1_qlm3m")
 withSpoon = ExtResource("3_g877s")
