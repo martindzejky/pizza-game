@@ -36,12 +36,12 @@ func insertDough() -> bool:
 
 
 func submitPizza() -> void:
-    # TODO: score the pizza and make a screenshot of it
-
     for node in get_children():
         if node.is_in_group("dough"):
 
+            # submit pizza and have it scored
             if node.get_parent():
                 node.get_parent().remove_child(node)
 
             Pizzas.add_child(node)
+            Pizzas.score(node)

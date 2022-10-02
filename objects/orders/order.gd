@@ -91,3 +91,16 @@ func _on_panel_gui_input(event: InputEvent) -> void:
         if event.button_index == MOUSE_BUTTON_LEFT:
             if not event.pressed:
                 _onClick()
+
+
+# Called by Pizzas when a pizza fulfilling this order is delivered.
+func accept(score: int) -> void:
+
+    # remove from group 'order' so it can't be accepted anymore
+    remove_from_group("order")
+
+    # leave transition
+
+    var tween := create_tween()
+    tween.tween_property(self, "position:x", -100, 0.5).as_relative().set_ease(Tween.EASE_OUT)
+    tween.tween_callback(queue_free)

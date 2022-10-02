@@ -19,6 +19,10 @@ const MAX_DAMAGE = 3
 @export var damage := 0
 
 
+# final score, 0-5
+@export var score := 0
+
+
 
 func _process(delta):
     super(delta)
