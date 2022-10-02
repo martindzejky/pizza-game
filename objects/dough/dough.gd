@@ -19,6 +19,10 @@ const MAX_DAMAGE = 3
 @export var damage := 0
 
 
+# tomato base
+@export var tomatoBaseObj: PackedScene
+
+
 # final score, 0-5
 @export var score := 0.0
 
@@ -71,6 +75,11 @@ func _onClick() -> bool:
 
     if Hand.isCarryingIngredient():
         if insertIngredient():
+            Effects.sound("ingredient")
+            return true
+
+    if Hand.isCarryingSpoon():
+        if insertTomatoBase():
             Effects.sound("ingredient")
             return true
 
@@ -146,5 +155,29 @@ func insertIngredient() -> bool:
     # fade out a little
     var color = ingredient.get_node("sprite").self_modulate
     ingredient.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
+
+    return true
+
+func insertTomatoBase() -> bool:
+    if not Hand.carrying.isFull: return false
+    if not isReady(): return false
+
+    Hand.carrying.empty()
+
+    var tomatoBase = tomatoBaseObj.instantiate()
+    tomatoBase.position.y = 2 + randi() % 4
+    tomatoBase.position.x = -2 + randi() % 4
+    add_child(tomatoBase)
+
+    # random rotation
+    tomatoBase.get_node("sprite").rotation = randf() * PI * 2
+
+    # disable interactive areas, the ingredient is now part of the dough
+    tomatoBase.remove_from_group("click")
+    tomatoBase.get_node("clickArea").queue_free()
+
+    # fade out a little
+    var color = tomatoBase.get_node("sprite").self_modulate
+    tomatoBase.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
 
     return true

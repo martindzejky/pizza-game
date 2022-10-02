@@ -7,11 +7,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2h8rm"]
 radius = 19.0
 
-[node name="spoon" type="Sprite2D" groups=["click", "spoon", "tool"]]
-texture = ExtResource("1_n2687")
+[node name="spoon" type="Node2D" groups=["click", "spoon", "tool"]]
 script = ExtResource("2_sk4y2")
 fullSprite = ExtResource("1_n2687")
 emptySprite = ExtResource("3_21d3a")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_n2687")
 
 [node name="clickArea" type="Area2D" parent="."]
 monitoring = false

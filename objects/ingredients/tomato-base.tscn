@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo1g20p78fu0u"]
+
+[ext_resource type="PackedScene" uid="uid://cxs3415am8mfp" path="res://objects/ingredients/mushroom.tscn" id="1_vbjfj"]
+[ext_resource type="Texture2D" uid="uid://b5gul2n2vk3qg" path="res://sprites/tomato-base.png" id="2_xsjgx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gs5c3"]
+radius = 17.0
+
+[node name="tomato-base" instance=ExtResource("1_vbjfj")]
+
+[node name="sprite" parent="." index="0"]
+texture = ExtResource("2_xsjgx")
+
+[node name="shape" parent="clickArea" index="0"]
+shape = SubResource("CircleShape2D_gs5c3")
