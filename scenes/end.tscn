@@ -39,8 +39,21 @@ text = "All done for today!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pizza-gallery" parent="ui/margin/items" instance=ExtResource("1_auhlt")]
+[node name="scroll" type="ScrollContainer" parent="ui/margin/items"]
 layout_mode = 2
+offset_top = 35.0
+offset_right = 460.0
+offset_bottom = 210.0
+size_flags_vertical = 3
+
+[node name="pizza-gallery" parent="ui/margin/items/scroll" instance=ExtResource("1_auhlt")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 460.0
+offset_bottom = 175.0
+size_flags_horizontal = 3
 
 [node name="btns" type="HBoxContainer" parent="ui/margin/items"]
 layout_mode = 2

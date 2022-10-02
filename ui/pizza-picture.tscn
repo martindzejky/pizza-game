@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bttutyy6cfnbt"]
+
+[ext_resource type="Texture2D" uid="uid://bjwn61djpog7d" path="res://sprites/stars.png" id="2_23p0d"]
+
+[node name="pizza-picture" type="Panel"]
+custom_minimum_size = Vector2i(90, 90)
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="container" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2i(64, 64)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="center" type="Control" parent="container"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 45.0
+offset_top = 32.0
+offset_right = 45.0
+offset_bottom = 32.0
+
+[node name="rating" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2i(64, 22)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="center" type="Control" parent="rating"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 45.0
+offset_top = 11.0
+offset_right = 45.0
+offset_bottom = 11.0
+
+[node name="stars" type="Sprite2D" parent="rating/center"]
+texture = ExtResource("2_23p0d")
+region_enabled = true
+region_rect = Rect2(0, 0, 80, 16)
