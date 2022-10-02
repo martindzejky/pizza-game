@@ -67,6 +67,7 @@ func _onClick() -> bool:
 
     if Hand.isCarryingIngredient():
         if insertIngredient():
+            Effects.sound("ingredient")
             return true
 
     return false
