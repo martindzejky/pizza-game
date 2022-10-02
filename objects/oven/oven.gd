@@ -60,6 +60,11 @@ func open() -> void:
         if node.is_in_group("dough"):
             node.visible = true
 
+    # burst particles
+    $particles.amount = randi() % 6 + 4
+    for i in range($particles.amount):
+        $particles.emit_particle(transform, Vector2.UP, Color(), Color(), 0)
+
 func close() -> void:
     isOpen = false
     texture = closedSprite
