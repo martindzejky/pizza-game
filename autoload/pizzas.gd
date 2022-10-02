@@ -39,6 +39,9 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
     if not 'recipe' in order: return 0.0
     if order.recipe.size() == 0: return 0.0
 
+    print("------------")
+    print("Pizza scoring:")
+
     # INGREDIENTS
 
     var ingredients = 0.0
@@ -49,32 +52,55 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
         var count = _pizzaIngredientCount(pizza, order.recipe[i])
 
         # detect extra ingredients
-        if previousIngredient == order.recipe[i]:
+        if previousIngredient == order.recipe[i] and count > 3:
+            print("Extra ingredient fulfilled: ", order.recipe[i])
             fulfilledIngredients += 0.4 # BONUS!
             continue
 
         ingredients += 1
 
-        if count <= 3:
-            fulfilledIngredients += clamp(count / 3.0, 0.0, 1.0)
+        var score := 0.0
+        if count <= 2:
+            score = clamp(count / 2.0, 0.0, 1.0)
         else:
-            fulfilledIngredients += clamp((6 - count) / 3.0, 0.0, 1.0)
+            score = clamp((4 - count) / 2.0, 0.0, 1.0)
+
+
+        print("Ingredient: ", order.recipe[i], " count: ", count)
+        print("Ingredient score: ", score)
+
+        fulfilledIngredients += score
+        previousIngredient = order.recipe[i]
 
     # TODO: extra ingredients are not counted
 
     var ingredientScore =  float(fulfilledIngredients) / ingredients
 
+    print("Ingredients total score: ", ingredientScore)
+    print("Ingredients: ", ingredients)
+    print("Fulfilled ingredients: ", fulfilledIngredients)
+
     # DOUGH PROCESS and COOKING
 
     var dougScore = (pizza.getProgress() + pizza.getCookProgress()) / 2.0
+
+    print("Dough score: ", dougScore)
+    print("Dough progress: ", pizza.getProgress())
+    print("Dough cook progress: ", pizza.getCookProgress())
 
     # INGREDIENTS COOKING
 
     var ingredientsScore = pizza.get_children().filter(func(node): return node.is_in_group("ingredient")).reduce(func(acc, node): return acc * node.getCookProgress(), 1.0)
 
+    print("Ingredients cook score: ", ingredientsScore)
+
     # COMBINE
 
-    var score = (ingredientScore + dougScore + ingredientsScore) / 3.0
+    var score = (ingredientScore + dougScore + ingredientsScore) / 3.0 * 5.0
+
+    print("Total score: ", score)
+    print("------------")
+
     return score
 
 
