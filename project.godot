@@ -38,6 +38,7 @@ config/icon="res://icon.svg"
 Randomizer="*res://autoload/randomizer.gd"
 Hand="*res://autoload/hand.gd"
 Pizzas="*res://autoload/pizzas.gd"
+Effects="*res://autoload/effects.gd"
 
 [display]
 

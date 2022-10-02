@@ -25,6 +25,9 @@ func pick(node: Pickable) -> void:
 
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
+    if not node.is_in_group("tool"):
+        Effects.wiggle(node)
+
 func drop() -> Pickable:
     carrying.isPicked = false
     if carrying.has_signal("dropped") and carrying.is_inside_tree():
@@ -46,6 +49,9 @@ func drop() -> Pickable:
     carrying = null
 
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+    if not wasCarrying.is_in_group("tool"):
+        Effects.wiggle(wasCarrying)
 
     return wasCarrying
 

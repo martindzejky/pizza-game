@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="margin" type="MarginContainer" parent="ui"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,12 +23,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="items" type="VBoxContainer" parent="ui/margin"]
+layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 470.0
 offset_bottom = 260.0
 
 [node name="title" type="Label" parent="ui/margin/items"]
+layout_mode = 2
 offset_right = 460.0
 offset_bottom = 25.0
 grow_horizontal = 2
@@ -37,20 +40,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="scroll" type="ScrollContainer" parent="ui/margin/items"]
+layout_mode = 2
 offset_top = 35.0
 offset_right = 460.0
 offset_bottom = 210.0
 size_flags_vertical = 3
 
 [node name="pizza-gallery" parent="ui/margin/items/scroll" instance=ExtResource("1_auhlt")]
+layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 460.0
 offset_bottom = 175.0
+grow_horizontal = 1
+grow_vertical = 1
 size_flags_horizontal = 3
 
 [node name="btns" type="HBoxContainer" parent="ui/margin/items"]
+layout_mode = 2
 offset_top = 220.0
 offset_right = 460.0
 offset_bottom = 250.0
@@ -59,6 +67,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="restart" type="Button" parent="ui/margin/items/btns"]
+layout_mode = 2
 offset_right = 394.0
 offset_bottom = 30.0
 grow_horizontal = 2
@@ -68,6 +77,7 @@ text = "Next day"
 script = ExtResource("1_iqrhl")
 
 [node name="exit" type="Button" parent="ui/margin/items/btns"]
+layout_mode = 2
 offset_left = 404.0
 offset_right = 460.0
 offset_bottom = 30.0
