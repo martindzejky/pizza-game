@@ -129,5 +129,5 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 func _pizzaIngredientCount(pizza: Node, name: String) -> int:
     return pizza.get_children().filter(func (node): return node.is_in_group(name)).size()
 
-func _pizzaHasTomatoBase(pizza: Node) -> int:
+func _pizzaHasTomatoBase(pizza: Node) -> bool:
     return pizza.get_children().filter(func (node): return node.is_in_group("tomato-base")).size() > 0
