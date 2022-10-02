@@ -44,6 +44,10 @@ func _process(delta):
 
 
 func _onClick() -> bool:
+    # special case, ignore when inside a closed oven
+    if not visible:
+        return false
+
     if Hand.isEmpty():
         Hand.pick(self)
         return true
