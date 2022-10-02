@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkbmbeblbronj"]
+
+[ext_resource type="PackedScene" uid="uid://djhnnfa4vlyvy" path="res://objects/ingredients/ingredient.tscn" id="1_tcgfg"]
+[ext_resource type="Texture2D" uid="uid://dowsu2vsbgsu2" path="res://sprites/corn.png" id="2_o3l7e"]
+
+[node name="corn" groups=["corn"] instance=ExtResource("1_tcgfg")]
+
+[node name="sprite" parent="." index="0"]
+texture = ExtResource("2_o3l7e")

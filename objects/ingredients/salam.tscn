@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpfs8o86rhkqy"]
+
+[ext_resource type="PackedScene" uid="uid://djhnnfa4vlyvy" path="res://objects/ingredients/ingredient.tscn" id="1_illar"]
+[ext_resource type="Texture2D" uid="uid://dtsk6pv1bpbn2" path="res://sprites/salam.png" id="2_ibdir"]
+
+[node name="salam" groups=["salam"] instance=ExtResource("1_illar")]
+
+[node name="sprite" parent="." index="0"]
+texture = ExtResource("2_ibdir")

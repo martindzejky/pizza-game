@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn7bu1xyy7y4y"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://objects/mushroom-box/mushroom-box.gd" id="2_i2of8"]
-[ext_resource type="PackedScene" uid="uid://4nv348kfwqsq" path="res://objects/mushroom/mushroom.tscn" id="3_uop2w"]
+[ext_resource type="PackedScene" path="res://objects/ingredients/ingredient.tscn" id="3_uop2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yt4ro"]
 size = Vector2(40, 80)

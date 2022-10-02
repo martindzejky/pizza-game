@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://btss4yon75m3i"]
+
+[ext_resource type="PackedScene" uid="uid://djhnnfa4vlyvy" path="res://objects/ingredients/ingredient.tscn" id="1_o1pux"]
+[ext_resource type="Texture2D" uid="uid://di4juphvm5btp" path="res://sprites/cheese.png" id="2_idjv7"]
+
+[node name="cheese" groups=["cheese"] instance=ExtResource("1_o1pux")]
+
+[node name="sprite" parent="." index="0"]
+texture = ExtResource("2_idjv7")
