@@ -31,10 +31,10 @@ func score(pizza: Node):
 
 
 func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
-    if not pizza: return 0
-    if not order: return 0
-    if not 'recipe' in order: return 0
-    if order.recipe.size() == 0: return 0
+    if not pizza: return 0.0
+    if not order: return 0.0
+    if not 'recipe' in order: return 0.0
+    if order.recipe.size() == 0: return 0.0
 
     var ingredients = 0.0
     var fulfilledIngredients = 0.0
@@ -58,5 +58,5 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
     return (fulfilledIngredients / ingredients) * 5
 
 
-func _pizzaIngredientCount(pizza: Node, name: str) -> int:
+func _pizzaIngredientCount(pizza: Node, name: String) -> int:
     return pizza.get_children().filter(func (node): return node.is_in_group(name)).size()
