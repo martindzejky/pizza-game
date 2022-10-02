@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bs0a4yhc0ub0f"]
+[gd_scene load_steps=17 format=3 uid="uid://bs0a4yhc0ub0f"]
 
 [ext_resource type="AudioStream" uid="uid://dx326nh8ofhi3" path="res://sounds/oven-open.wav" id="1_ae8n1"]
 [ext_resource type="AudioStream" uid="uid://h5v0li1wtvn7" path="res://sounds/oven-close.wav" id="2_3eko8"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://dkicfqijfy6rc" path="res://sounds/order-fail.wav" id="11_grx2m"]
 [ext_resource type="AudioStream" uid="uid://cxxwgvo6p02li" path="res://sounds/order-done.wav" id="12_ltug6"]
 [ext_resource type="AudioStream" uid="uid://dcx838q3vu3t7" path="res://sounds/preview.wav" id="13_mg5q5"]
+[ext_resource type="AudioStream" uid="uid://djtf6hko1opj2" path="res://sounds/hover.wav" id="15_spe23"]
+[ext_resource type="AudioStream" uid="uid://cydw3dum22ut1" path="res://sounds/click.wav" id="16_kmydp"]
 
 [node name="sounds" type="Node2D"]
 
@@ -58,3 +60,9 @@ stream = ExtResource("12_ltug6")
 
 [node name="preview" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_mg5q5")
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_spe23")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_kmydp")

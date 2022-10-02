@@ -71,5 +71,7 @@ grow_vertical = 0
 text = "Exit"
 script = ExtResource("2_0d7lr")
 
+[connection signal="mouse_entered" from="ui/margin/items/btns/start" to="ui/margin/items/btns/start" method="_on_mouse_entered"]
 [connection signal="pressed" from="ui/margin/items/btns/start" to="ui/margin/items/btns/start" method="_onClicked"]
+[connection signal="mouse_entered" from="ui/margin/items/btns/exit" to="ui/margin/items/btns/exit" method="_on_mouse_entered"]
 [connection signal="pressed" from="ui/margin/items/btns/exit" to="ui/margin/items/btns/exit" method="_onClicked"]
