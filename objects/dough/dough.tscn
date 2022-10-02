@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://k3ssjquq313h"]
+[gd_scene load_steps=5 format=3 uid="uid://k3ssjquq313h"]
 
 [ext_resource type="Script" path="res://objects/dough/dough.gd" id="1_lfh2g"]
 [ext_resource type="Texture2D" uid="uid://bjubtkw5ihv2n" path="res://sprites/dough.png" id="1_pxcur"]
+[ext_resource type="AudioStream" uid="uid://dmvuna5qsc8jx" path="res://sounds/pickup.wav" id="3_vrp5g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6653"]
 radius = 29.0
@@ -19,5 +20,8 @@ monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 shape = SubResource("CircleShape2D_l6653")
+
+[node name="pickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vrp5g")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

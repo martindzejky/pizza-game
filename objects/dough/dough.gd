@@ -54,6 +54,7 @@ func _onClick() -> bool:
 
     if Hand.isEmpty():
         Hand.pick(self)
+        $pickupSound.play()
 
         # unsquash from oven
         scale.y = 1.0
