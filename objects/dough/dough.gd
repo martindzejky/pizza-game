@@ -75,6 +75,7 @@ func _onClick() -> bool:
 
 func onHitByDoughTool():
     Effects.wiggle(self)
+    Effects.sound("dough")
 
     # remove all ingredients
     for child in get_children():

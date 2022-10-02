@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs0a4yhc0ub0f"]
+[gd_scene load_steps=10 format=3 uid="uid://bs0a4yhc0ub0f"]
 
 [ext_resource type="AudioStream" uid="uid://dx326nh8ofhi3" path="res://sounds/oven-open.wav" id="1_ae8n1"]
 [ext_resource type="AudioStream" uid="uid://h5v0li1wtvn7" path="res://sounds/oven-close.wav" id="2_3eko8"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://lfkj2xdw8l8k" path="res://sounds/pickup-tool.wav" id="6_ehgg4"]
 [ext_resource type="AudioStream" uid="uid://ctyqm5cd0dhqr" path="res://sounds/drop.wav" id="7_l5hbe"]
 [ext_resource type="AudioStream" uid="uid://btykx5t3o50us" path="res://sounds/ingredient.wav" id="8_2fi6y"]
+[ext_resource type="AudioStream" uid="uid://bhoxjltt74e5b" path="res://sounds/dough.wav" id="9_3fmhh"]
 
 [node name="sounds" type="Node2D"]
 
@@ -34,3 +35,6 @@ stream = ExtResource("7_l5hbe")
 
 [node name="ingredient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_2fi6y")
+
+[node name="dough" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_3fmhh")
