@@ -108,6 +108,9 @@ func fail() -> void:
     removeOrder()
 
 func removeOrder() -> void:
+    # move to the end of the parent to be rendered on top of other orders
+    get_parent().move_child(self, -1)
+
     # remove from group 'order' so it can't be accepted anymore
     # and from 'click' so it can't be clicked anymore
     remove_from_group("order")
