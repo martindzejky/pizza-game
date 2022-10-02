@@ -21,6 +21,8 @@ func _onClick() -> bool:
 
 # open the fridge and spawn a new dough
 func open() -> void:
+    $particles.emitting = true
+
     isOpen = true
     texture = openSprite
 
@@ -30,6 +32,8 @@ func open() -> void:
 
 # close the fridge and destroy the dough inside if there is any
 func close() -> void:
+    $particles.emitting = false
+
     isOpen = false
     texture = closedSprite
 
