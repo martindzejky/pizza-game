@@ -5,6 +5,7 @@ extends Sprite2D
 
 
 var isOpen := false
+var wasReady := false
 
 
 func _process(delta: float) -> void:
@@ -32,6 +33,11 @@ func _process(delta: float) -> void:
                 $particles.emitting = true
                 $particles.amount = 15
 
+            # beep when done
+            if not wasReady and node.isCookReady():
+                Effects.sound("ovenBeep")
+                wasReady = true
+
 
 func _onClick() -> bool:
     if Hand.isCarryingDough():
@@ -52,6 +58,7 @@ func _onClick() -> bool:
 
 func open() -> void:
     isOpen = true
+    wasReady = false
     texture = openSprite
     Effects.sound("ovenOpen")
 
@@ -67,6 +74,7 @@ func open() -> void:
 
 func close() -> void:
     isOpen = false
+    wasReady = false
     texture = closedSprite
     Effects.sound("ovenClose")
 
