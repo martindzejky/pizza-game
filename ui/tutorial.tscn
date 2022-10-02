@@ -19,6 +19,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_77q4l")
 
 [node name="title" type="CenterContainer" parent="root"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -26,23 +27,70 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="text" type="Label" parent="root/title"]
+layout_mode = 2
 offset_left = 192.0
 offset_top = 122.0
 offset_right = 288.0
 offset_bottom = 147.0
 text = "TUTORIAL"
 
-[node name="slide1" type="Control" parent="root"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="slide1" type="CenterContainer" parent="root"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="text" type="Label" parent="root/slide1"]
-offset_left = 192.0
+layout_mode = 2
+offset_left = 24.0
+offset_top = 85.0
+offset_right = 456.0
+offset_bottom = 185.0
+text = "You receive orders every 10 seconds.
+Make a nice pizza to serve
+the customer, you
+will be judged."
+
+[node name="slide2" type="CenterContainer" parent="root"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="root/slide2"]
+layout_mode = 2
+offset_left = 108.0
+offset_top = 110.0
+offset_right = 372.0
+offset_bottom = 160.0
+grow_vertical = 0
+text = "Use your mouse to interact
+with everything."
+
+[node name="slide3" type="CenterContainer" parent="root"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="root/slide3"]
+layout_mode = 2
+offset_left = 84.0
 offset_top = 122.0
-offset_right = 288.0
+offset_right = 396.0
 offset_bottom = 147.0
-text = "TUTORIAL"
+grow_vertical = 0
+text = "Submit the pizza by placing it on
+the plate on the right.
+Good luck!"
 
 [connection signal="gui_input" from="root" to="." method="_on_gui_input"]
