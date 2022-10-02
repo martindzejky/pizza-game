@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 func _onClick() -> bool:
     if Hand.isCarryingDough():
         if insertDough():
+            Effects.sound("drop")
             return true
 
     if Hand.isEmpty():
