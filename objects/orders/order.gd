@@ -98,7 +98,7 @@ func accept(score: float) -> void:
     $check.show()
 
     $stars.show()
-    $stars.region_rect.size.x = score / 5 * 16
+    $stars.region_rect.size.x = floor(score * 16)
 
     removeOrder()
 
