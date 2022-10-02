@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpt3y827i5pe0"]
+
+[ext_resource type="Script" path="res://objects/orders/orders.gd" id="1_0nujt"]
+[ext_resource type="PackedScene" uid="uid://qn2hf24a86cg" path="res://objects/orders/order.tscn" id="2_1mna5"]
+
+[node name="orders" type="Node2D" groups=["orders"]]
+script = ExtResource("1_0nujt")
+orderObj = ExtResource("2_1mna5")
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

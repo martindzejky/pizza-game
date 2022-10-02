@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://qn2hf24a86cg"]
+
+[ext_resource type="Texture2D" uid="uid://dg7n56tkyfw5f" path="res://sprites/order.png" id="1_f37gj"]
+[ext_resource type="Script" path="res://objects/orders/order.gd" id="2_h16tn"]
+[ext_resource type="PackedScene" uid="uid://cqgj0p2j51e1f" path="res://objects/orders/recipe-ingredient.tscn" id="3_hg8fs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hulqw"]
+radius = 15.0
+
+[node name="order" type="Sprite2D" groups=["order"]]
+texture = ExtResource("1_f37gj")
+script = ExtResource("2_h16tn")
+recipePath = NodePath("preview/panel/container/recipe")
+recipeObj = ExtResource("3_hg8fs")
+
+[node name="clickArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+shape = SubResource("CircleShape2D_hulqw")
+
+[node name="preview" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="panel" type="PanelContainer" parent="preview"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -148.0
+offset_right = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="container" type="VBoxContainer" parent="preview/panel"]
+offset_left = 20.0
+offset_top = 30.0
+offset_right = 380.0
+offset_bottom = 138.0
+
+[node name="title" type="Label" parent="preview/panel/container"]
+offset_right = 360.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
+text = "Pizza order"
+
+[node name="recipe" type="HBoxContainer" parent="preview/panel/container"]
+offset_top = 35.0
+offset_right = 360.0
+offset_bottom = 35.0

@@ -1,6 +1,23 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://byysliwit3wgn"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://byysliwit3wgn"]
 
+[ext_resource type="Texture2D" uid="uid://c8njfc8pej7pm" path="res://sprites/order-large.png" id="1_db2up"]
 [ext_resource type="FontFile" uid="uid://cjg6wbdr4j87q" path="res://fonts/PixeloidMono-1G8ae.ttf" id="1_xbbro"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36o42"]
+texture = ExtResource("1_db2up")
+margin_left = 20.0
+margin_top = 30.0
+margin_right = 20.0
+margin_bottom = 10.0
+region_rect = Rect2(0, 0, 300, 300)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdl7b"]
+texture = ExtResource("1_db2up")
+margin_left = 20.0
+margin_top = 30.0
+margin_right = 20.0
+margin_bottom = 10.0
+region_rect = Rect2(0, 0, 300, 300)
 
 [resource]
 default_font = ExtResource("1_xbbro")
@@ -13,3 +30,5 @@ MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxTexture_36o42")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_qdl7b")

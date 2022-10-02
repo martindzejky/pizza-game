@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqgj0p2j51e1f"]
+
+[ext_resource type="Texture2D" uid="uid://c0gc6u00h2raf" path="res://sprites/olive.png" id="1_7n82k"]
+
+[node name="recipe-ingredient" type="HBoxContainer"]
+offset_right = 110.0
+offset_bottom = 25.0
+
+[node name="sprite" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 16.0
+offset_bottom = 25.0
+texture = ExtResource("1_7n82k")
+stretch_mode = 3
+
+[node name="text" type="Label" parent="."]
+layout_mode = 2
+offset_left = 26.0
+offset_right = 86.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
+text = "olive"
