@@ -26,7 +26,7 @@ func wiggle(node: Node) -> void:
 
 
 func sound(name: String) -> void:
-    if not Sounds or not Sounds.is_inside_tree(name): return
+    if not Sounds or not Sounds.is_inside_tree(): return
 
     if Sounds.has_node(name):
         Sounds.get_node(name).play()
