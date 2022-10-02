@@ -95,16 +95,24 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 
 # Called by Pizzas when a pizza fulfilling this order is delivered.
 func accept(score: float) -> void:
+    $check.show()
+    removeOrder()
+
+# Called by the fail timer
+func fail() -> void:
+    $cross.show()
     removeOrder()
 
 func removeOrder() -> void:
     # remove from group 'order' so it can't be accepted anymore
+    # and from 'click' so it can't be clicked anymore
     remove_from_group("order")
+    remove_from_group("click")
 
     $failTimer.stop()
 
     # leave transition
 
     var tween := create_tween()
-    tween.tween_property(self, "position:x", -100, 0.5).as_relative().set_ease(Tween.EASE_OUT)
+    tween.tween_property(self, "position:x", -100, 1.0).as_relative().set_ease(Tween.EASE_OUT)
     tween.tween_callback(queue_free)
