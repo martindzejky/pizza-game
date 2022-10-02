@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://de30ij3cwuahr"]
+[gd_scene load_steps=5 format=3 uid="uid://de30ij3cwuahr"]
 
 [ext_resource type="Texture2D" uid="uid://d3pwfkpetdxui" path="res://sprites/spoon.png" id="1_n2687"]
+[ext_resource type="Script" path="res://objects/spoon/spoon.gd" id="2_sk4y2"]
+[ext_resource type="Texture2D" uid="uid://j5u7nedw3txq" path="res://sprites/spoon-empty.png" id="3_21d3a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2h8rm"]
 radius = 19.0
 
-[node name="spoon" type="Sprite2D" groups=["spoon", "tool"]]
+[node name="spoon" type="Sprite2D" groups=["click", "spoon", "tool"]]
 texture = ExtResource("1_n2687")
+script = ExtResource("2_sk4y2")
+fullSprite = ExtResource("1_n2687")
+emptySprite = ExtResource("3_21d3a")
 
 [node name="clickArea" type="Area2D" parent="."]
 monitoring = false
