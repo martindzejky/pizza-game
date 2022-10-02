@@ -72,6 +72,8 @@ func _onClick() -> bool:
 
 
 func onHitByDoughTool():
+    Effects.wiggle(self)
+
     if isRaw():
         progress += 1
     else:
