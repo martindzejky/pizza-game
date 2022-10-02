@@ -54,6 +54,10 @@ func _onClick() -> bool:
 
     if Hand.isEmpty():
         Hand.pick(self)
+
+        # unsquash from oven
+        scale.y = 1.0
+
         return true
 
     if Hand.isCarryingDoughTool():
