@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1jgjnmmcqyjw"]
+
+[ext_resource type="Texture2D" uid="uid://d3pwfkpetdxui" path="res://sprites/spoon.png" id="1_n2687"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdpfp"]
+radius = 23.0
+
+[node name="spoon" type="Sprite2D" groups=["click", "spoon", "tool"]]
+texture = ExtResource("1_n2687")
+
+[node name="clickArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+shape = SubResource("CircleShape2D_hdpfp")
+
+[connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

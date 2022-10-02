@@ -65,6 +65,9 @@ func isCarryingDough() -> bool:
 func isCarryingDoughTool() -> bool:
     return carrying and carrying.is_in_group("dough-tool")
 
+func isCarryingSpoon() -> bool:
+    return carrying and carrying.is_in_group("spoon")
+
 func isCarryingIngredient() -> bool:
     return carrying and carrying.is_in_group("ingredient")
 
