@@ -98,6 +98,7 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 # Called by Pizzas when a pizza fulfilling this order is delivered.
 func accept(score: float) -> void:
     $check.show()
+    Effects.sound("orderDone")
 
     $stars.show()
     $stars.region_rect.size.x = floor(score * 16)
@@ -107,6 +108,7 @@ func accept(score: float) -> void:
 # Called by the fail timer
 func fail() -> void:
     $cross.show()
+    Effects.sound("orderFail")
     removeOrder()
 
 func removeOrder() -> void:
