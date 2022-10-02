@@ -2,9 +2,9 @@ extends Pickable
 
 
 # from raw to pizza dough
-const PROGRESS_READY = 4
+const PROGRESS_READY = 6
 # TODO: PROGRESS_WELL_MADE for bonus points
-const PROGRESS_OVERDONE = 5
+const PROGRESS_OVERDONE = 13
 @export var progress := 0
 
 # cooking in the oven

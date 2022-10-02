@@ -11,7 +11,7 @@ script = ExtResource("1_lfh2g")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pxcur")
-hframes = 6
+hframes = 16
 
 [node name="clickArea" type="Area2D" parent="."]
 monitoring = false

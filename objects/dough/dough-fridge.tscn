@@ -14,7 +14,7 @@ doughObject = ExtResource("2_2b4e1")
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pxcur")
 offset = Vector2(0, -16)
-hframes = 6
+hframes = 16
 
 [node name="clickArea" type="Area2D" parent="."]
 monitoring = false
