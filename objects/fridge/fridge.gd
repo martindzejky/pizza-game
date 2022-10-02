@@ -21,7 +21,6 @@ func _onClick() -> bool:
 
 # open the fridge and spawn a new dough
 func open() -> void:
-    $particles.emitting = true
     Effects.sound("fridgeOpen")
 
     isOpen = true
@@ -30,6 +29,11 @@ func open() -> void:
     var newDough = dough.instantiate()
     newDough.transform = $spawnPoint.transform
     add_child(newDough)
+
+    # burst particles
+    $particles.emitting = true
+    for i in range(randi() % 6 + 4):
+        $particles.emit_particle(transform, Vector2.UP, Color(), Color(), 0)
 
 # close the fridge and destroy the dough inside if there is any
 func close() -> void:
