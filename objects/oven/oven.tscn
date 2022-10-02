@@ -1,11 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://db820lg5ebwsq"]
+[gd_scene load_steps=9 format=3 uid="uid://db820lg5ebwsq"]
 
 [ext_resource type="Texture2D" uid="uid://bdit8hunfh1gu" path="res://sprites/oven.png" id="1_38136"]
 [ext_resource type="Script" path="res://objects/oven/oven.gd" id="2_7ix8b"]
 [ext_resource type="Texture2D" uid="uid://smywby7uqd7g" path="res://sprites/oven-open.png" id="3_0nkvk"]
+[ext_resource type="Texture2D" uid="uid://bkj7r2l37k6ty" path="res://sprites/smoke-particle.png" id="4_b4fx7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8e28"]
 size = Vector2(115.009, 80)
+
+[sub_resource type="Gradient" id="Gradient_v6m6o"]
+colors = PackedColorArray(1, 1, 1, 0.219608, 1, 1, 1, 0.8)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cdm2l"]
+gradient = SubResource("Gradient_v6m6o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0pt4y"]
+lifetime_randomness = 0.58
+emission_shape = 3
+emission_box_extents = Vector3(55, 38, 0)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -11.4
+angle_max = 15.7
+color = Color(1, 1, 1, 0.694118)
+color_initial_ramp = SubResource("GradientTexture1D_cdm2l")
 
 [node name="oven" type="Sprite2D" groups=["click", "oven"]]
 texture = ExtResource("1_38136")
@@ -26,5 +49,15 @@ shape = SubResource("RectangleShape2D_p8e28")
 
 [node name="point" type="Marker2D" parent="."]
 position = Vector2(59, 53)
+
+[node name="particles" type="GPUParticles2D" parent="."]
+position = Vector2(58, 53)
+z_index = 1000
+emitting = false
+amount = 3
+lifetime = 5.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_0pt4y")
+texture = ExtResource("4_b4fx7")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

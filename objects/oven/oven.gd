@@ -8,6 +8,8 @@ var isOpen := false
 
 
 func _process(delta: float) -> void:
+    $particles.emitting = false
+
     if not isOpen:
 
         # cook all dough inside
@@ -21,6 +23,14 @@ func _process(delta: float) -> void:
                 if not doughNode.is_in_group("ingredient"): continue
 
                 doughNode.cookProgress += delta
+
+            # smoke if overcooked (#reference)
+            if node.isCookReady():
+                $particles.emitting = true
+                $particles.amount = 3
+            elif node.isCookOvercooked():
+                $particles.emitting = true
+                $particles.amount = 15
 
 
 func _onClick() -> bool:

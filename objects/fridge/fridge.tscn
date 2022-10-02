@@ -12,7 +12,7 @@ size = Vector2(90, 80)
 [sub_resource type="Gradient" id="Gradient_gx74q"]
 colors = PackedColorArray(1, 1, 1, 0.219608, 1, 1, 1, 0.8)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_l8lsb"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wxxyy"]
 gradient = SubResource("Gradient_gx74q")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_10u3y"]
@@ -29,7 +29,7 @@ orbit_velocity_max = 0.0
 angle_min = -11.4
 angle_max = 15.7
 color = Color(1, 1, 1, 0.596078)
-color_initial_ramp = SubResource("GradientTexture1D_l8lsb")
+color_initial_ramp = SubResource("GradientTexture1D_wxxyy")
 
 [node name="fridge" type="Sprite2D" groups=["click", "fridge"]]
 texture = ExtResource("1_m8jrv")
