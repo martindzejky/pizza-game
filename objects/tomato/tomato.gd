@@ -11,6 +11,7 @@ extends Node2D
 func _onClick() -> bool:
     if Hand.isEmpty() and hasSpoon:
         Effects.sound("pickupTool")
+        Effects.wiggle(self)
 
         var spoon = spoonObj.instantiate()
         get_tree().call_group("table", "add_child", spoon)
@@ -23,6 +24,7 @@ func _onClick() -> bool:
 
     elif Hand.isCarryingSpoon():
         Effects.sound("drop")
+        Effects.wiggle(self)
 
         Hand.drop().queue_free()
         hasSpoon = true
