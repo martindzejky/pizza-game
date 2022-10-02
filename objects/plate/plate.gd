@@ -31,6 +31,7 @@ func insertDough() -> bool:
     dough.get_node("clickArea").queue_free()
 
     $submitAnimation.play("submit")
+    Effects.sound("drop")
 
     return true
 
