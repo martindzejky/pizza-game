@@ -138,7 +138,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
         print("click on ", node)
         if node.has_method("_onClick"):
-            result = node.onClick()
+            result = node._onClick()
         else:
             push_warning("node in 'click' group has no _onClick method: ", node)
 
