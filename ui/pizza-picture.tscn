@@ -40,7 +40,16 @@ offset_top = 11.0
 offset_right = 45.0
 offset_bottom = 11.0
 
-[node name="stars" type="Sprite2D" parent="rating/center"]
+[node name="stars-dark" type="Sprite2D" parent="rating/center"]
+self_modulate = Color(0.129412, 0.129412, 0.129412, 1)
+position = Vector2(-40, -10)
 texture = ExtResource("2_23p0d")
-region_enabled = true
+centered = false
 region_rect = Rect2(0, 0, 80, 16)
+
+[node name="stars" type="Sprite2D" parent="rating/center"]
+position = Vector2(-40, -10)
+texture = ExtResource("2_23p0d")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)
