@@ -32,6 +32,7 @@ func insertDough() -> bool:
 
     $submitAnimation.play("submit")
     Effects.sound("drop")
+    Effects.wiggle(self)
 
     return true
 
