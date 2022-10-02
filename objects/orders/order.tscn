@@ -25,7 +25,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_hulqw")
 
 [node name="failTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 35.0
 one_shot = true
 autostart = true
 
