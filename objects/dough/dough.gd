@@ -92,6 +92,28 @@ func isCookReady():
 func isCookOvercooked():
     return cookProgress >= COOK_PROGRESS_OVERCOOKED
 
+func getProgress():
+    var p = float(progress) - PROGRESS_READY
+    if p < 0: return 0.0
+
+    p = p / (PROGRESS_OVERDONE - PROGRESS_READY)
+
+    if p < 0.5:
+        return p * 2
+    else:
+        return clamp(1.0 - p * 2, 0.0, 1.0)
+
+func getCookProgress():
+    var p = float(cookProgress) - COOK_PROGRESS_READY
+    if p < 0: return 0.0
+
+    p = p / (COOK_PROGRESS_OVERCOOKED - COOK_PROGRESS_READY)
+
+    if p < 0.5:
+        return p * 2
+    else:
+        return clamp(1.0 - p * 2, 0.0, 1.0)
+
 
 func insertIngredient() -> bool:
     var ingredient = Hand.drop()

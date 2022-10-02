@@ -14,6 +14,7 @@ func score(pizza: Node):
     if openOrders.size() == 0:
         # :'( no one to eat it...
         pizza.score = 0
+        print("No orders, pizza scored 0")
         return
 
     var bestScore = 0
@@ -28,6 +29,8 @@ func score(pizza: Node):
     # accept best order
     bestOrder.accept(bestScore)
     pizza.score = bestScore
+
+    print("Pizza scored: ", bestScore)
 
 
 func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
@@ -55,7 +58,21 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
         else:
             fulfilledIngredients += clamp((6 - count) / 3.0, 0.0, 1.0)
 
-    return (fulfilledIngredients / ingredients) * 5
+    # TODO: extra ingredients are not counted
+
+    var ingredientScore =  float(fulfilledIngredients) / ingredients
+
+    if not pizza.isReady() and not pizza.isOverdone():
+        # raw pizza dough, who would eat that
+        return 0.0
+
+    if not pizza.isCookReady() and not pizza.isCookOvercooked():
+        # not cooked
+        return 0.0
+
+    var dougScore = (pizza.getProgress() + pizza.getCookProgress()) / 2.0
+
+    return (ingredientScore + dougScore) / 2.0 * 5.0
 
 
 func _pizzaIngredientCount(pizza: Node, name: String) -> int:
