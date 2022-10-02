@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8j5aiovste6u"]
+[gd_scene load_steps=4 format=3 uid="uid://b8j5aiovste6u"]
 
 [ext_resource type="Script" path="res://objects/mushroom-box/mushroom-box.gd" id="2_i2of8"]
-[ext_resource type="AudioStream" uid="uid://dmvuna5qsc8jx" path="res://sounds/pickup.wav" id="3_ibige"]
 [ext_resource type="PackedScene" uid="uid://djhnnfa4vlyvy" path="res://objects/ingredients/ingredient.tscn" id="3_uop2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yt4ro"]
@@ -18,8 +17,5 @@ monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 shape = SubResource("RectangleShape2D_yt4ro")
-
-[node name="pickupSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ibige")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

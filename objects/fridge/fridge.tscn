@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhrhb8gv5s7nu"]
+[gd_scene load_steps=10 format=3 uid="uid://dhrhb8gv5s7nu"]
 
 [ext_resource type="Texture2D" uid="uid://cwqfkpqounhk6" path="res://sprites/fridge.png" id="1_m8jrv"]
 [ext_resource type="Script" path="res://objects/fridge/fridge.gd" id="2_kx2wi"]
 [ext_resource type="Texture2D" uid="uid://27uc1od6otaj" path="res://sprites/fridge-open.png" id="3_3qr2c"]
 [ext_resource type="PackedScene" uid="uid://b3hqp0hbr7y6r" path="res://objects/dough/dough-fridge.tscn" id="4_fe6d4"]
 [ext_resource type="Texture2D" uid="uid://bfxv1vd83jt5c" path="res://sprites/cold-particle.png" id="5_ufg45"]
-[ext_resource type="AudioStream" uid="uid://vulkb2hlw5bk" path="res://sounds/fridge-open.wav" id="6_73ydh"]
-[ext_resource type="AudioStream" uid="uid://pfdce5piuxmd" path="res://sounds/fridge-close.wav" id="7_gqbmc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5itk"]
 size = Vector2(90, 80)
@@ -62,11 +60,5 @@ lifetime = 3.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_10u3y")
 texture = ExtResource("5_ufg45")
-
-[node name="openSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_73ydh")
-
-[node name="closeSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_gqbmc")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

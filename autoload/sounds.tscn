@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs0a4yhc0ub0f"]
+
+[ext_resource type="AudioStream" uid="uid://dx326nh8ofhi3" path="res://sounds/oven-open.wav" id="1_ae8n1"]
+[ext_resource type="AudioStream" uid="uid://h5v0li1wtvn7" path="res://sounds/oven-close.wav" id="2_3eko8"]
+[ext_resource type="AudioStream" uid="uid://vulkb2hlw5bk" path="res://sounds/fridge-open.wav" id="3_5c8k6"]
+[ext_resource type="AudioStream" uid="uid://pfdce5piuxmd" path="res://sounds/fridge-close.wav" id="4_hnsqu"]
+[ext_resource type="AudioStream" uid="uid://dmvuna5qsc8jx" path="res://sounds/pickup.wav" id="5_kdwfb"]
+[ext_resource type="AudioStream" uid="uid://lfkj2xdw8l8k" path="res://sounds/pickup-tool.wav" id="6_ehgg4"]
+[ext_resource type="AudioStream" uid="uid://ctyqm5cd0dhqr" path="res://sounds/drop.wav" id="7_l5hbe"]
+
+[node name="sounds" type="Node2D"]
+
+[node name="ovenOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ae8n1")
+
+[node name="ovenClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3eko8")
+
+[node name="fridgeOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5c8k6")
+
+[node name="fridgeClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hnsqu")
+
+[node name="pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kdwfb")
+
+[node name="pickupTool" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ehgg4")
+
+[node name="drop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_l5hbe")

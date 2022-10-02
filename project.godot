@@ -39,6 +39,7 @@ Randomizer="*res://autoload/randomizer.gd"
 Hand="*res://autoload/hand.gd"
 Pizzas="*res://autoload/pizzas.gd"
 Effects="*res://autoload/effects.gd"
+Sounds="*res://autoload/sounds.tscn"
 
 [display]
 

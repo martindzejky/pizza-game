@@ -23,3 +23,10 @@ func wiggle(node: Node) -> void:
     tween.tween_property(node, "scale", Vector2(1.08, 0.96), 0.05).from_current()
     tween.tween_property(node, "scale", Vector2(0.98, 1.04), 0.03).from_current()
     tween.tween_property(node, "scale", Vector2(1, 1), 0.01).from_current()
+
+
+func sound(name: String) -> void:
+    if not Sounds or not Sounds.is_inside_tree(name): return
+
+    if Sounds.has_node(name):
+        Sounds.get_node(name).play()

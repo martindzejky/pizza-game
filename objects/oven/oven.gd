@@ -52,7 +52,7 @@ func _onClick() -> bool:
 func open() -> void:
     isOpen = true
     texture = openSprite
-    $openSound.play()
+    Effects.sound("ovenOpen")
 
     # reveal all dough inside
     for node in get_children():
@@ -62,7 +62,7 @@ func open() -> void:
 func close() -> void:
     isOpen = false
     texture = closedSprite
-    $closeSound.play()
+    Effects.sound("ovenClose")
 
     # hide all dough inside
     for node in get_children():

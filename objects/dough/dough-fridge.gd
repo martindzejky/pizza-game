@@ -15,6 +15,6 @@ func _onClick() -> bool:
     get_tree().call_group("table", "add_child", dough)
     Hand.pick(dough)
 
-    dough.get_node("pickupSound").play()
+    Effects.sound("pickup")
 
     return true

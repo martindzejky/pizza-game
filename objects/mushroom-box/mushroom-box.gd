@@ -13,6 +13,6 @@ func _onClick() -> bool:
     get_tree().call_group("table", "add_child", ing)
     Hand.pick(ing)
 
-    $pickupSound.play()
+    Effects.sound("pickup")
 
     return true
