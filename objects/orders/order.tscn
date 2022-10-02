@@ -7,9 +7,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hulqw"]
 radius = 15.0
 
-[node name="order" type="Sprite2D" groups=["order"]]
+[node name="order" type="Sprite2D" groups=["click", "order"]]
 texture = ExtResource("1_f37gj")
 script = ExtResource("2_h16tn")
+panelPath = NodePath("preview/panel")
 recipePath = NodePath("preview/panel/container/recipe")
 recipeObj = ExtResource("3_hg8fs")
 
@@ -24,29 +25,36 @@ shape = SubResource("CircleShape2D_hulqw")
 follow_viewport_enabled = true
 
 [node name="panel" type="PanelContainer" parent="preview"]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -204.0
+offset_top = 30.0
 offset_right = -40.0
+offset_bottom = 234.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="container" type="VBoxContainer" parent="preview/panel"]
+layout_mode = 2
 offset_left = 20.0
-offset_top = 20.0
+offset_top = 30.0
 offset_right = 380.0
 offset_bottom = 194.0
 
 [node name="title" type="Label" parent="preview/panel/container"]
+layout_mode = 2
 offset_right = 360.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 text = "Pizza order"
 
 [node name="recipe" type="HFlowContainer" parent="preview/panel/container"]
+layout_mode = 2
 offset_top = 35.0
 offset_right = 360.0
 offset_bottom = 35.0
+
+[connection signal="gui_input" from="preview/panel" to="." method="_on_panel_gui_input"]

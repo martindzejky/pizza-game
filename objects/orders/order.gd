@@ -1,6 +1,8 @@
 extends Sprite2D
 
 
+# preview panel to animate
+@export var panelPath: NodePath
 # where to insert recipe images based on this order
 @export var recipePath: NodePath
 # recipe object for the preview UI
@@ -10,6 +12,10 @@ const OPTIONS = ["mushroom", "corn", "olive", "rukola", "cheese", "salam"]
 
 # Required ingredients for the recipe. If there is an ingredient multiple times, an extra amount is required.
 var recipe: Array
+
+# tweening
+var tween: Tween
+var showPreview = false
 
 
 func _ready():
@@ -64,4 +70,24 @@ func _ready():
 func _onClick() -> bool:
     # open the large preview
 
+    showPreview = not showPreview
+
+    if tween: tween.kill()
+    tween = create_tween()
+
+    var panel = get_node(panelPath)
+
+    if showPreview:
+        tween.tween_property(panel, "visible", true, 0)
+        tween.tween_property(panel, "position:y", 66, 0.4).from_current().set_ease(Tween.EASE_OUT)
+    else:
+        tween.tween_property(panel, "position:y", 300, 0.4).from_current().set_ease(Tween.EASE_IN)
+        tween.tween_property(panel, "visible", false, 0)
+
     return true
+
+func _on_panel_gui_input(event: InputEvent) -> void:
+    if event is InputEventMouseButton:
+        if event.button_index == MOUSE_BUTTON_LEFT:
+            if not event.pressed:
+                _onClick()
