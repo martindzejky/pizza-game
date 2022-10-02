@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://satu1f06yh0u"]
+
+[ext_resource type="Script" path="res://ui/tutorial.gd" id="1_kljd6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77q4l"]
+bg_color = Color(0, 0, 0, 0.54902)
+
+[node name="tutorial" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_kljd6")
+
+[node name="root" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_77q4l")
+
+[node name="title" type="CenterContainer" parent="root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="root/title"]
+offset_left = 192.0
+offset_top = 122.0
+offset_right = 288.0
+offset_bottom = 147.0
+text = "TUTORIAL"
+
+[node name="slide1" type="Control" parent="root"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="text" type="Label" parent="root/slide1"]
+offset_left = 192.0
+offset_top = 122.0
+offset_right = 288.0
+offset_bottom = 147.0
+text = "TUTORIAL"
+
+[connection signal="gui_input" from="root" to="." method="_on_gui_input"]

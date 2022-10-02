@@ -14,7 +14,7 @@ region_rect = Rect2(0, 0, 300, 300)
 [resource]
 default_font = ExtResource("1_xbbro")
 BoxContainer/constants/separation = 10
-Button/font_sizes/font_size = 18
+Button/font_sizes/font_size = 13
 GridContainer/constants/h_separation = 5
 GridContainer/constants/v_separation = 5
 Label/font_sizes/font_size = 18
