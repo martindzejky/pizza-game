@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwx6pe72g61d1"]
+[gd_scene load_steps=8 format=3 uid="uid://dwx6pe72g61d1"]
 
 [ext_resource type="Texture2D" uid="uid://dey134524wtmg" path="res://sprites/table.png" id="1_qoc6o"]
 [ext_resource type="PackedScene" uid="uid://fx24ebvovfv4" path="res://objects/plate/plate.tscn" id="2_eynit"]
 [ext_resource type="Script" path="res://objects/table/table.gd" id="2_vk3s4"]
 [ext_resource type="PackedScene" uid="uid://b1jgjnmmcqyjw" path="res://objects/dough-tool/dough-tool.tscn" id="3_fm40i"]
 [ext_resource type="PackedScene" uid="uid://dpt3y827i5pe0" path="res://objects/orders/orders.tscn" id="3_mtrua"]
+[ext_resource type="AudioStream" uid="uid://ctyqm5cd0dhqr" path="res://sounds/drop.wav" id="6_0owub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmpfi"]
 size = Vector2(480, 200)
@@ -30,5 +31,8 @@ position = Vector2(447, 45)
 
 [node name="dough-tool" parent="." instance=ExtResource("3_fm40i")]
 position = Vector2(430, 154)
+
+[node name="dropSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0owub")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
