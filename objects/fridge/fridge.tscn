@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3hqp0hbr7y6r" path="res://objects/dough/dough-fridge.tscn" id="4_fe6d4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5itk"]
-size = Vector2(100, 80)
+size = Vector2(90, 80)
 
 [node name="fridge" type="Sprite2D" groups=["fridge"]]
 texture = ExtResource("1_m8jrv")
@@ -22,10 +22,10 @@ monitoring = false
 monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
-position = Vector2(-10, 0)
+position = Vector2(-15, 0)
 shape = SubResource("RectangleShape2D_m5itk")
 
 [node name="spawnPoint" type="Marker2D" parent="."]
-position = Vector2(49, 73)
+position = Vector2(42, 52)
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
