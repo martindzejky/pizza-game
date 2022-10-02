@@ -15,9 +15,6 @@ texture = ExtResource("1_qoc6o")
 centered = false
 script = ExtResource("2_vk3s4")
 
-[node name="tomato" parent="." instance=ExtResource("3_mttq4")]
-position = Vector2(402, 93)
-
 [node name="clickArea" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
@@ -32,7 +29,10 @@ position = Vector2(0, 100)
 [node name="plate" parent="." instance=ExtResource("2_eynit")]
 position = Vector2(447, 45)
 
+[node name="tomato" parent="." instance=ExtResource("3_mttq4")]
+position = Vector2(402, 93)
+
 [node name="dough-tool" parent="." instance=ExtResource("6_8hmyr")]
-position = Vector2(293, 143)
+position = Vector2(310, 144)
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

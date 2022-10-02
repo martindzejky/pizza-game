@@ -5,7 +5,7 @@ extends Node2D
 @export var withSpoon: Texture2D
 @export var spoonObj: PackedScene
 
-@export var hasSpoon := false
+@export var hasSpoon := true
 
 
 func _onClick() -> bool:
