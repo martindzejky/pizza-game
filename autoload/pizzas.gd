@@ -39,6 +39,8 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
     if not 'recipe' in order: return 0.0
     if order.recipe.size() == 0: return 0.0
 
+    # INGREDIENTS
+
     var ingredients = 0.0
     var fulfilledIngredients = 0.0
 
@@ -62,17 +64,18 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 
     var ingredientScore =  float(fulfilledIngredients) / ingredients
 
-    if not pizza.isReady() and not pizza.isOverdone():
-        # raw pizza dough, who would eat that
-        return 0.0
-
-    if not pizza.isCookReady() and not pizza.isCookOvercooked():
-        # not cooked
-        return 0.0
+    # DOUGH PROCESS and COOKING
 
     var dougScore = (pizza.getProgress() + pizza.getCookProgress()) / 2.0
 
-    return (ingredientScore + dougScore) / 2.0 * 5.0
+    # INGREDIENTS COOKING
+
+    var ingredientsScore = pizza.get_children().filter(func(node): return node.is_in_group("ingredient")).reduce(func(acc, node): return acc * node.getCookProgress(), 1.0)
+
+    # COMBINE
+
+    var score = (ingredientScore + dougScore + ingredientsScore) / 3.0
+    return score
 
 
 func _pizzaIngredientCount(pizza: Node, name: String) -> int:

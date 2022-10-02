@@ -3,9 +3,9 @@ extends Pickable
 
 # cooking in the oven
 const COOK_PROGRESS_RAW = 1.0
-const COOK_PROGRESS_READY = 8.0
+const COOK_PROGRESS_READY = 3.0
 # TODO: COOK_PROGRESS_WELL_MADE for bonus points
-const COOK_PROGRESS_OVERCOOKED = 10.0
+const COOK_PROGRESS_OVERCOOKED = 11.0
 @export var cookProgress := 0.0
 
 
@@ -24,11 +24,11 @@ func _process(delta):
     var color = 1
 
     if cookProgress <= COOK_PROGRESS_READY:
-        color = lerp(1.0, 0.7, cookProgress / COOK_PROGRESS_READY)
+        color = lerp(1.0, 0.95, cookProgress / COOK_PROGRESS_READY)
     elif cookProgress <= COOK_PROGRESS_OVERCOOKED:
-        color = lerp(0.7, 0.3, (cookProgress - COOK_PROGRESS_READY) / (COOK_PROGRESS_OVERCOOKED - COOK_PROGRESS_READY))
+        color = lerp(0.95, 0.3, (cookProgress - COOK_PROGRESS_READY) / (COOK_PROGRESS_OVERCOOKED - COOK_PROGRESS_READY))
     else:
-        color = 0.3
+        color = 0.2
 
     $sprite.self_modulate = Color(color, color, color, 1)
 
