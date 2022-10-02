@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dehfhkt6r8u7n"]
+[gd_scene load_steps=14 format=3 uid="uid://dehfhkt6r8u7n"]
 
 [ext_resource type="PackedScene" uid="uid://b8eyata53lsrj" path="res://objects/clock/clock.tscn" id="1_pib6w"]
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://blwk8duhcsvmu" path="res://objects/ingredients/rukola.tscn" id="10_at2mo"]
 [ext_resource type="PackedScene" uid="uid://btss4yon75m3i" path="res://objects/ingredients/cheese.tscn" id="11_2f2mh"]
 [ext_resource type="PackedScene" uid="uid://bpfs8o86rhkqy" path="res://objects/ingredients/salam.tscn" id="12_5byhq"]
-[ext_resource type="PackedScene" uid="uid://qn2hf24a86cg" path="res://objects/orders/order.tscn" id="14_qenvu"]
 
 [node name="level" type="Node"]
 script = ExtResource("1_ybgt5")
@@ -71,6 +70,3 @@ position = Vector2(0, 80)
 
 [node name="hand" type="Node2D" parent="." groups=["hand"]]
 z_index = 10
-
-[node name="order" parent="." instance=ExtResource("14_qenvu")]
-position = Vector2(202, 104)

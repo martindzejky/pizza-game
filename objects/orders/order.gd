@@ -41,13 +41,24 @@ func _ready():
     for child in recipeNode.get_children():
         child.queue_free()
 
-    for ingredient in recipe:
-        var node = recipeObj.instantiate()
+    var previousIngredient
+    var previousIngredientNode
 
-        node.get_node("sprite").texture = load("res://sprites/" + ingredient + ".png")
-        node.get_node("label").text = ingredient
+    for i in range(recipe.size()):
+        # detect extra ingredients
+        if previousIngredient == recipe[i]:
+            previousIngredientNode.get_node("extra").show()
 
-        recipeNode.add_child(node)
+            previousIngredient = recipe[i]
+            continue
+
+        previousIngredientNode = recipeObj.instantiate()
+
+        previousIngredientNode.get_node("sprite").texture = load("res://sprites/" + recipe[i] + ".png")
+        previousIngredientNode.get_node("label").text = recipe[i].capitalize()
+
+        recipeNode.add_child(previousIngredientNode)
+        previousIngredient = recipe[i]
 
 
 func _onClick() -> bool:

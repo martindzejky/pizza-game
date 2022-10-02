@@ -17,7 +17,7 @@ centered = false
 offset = Vector2(0, -1)
 
 [node name="timer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 180.0
 one_shot = true
 autostart = true
 
