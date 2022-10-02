@@ -9,6 +9,7 @@ orderObj = ExtResource("2_1mna5")
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 10.0
+autostart = true
 
 [node name="order" parent="." instance=ExtResource("2_1mna5")]
 

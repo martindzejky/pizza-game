@@ -27,6 +27,7 @@ shape = SubResource("CircleShape2D_hulqw")
 [node name="failTimer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
+autostart = true
 
 [node name="preview" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
