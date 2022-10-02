@@ -90,6 +90,10 @@ func _unhandled_input(event: InputEvent) -> void:
     for node in clickNodes:
         if not node.is_inside_tree(): continue
 
+        if not node.has_node("clickArea"):
+            push_warning("node in 'click' group has no clickArea: ", node)
+            continue
+
         var clickArea = node.get_node("clickArea")
         if not clickArea:
             push_warning("node in 'click' group has no clickArea: ", node)
