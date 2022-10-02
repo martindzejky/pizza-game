@@ -72,6 +72,8 @@ func _ready():
 func _onClick() -> bool:
     # open the large preview
 
+    Effects.sound("preview")
+
     showPreview = not showPreview
 
     if tween: tween.kill()
