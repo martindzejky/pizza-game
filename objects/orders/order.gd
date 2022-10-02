@@ -118,5 +118,5 @@ func removeOrder() -> void:
     # leave transition
 
     var tween := create_tween()
-    tween.tween_property(self, "position:x", -100, 1.0).as_relative().set_ease(Tween.EASE_OUT)
+    tween.tween_property(self, "position:x", -100, 0.5).as_relative().set_ease(Tween.EASE_OUT).set_delay(3.0)
     tween.tween_callback(queue_free)
