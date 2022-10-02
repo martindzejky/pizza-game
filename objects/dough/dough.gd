@@ -20,7 +20,7 @@ const MAX_DAMAGE = 3
 
 
 # final score, 0-5
-@export var score := 0
+@export var score := 0.0
 
 
 

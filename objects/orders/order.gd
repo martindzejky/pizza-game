@@ -94,7 +94,7 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 
 
 # Called by Pizzas when a pizza fulfilling this order is delivered.
-func accept(score: int) -> void:
+func accept(score: float) -> void:
 
     # remove from group 'order' so it can't be accepted anymore
     remove_from_group("order")

@@ -27,8 +27,36 @@ func score(pizza: Node):
 
     # accept best order
     bestOrder.accept(bestScore)
+    pizza.score = bestScore
 
 
-func _scoreBasedOnOrder(pizza: Node, order: Node) -> int:
-    # TODO
-    return 0
+func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
+    if not pizza: return 0
+    if not order: return 0
+    if not 'recipe' in order: return 0
+    if order.recipe.size() == 0: return 0
+
+    var ingredients = 0.0
+    var fulfilledIngredients = 0.0
+
+    var previousIngredient
+    for i in range(order.recipe.size()):
+        var count = _pizzaIngredientCount(pizza, order.recipe[i])
+
+        # detect extra ingredients
+        if previousIngredient == order.recipe[i]:
+            fulfilledIngredients += 0.4 # BONUS!
+            continue
+
+        ingredients += 1
+
+        if count <= 4:
+            fulfilledIngredients += clamp((count - 2) / 4.0, 0.0, 1.0)
+        else:
+            fulfilledIngredients += clamp((6 - count) / 4.0, 0.0, 1.0)
+
+    return (fulfilledIngredients / ingredients) * 5
+
+
+func _pizzaIngredientCount(pizza: Node, name: str) -> int:
+    return pizza.get_children().filter(func (node): return node.is_in_group(name)).size()
