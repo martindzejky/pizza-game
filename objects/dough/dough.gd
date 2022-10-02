@@ -43,23 +43,20 @@ func _process(delta):
     $sprite.self_modulate = Color(color, color, color, 1)
 
 
-func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
-    if viewport.is_input_handled(): return
+func _onClick() -> bool:
+    if Hand.isEmpty():
+        Hand.pick(self)
+        return true
 
-    if event is InputEventMouseButton:
-        if event.button_index == MOUSE_BUTTON_LEFT:
-            if not event.pressed:
-                if Hand.isEmpty():
-                    Hand.pick(self)
-                    viewport.set_input_as_handled()
+    if Hand.isCarryingDoughTool():
+        onHitByDoughTool()
+        return true
 
-                elif Hand.isCarryingDoughTool():
-                    onHitByDoughTool()
-                    viewport.set_input_as_handled()
+    if Hand.isCarryingIngredient():
+        if insertIngredient():
+            return true
 
-                elif Hand.isCarryingIngredient():
-                    if insertIngredient():
-                        viewport.set_input_as_handled()
+    return false
 
 
 func onHitByDoughTool():

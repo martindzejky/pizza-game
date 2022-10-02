@@ -2,16 +2,12 @@ extends Sprite2D
 
 
 
-func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
-    if viewport.is_input_handled(): return
+func _onClick() -> bool:
+    if Hand.isCarryingDough():
+        if insertDough():
+            return true
 
-    if event is InputEventMouseButton:
-        if event.button_index == MOUSE_BUTTON_LEFT:
-            if not event.pressed:
-
-                if Hand.isCarryingDough():
-                    if insertDough():
-                        viewport.set_input_as_handled()
+    return false
 
 
 func insertDough() -> bool:

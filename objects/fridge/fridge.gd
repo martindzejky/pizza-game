@@ -8,20 +8,16 @@ extends Sprite2D
 var isOpen := false
 
 
-func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
-    if viewport.is_input_handled(): return
+func _onClick() -> bool:
     # cannot put anything into the fridge
-    if not Hand.isEmpty(): return
+    if not Hand.isEmpty(): return false
 
-    if event is InputEventMouseButton:
-        if event.button_index == MOUSE_BUTTON_LEFT:
-            if not event.pressed:
-                viewport.set_input_as_handled()
+    if isOpen:
+        close()
+    else:
+        open()
 
-                if isOpen:
-                    close()
-                else:
-                    open()
+    return true
 
 # open the fridge and spawn a new dough
 func open() -> void:

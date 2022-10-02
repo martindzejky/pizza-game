@@ -4,19 +4,15 @@ extends Node2D
 @export var doughObject: PackedScene
 
 
-func _onInputEvent(viewport: Node, event: InputEvent, shapeId: int) -> void:
-    if viewport.is_input_handled(): return
-    if not Hand.isEmpty(): return
+func _onClick() -> bool:
+    if not Hand.isEmpty(): return false
 
-    if event is InputEventMouseButton:
-        if event.button_index == MOUSE_BUTTON_LEFT:
-            if not event.pressed:
-                viewport.set_input_as_handled()
+    # destroy this object
+    queue_free()
 
-                # destroy this object
-                queue_free()
+    # spawn a new dough that is picked
+    var dough = doughObject.instantiate()
+    get_tree().call_group("table", "add_child", dough)
+    Hand.pick(dough)
 
-                # spawn a new dough that is picked
-                var dough = doughObject.instantiate()
-                get_tree().call_group("table", "add_child", dough)
-                Hand.pick(dough)
+    return true
