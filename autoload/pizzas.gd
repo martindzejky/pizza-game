@@ -100,9 +100,25 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 
     print("Ingredients cook score: ", ingredientsScore)
 
+    # TOMATE BASE
+
+    var hasBase = _pizzaHasTomatoBase(pizza)
+    if hasBase:
+        print("Pizza has tomato base")
+    else:
+        print("Pizza has no tomato base")
+
     # COMBINE
 
     var score = (ingredientScore + dougScore + ingredientsScore) / 3.0 * 5.0
+
+    if not hasBase:
+        score *= 0.7
+        print("Pizza has no tomato base, score reduced by 30%")
+
+    if pizza.isCookOvercooked():
+        score *= 0.2
+        print("Pizza is burnt, score reduced by 80%")
 
     print("Total score: ", score)
     print("------------")
@@ -112,3 +128,6 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 
 func _pizzaIngredientCount(pizza: Node, name: String) -> int:
     return pizza.get_children().filter(func (node): return node.is_in_group(name)).size()
+
+func _pizzaHasTomatoBase(pizza: Node) -> int:
+    return pizza.get_children().filter(func (node): return node.is_in_group("tomato-base")).size() > 0
