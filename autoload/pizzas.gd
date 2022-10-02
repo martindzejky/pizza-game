@@ -50,10 +50,10 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 
         ingredients += 1
 
-        if count <= 4:
-            fulfilledIngredients += clamp((count - 2) / 4.0, 0.0, 1.0)
+        if count <= 3:
+            fulfilledIngredients += clamp(count / 3.0, 0.0, 1.0)
         else:
-            fulfilledIngredients += clamp((6 - count) / 4.0, 0.0, 1.0)
+            fulfilledIngredients += clamp((6 - count) / 3.0, 0.0, 1.0)
 
     return (fulfilledIngredients / ingredients) * 5
 
