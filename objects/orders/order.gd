@@ -21,6 +21,8 @@ var showPreview = false
 func _ready():
     # enter transition
 
+    Effects.sound("order")
+
     var x = -20
     var newX = 20 + randf() * 30
     var y = -70 + randf() * 140
