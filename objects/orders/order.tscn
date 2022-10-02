@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://qn2hf24a86cg"]
+[gd_scene load_steps=8 format=3 uid="uid://qn2hf24a86cg"]
 
 [ext_resource type="Texture2D" uid="uid://dg7n56tkyfw5f" path="res://sprites/order.png" id="1_f37gj"]
 [ext_resource type="Script" path="res://objects/orders/order.gd" id="2_h16tn"]
 [ext_resource type="PackedScene" uid="uid://cqgj0p2j51e1f" path="res://objects/orders/recipe-ingredient.tscn" id="3_hg8fs"]
 [ext_resource type="Texture2D" uid="uid://b86n8wjf7bdt8" path="res://sprites/check.png" id="4_hc0yr"]
 [ext_resource type="Texture2D" uid="uid://dgktad4d88cmg" path="res://sprites/cross.png" id="5_6i4fb"]
+[ext_resource type="Texture2D" uid="uid://bjwn61djpog7d" path="res://sprites/stars.png" id="6_dnjkb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hulqw"]
 radius = 15.0
@@ -73,6 +74,13 @@ texture = ExtResource("4_hc0yr")
 visible = false
 position = Vector2(0, 4)
 texture = ExtResource("5_6i4fb")
+
+[node name="stars" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -25)
+texture = ExtResource("6_dnjkb")
+region_enabled = true
+region_rect = Rect2(0, 0, 80, 16)
 
 [connection signal="timeout" from="failTimer" to="." method="fail"]
 [connection signal="gui_input" from="preview/panel" to="." method="_on_panel_gui_input"]
