@@ -21,6 +21,11 @@ monitorable = false
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 shape = SubResource("CircleShape2D_hulqw")
 
+[node name="failTimer" type="Timer" parent="."]
+wait_time = 17.0
+one_shot = true
+autostart = true
+
 [node name="preview" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -57,4 +62,5 @@ offset_top = 35.0
 offset_right = 360.0
 offset_bottom = 35.0
 
+[connection signal="timeout" from="failTimer" to="." method="removeOrder"]
 [connection signal="gui_input" from="preview/panel" to="." method="_on_panel_gui_input"]
