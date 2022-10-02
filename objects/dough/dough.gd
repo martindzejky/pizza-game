@@ -74,6 +74,11 @@ func _onClick() -> bool:
 func onHitByDoughTool():
     Effects.wiggle(self)
 
+    # remove all ingredients
+    for child in get_children():
+        if child.is_in_group("ingredient"):
+            child.queue_free()
+
     if isRaw():
         progress += 1
     else:
