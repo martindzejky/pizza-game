@@ -46,6 +46,10 @@ func _process(delta):
 
     $sprite.self_modulate = Color(color, color, color, 1)
 
+    # update particles state
+    $particlesWarm.emitting = isCookReady()
+    $particlesOvercooked.emitting = isCookOvercooked()
+
 
 func _onClick() -> bool:
     # special case, ignore when inside a closed oven
