@@ -7,10 +7,11 @@ var carrying: Pickable
 
 func pick(node: Pickable) -> void:
     if carrying:
-        print("Tried to carry two things at once")
+        print("Tried to carry two things at once, already carrying ", carrying)
         return
 
     carrying = node
+    print("Picked up ", node)
 
     node.isPicked = true
     if node.has_signal("picked") and node.is_inside_tree():
@@ -29,7 +30,9 @@ func pick(node: Pickable) -> void:
         Effects.wiggle(node)
 
 func drop() -> Pickable:
-    if not carrying: return
+    if not carrying:
+        print("Tried to drop nothing")
+        return
 
     carrying.isPicked = false
     if carrying.has_signal("dropped") and carrying.is_inside_tree():
@@ -54,6 +57,8 @@ func drop() -> Pickable:
 
     if not wasCarrying.is_in_group("tool"):
         Effects.wiggle(wasCarrying)
+
+    print("Dropped ", wasCarrying)
 
     return wasCarrying
 
