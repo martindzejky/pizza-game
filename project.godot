@@ -26,12 +26,16 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ludum Dare 51"
-config/description="https://ldjam.com/events/ludum-dare/51"
+config/name="PIzza Game"
+config/description="A frantic game where you need to make pizza very quickly!
+
+Ludum Dare #51 submission.
+https://ldjam.com/events/ludum-dare/51/pizza-game"
 run/main_scene="res://scenes/start.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://pizza.png"
+config/windows_native_icon="res://pizza.ico"
 
 [autoload]
 

@@ -65,9 +65,9 @@ grow_vertical = 2
 
 [node name="text" type="Label" parent="root/slide2"]
 layout_mode = 2
-offset_left = 108.0
+offset_left = 84.0
 offset_top = 110.0
-offset_right = 372.0
+offset_right = 396.0
 offset_bottom = 160.0
 grow_vertical = 0
 text = "Use your mouse to interact
@@ -84,10 +84,10 @@ grow_vertical = 2
 
 [node name="text" type="Label" parent="root/slide3"]
 layout_mode = 2
-offset_left = 84.0
-offset_top = 122.0
-offset_right = 396.0
-offset_bottom = 147.0
+offset_left = 42.0
+offset_top = 97.0
+offset_right = 438.0
+offset_bottom = 172.0
 grow_vertical = 0
 text = "Submit the pizza by placing it on
 the plate on the right.
