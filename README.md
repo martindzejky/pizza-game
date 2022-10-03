@@ -1,5 +1,7 @@
 # Pizza Game
 
+![cover image](./sprites/cover.png)
+
 [Ludum Dare #51](https://ldjam.com/events/ludum-dare/51) submission
 (see my [submission page here](https://ldjam.com/events/ludum-dare/51/pizza-game)). 
 The theme was **Every 10 seconds**.
