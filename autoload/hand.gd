@@ -29,6 +29,8 @@ func pick(node: Pickable) -> void:
         Effects.wiggle(node)
 
 func drop() -> Pickable:
+    if not carrying: return
+
     carrying.isPicked = false
     if carrying.has_signal("dropped") and carrying.is_inside_tree():
         carrying.emit_signal("dropped")

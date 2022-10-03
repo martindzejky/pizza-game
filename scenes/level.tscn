@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dehfhkt6r8u7n"]
+[gd_scene load_steps=16 format=3 uid="uid://cqvrxgifrr854"]
 
 [ext_resource type="PackedScene" uid="uid://b8eyata53lsrj" path="res://objects/clock/clock.tscn" id="1_pib6w"]
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
-[ext_resource type="Script" path="res://scripts/reset-pizzas.gd" id="1_ybgt5"]
+[ext_resource type="Script" path="res://scripts/reset-level.gd" id="1_ybgt5"]
 [ext_resource type="PackedScene" uid="uid://satu1f06yh0u" path="res://ui/tutorial.tscn" id="2_6q7nq"]
 [ext_resource type="PackedScene" uid="uid://dhrhb8gv5s7nu" path="res://objects/fridge/fridge.tscn" id="2_i6w8l"]
 [ext_resource type="PackedScene" uid="uid://d30wuilo5aooa" path="res://ui/pause.tscn" id="3_vyhag"]
