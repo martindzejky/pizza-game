@@ -33,9 +33,11 @@ Ludum Dare #51 submission.
 https://ldjam.com/events/ludum-dare/51/pizza-game"
 run/main_scene="res://scenes/start.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
-boot_splash/show_image=false
+boot_splash/image="res://sprites/cover.png"
+boot_splash/use_filter=false
 config/icon="res://pizza.png"
 config/windows_native_icon="res://pizza.ico"
+boot_splash/minimum_display_time=1000
 
 [autoload]
 
