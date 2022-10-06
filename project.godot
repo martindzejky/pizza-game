@@ -10,7 +10,7 @@ config_version=5
 
 _global_script_classes=[{
 "base": "Control",
-"class": &"ExitBtnsssss",
+"class": &"ExitBtn",
 "language": &"GDScript",
 "path": "res://ui/exit-btn.gd"
 }, {
@@ -20,7 +20,7 @@ _global_script_classes=[{
 "path": "res://scripts/pickable.gd"
 }]
 _global_script_class_icons={
-"ExitBtnsssss": "",
+"ExitBtn": "",
 "Pickable": ""
 }
 
@@ -30,9 +30,10 @@ config/name="PIzza Game"
 config/description="A frantic game where you need to make pizza very quickly!
 
 Ludum Dare #51 submission.
-https://ldjam.com/events/ludum-dare/51/pizza-game"
+https://ldjam.com/events/ludum-dare/51/pizza-game
+https://github.com/martindzejky/pizza-game"
 run/main_scene="res://scenes/start.tscn"
-config/features=PackedStringArray("4.0", "Vulkan Clustered")
+config/features=PackedStringArray("4.0")
 boot_splash/image="res://sprites/cover.png"
 boot_splash/use_filter=false
 config/icon="res://pizza.png"

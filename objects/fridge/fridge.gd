@@ -9,8 +9,15 @@ var isOpen := false
 
 
 func _onClick() -> bool:
-    # cannot put anything into the fridge
-    if not Hand.isEmpty(): return false
+    if not Hand.isEmpty():
+        # special case: if carrying an item and the oven is closed,
+        # allow to open it
+        if not isOpen:
+            open()
+            return true
+
+        # cannot put anything into the fridge
+        return false
 
     if isOpen:
         close()

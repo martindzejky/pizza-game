@@ -53,6 +53,12 @@ func _onClick() -> bool:
 
         return true
 
+    # special case: if carrying an item and the oven is closed,
+    # allow to open it
+    elif not isOpen:
+        open()
+        return true
+
     return false
 
 
