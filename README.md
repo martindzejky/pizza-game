@@ -10,7 +10,8 @@ Post-mortem coming soon...
 
 ## Tools
 
-- Godot 4.0 beta 1
-- Aseprite
-- Bfxr
-- Webstorm (with Godot plugin)
+- [Godot 4.0 beta 2](http://godotengine.org)
+- [Aseprite](https://www.aseprite.org)
+- [Bfxr](http://www.bfxr.net)
+- [Webstorm](https://www.jetbrains.com/webstorm/) (with Godot plugin)
+- [SunVox](https://warmplace.ru/soft/sunvox/)
