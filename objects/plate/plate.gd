@@ -42,8 +42,6 @@ func submitPizza() -> void:
         if node.is_in_group("dough"):
 
             # submit pizza and have it scored
-            if node.get_parent():
-                node.get_parent().remove_child(node)
-
+            remove_child(node)
             Pizzas.add_child(node)
             Pizzas.score(node)
