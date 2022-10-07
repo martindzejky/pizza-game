@@ -17,4 +17,4 @@ func _onClick() -> bool:
 
 func empty():
     isFull = false
-    $sprite.texture = Hand.carrying.emptySprite
+    $sprite.texture = emptySprite

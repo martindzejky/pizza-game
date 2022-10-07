@@ -159,10 +159,11 @@ func insertIngredient() -> bool:
     return true
 
 func insertTomatoBase() -> bool:
-    if not Hand.carrying.isFull: return false
+    if not Hand.isCarryingSpoon(): return false
+    if not Hand.getCarriedItem().isFull: return false
     if not isReady(): return false
 
-    Hand.carrying.empty()
+    Hand.getCarriedItem().empty()
 
     var tomatoBase = tomatoBaseObj.instantiate()
     tomatoBase.position.y = 2 + randi() % 4
