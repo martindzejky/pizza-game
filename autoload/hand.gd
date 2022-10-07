@@ -15,6 +15,12 @@ func pick(node: Pickable) -> void:
     if node.has_signal("picked") and node.is_inside_tree():
         node.emit_signal("picked")
 
+    # random offset if already carrying some items
+    if not Hand.isEmpty():
+        node.offset = Vector2(randf_range(-10, 10), randf_range(-10, 10))
+    else:
+        node.offset = Vector2()
+
     # move the node to this node
     var globalTransform = node.get_global_transform()
     if node.get_parent():
