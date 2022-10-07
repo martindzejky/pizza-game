@@ -73,6 +73,3 @@ ingredient = ExtResource("12_5byhq")
 
 [node name="table" parent="." instance=ExtResource("4_tetf8")]
 position = Vector2(0, 80)
-
-[node name="hand" type="Node2D" parent="." groups=["hand"]]
-z_index = 10

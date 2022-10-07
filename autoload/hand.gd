@@ -1,27 +1,25 @@
-extends Node
+extends Node2D
 
-# stores global state about what is currently being carried in hand
+# Stores global state about what is currently being carried in hand.
+# Items currently in hand are move as children of this node.
 
-var carrying: Pickable
+
+func _init():
+    # increase the z-index to render the items in hand above everything else
+    z_index = 10
 
 
 func pick(node: Pickable) -> void:
-    if carrying:
-        print("Tried to carry two things at once, already carrying ", carrying)
-        return
-
-    carrying = node
-    print("Picked up ", node)
 
     node.isPicked = true
     if node.has_signal("picked") and node.is_inside_tree():
         node.emit_signal("picked")
 
-    # move to hand node to be rendered on top
+    # move the node to this node
     var globalTransform = node.get_global_transform()
     if node.get_parent():
         node.get_parent().remove_child(node)
-    get_tree().call_group("hand", "add_child", node)
+    add_child(node)
     node.set_global_transform(globalTransform)
 
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -29,54 +27,78 @@ func pick(node: Pickable) -> void:
     if not node.is_in_group("tool"):
         Effects.wiggle(node)
 
+    print("Picked up ", node)
+
+
+
 func drop() -> Pickable:
-    if not carrying:
-        print("Tried to drop nothing")
+    if isEmpty():
+        print("Tried to drop nothing, the hand is empty")
         return
 
-    carrying.isPicked = false
-    if carrying.has_signal("dropped") and carrying.is_inside_tree():
-        carrying.emit_signal("dropped")
+    # get the last item in hand (children) and drop it
+
+    var item = get_children().pop_back()
+    if not item:
+        push_error("isEmpty() returned false but the last child does not exist! There's a bug somwhere...")
+        return
+
+    item.isPicked = false
+    if item.has_signal("dropped"):
+        item.emit_signal("dropped")
 
     # move back to table node
-    var globalTransform = carrying.get_global_transform()
-    if carrying.get_parent():
-        carrying.get_parent().remove_child(carrying)
-    get_tree().call_group("table", "add_child", carrying)
-    carrying.set_global_transform(globalTransform)
+    var globalTransform = item.get_global_transform()
+    remove_child(item)
+    get_tree().call_group("table", "add_child", item)
+    item.set_global_transform(globalTransform)
 
     # Wait for the next frame to drop the node. That is so in the current frame other nodes
     # can react to the fact that the node is still being carried.
-    # TODO: disabled
+    # TODO: disabled because it seems unnecessary
     # await get_tree().create_timer(0).timeout
 
-    var wasCarrying = carrying
-    carrying = null
+    if isEmpty():
+        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-    Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+    if not item.is_in_group("tool"):
+        Effects.wiggle(item)
 
-    if not wasCarrying.is_in_group("tool"):
-        Effects.wiggle(wasCarrying)
+    print("Dropped ", item)
 
-    print("Dropped ", wasCarrying)
+    return item
 
-    return wasCarrying
 
 
 func isEmpty() -> bool:
-    return not carrying
+    return get_child_count() == 0
+
+func isCarryingMultipleItems() -> bool:
+    return get_child_count() > 1
 
 func isCarryingDough() -> bool:
-    return carrying and carrying.is_in_group("dough")
+    for child in get_children():
+        if child.is_in_group("dough"):
+            return true
+    return false
 
 func isCarryingDoughTool() -> bool:
-    return carrying and carrying.is_in_group("dough-tool")
+    for child in get_children():
+        if child.is_in_group("dough-tool"):
+            return true
+    return false
 
 func isCarryingSpoon() -> bool:
-    return carrying and carrying.is_in_group("spoon")
+    for child in get_children():
+        if child.is_in_group("spoon"):
+            return true
+    return false
 
 func isCarryingIngredient() -> bool:
-    return carrying and carrying.is_in_group("ingredient")
+    for child in get_children():
+        if child.is_in_group("ingredient"):
+            return true
+    return false
 
 
 
@@ -85,6 +107,7 @@ func isCarryingIngredient() -> bool:
 # --------------------
 # Click handing. Custom implementation because Godot's click events are not ordered (seem random, probably a bug?).
 # https://github.com/godotengine/godot/issues/23051
+# --------------------
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -94,11 +117,8 @@ func _unhandled_input(event: InputEvent) -> void:
     if event.button_index != MOUSE_BUTTON_LEFT: return
     if not event.is_pressed(): return
 
-    print("click!")
-
     # get global mouse position
     var mousePos = get_viewport().get_mouse_position()
-    print("mousePos: ", mousePos)
 
     var clickNodes = get_tree().get_nodes_in_group("click").duplicate()
     clickNodes.reverse()
@@ -130,6 +150,8 @@ func _unhandled_input(event: InputEvent) -> void:
             push_warning("node in 'click' group has no shape: ", clickArea)
             continue
 
+
+        # LIMITATION
         # supports only one shape per node!
 
 
@@ -156,7 +178,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
         var result = false
 
-        print("click on ", node)
+        print("Click on ", node)
         if node.has_method("_onClick"):
             result = node._onClick()
         else:
