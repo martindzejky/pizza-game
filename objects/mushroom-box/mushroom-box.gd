@@ -5,11 +5,18 @@ extends Node2D
 
 
 func _onClick() -> bool:
-    # cannot put anything into the box
-    if not Hand.isEmpty(): return false
 
     # spawn a new ingredient that is picked
     var ing = ingredient.instantiate()
+
+    # only allow picking the ingredient if the hand
+    # is empty or already has the same ingredient
+    if not Hand.isEmpty():
+        for group in ing.get_groups():
+            if not Hand.isCarryingIngredient(group):
+                return false
+
+
     get_tree().call_group("table", "add_child", ing)
     Hand.pick(ing)
 

@@ -94,11 +94,16 @@ func isCarryingSpoon() -> bool:
             return true
     return false
 
-func isCarryingIngredient() -> bool:
+func isCarryingIngredient(group = "ingredient") -> bool:
+    if isEmpty(): return false
+
     for child in get_children():
-        if child.is_in_group("ingredient"):
-            return true
-    return false
+        if child.is_in_group(group):
+            continue
+        return false
+
+    # all items matched the group
+    return true
 
 
 
