@@ -75,6 +75,11 @@ func drop() -> Pickable:
     return item
 
 
+func reset() -> void:
+    for child in get_children():
+        remove_child(child)
+
+
 
 func isEmpty() -> bool:
     return get_child_count() == 0
