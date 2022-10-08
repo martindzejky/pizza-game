@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqvrxgifrr854"]
+[gd_scene load_steps=15 format=3 uid="uid://xujd81ar6foq"]
 
 [ext_resource type="PackedScene" uid="uid://b8eyata53lsrj" path="res://objects/clock/clock.tscn" id="1_pib6w"]
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
 [ext_resource type="Script" path="res://scripts/reset-level.gd" id="1_ybgt5"]
 [ext_resource type="PackedScene" uid="uid://dhrhb8gv5s7nu" path="res://objects/fridge/fridge.tscn" id="2_i6w8l"]
-[ext_resource type="PackedScene" uid="uid://d30wuilo5aooa" path="res://ui/pause.tscn" id="3_vyhag"]
+[ext_resource type="PackedScene" uid="uid://satu1f06yh0u" path="res://ui/tutorial.tscn" id="2_s7w25"]
 [ext_resource type="PackedScene" uid="uid://b8j5aiovste6u" path="res://objects/mushroom-box/mushroom-box.tscn" id="3_x8ajh"]
 [ext_resource type="PackedScene" uid="uid://3wrd53oyoqc2" path="res://objects/table/table.tscn" id="4_tetf8"]
 [ext_resource type="Texture2D" uid="uid://dce13dywqd8my" path="res://sprites/boxes.png" id="5_2qcfs"]
@@ -15,10 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://btss4yon75m3i" path="res://objects/ingredients/cheese.tscn" id="11_2f2mh"]
 [ext_resource type="PackedScene" uid="uid://bpfs8o86rhkqy" path="res://objects/ingredients/salam.tscn" id="12_5byhq"]
 
-[node name="level" type="Node"]
+[node name="tutorial-level" type="Node"]
 script = ExtResource("1_ybgt5")
 
-[node name="pause" parent="." instance=ExtResource("3_vyhag")]
+[node name="tutorial" parent="." instance=ExtResource("2_s7w25")]
 
 [node name="camera" type="Camera2D" parent="."]
 anchor_mode = 0

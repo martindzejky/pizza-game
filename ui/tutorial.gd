@@ -33,4 +33,4 @@ func nextSlide():
 
 func dismiss():
     get_tree().paused = false
-    queue_free()
+    get_tree().change_scene_to_file("res://scenes/level.tscn")
