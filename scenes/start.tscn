@@ -14,7 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="margin" type="MarginContainer" parent="ui"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,14 +21,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="items" type="VBoxContainer" parent="ui/margin"]
-layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 470.0
 offset_bottom = 260.0
 
 [node name="title" type="Label" parent="ui/margin/items"]
-layout_mode = 2
 offset_right = 460.0
 offset_bottom = 25.0
 grow_horizontal = 2
@@ -39,7 +36,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="subtitle" type="Label" parent="ui/margin/items"]
-layout_mode = 2
 offset_top = 35.0
 offset_right = 460.0
 offset_bottom = 54.0
@@ -51,7 +47,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="btns" type="VBoxContainer" parent="ui/margin/items"]
-layout_mode = 2
 offset_top = 64.0
 offset_right = 460.0
 offset_bottom = 250.0
@@ -61,7 +56,6 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="start" type="Button" parent="ui/margin/items/btns"]
-layout_mode = 2
 offset_top = 64.0
 offset_right = 460.0
 offset_bottom = 88.0
@@ -71,7 +65,6 @@ text = "Start"
 script = ExtResource("1_iqrhl")
 
 [node name="exit" type="Button" parent="ui/margin/items/btns"]
-layout_mode = 2
 offset_top = 98.0
 offset_right = 460.0
 offset_bottom = 122.0
@@ -80,7 +73,5 @@ grow_vertical = 0
 text = "Exit"
 script = ExtResource("2_0d7lr")
 
-[connection signal="mouse_entered" from="ui/margin/items/btns/start" to="ui/margin/items/btns/start" method="_on_mouse_entered"]
 [connection signal="pressed" from="ui/margin/items/btns/start" to="ui/margin/items/btns/start" method="_onClicked"]
-[connection signal="mouse_entered" from="ui/margin/items/btns/exit" to="ui/margin/items/btns/exit" method="_on_mouse_entered"]
 [connection signal="pressed" from="ui/margin/items/btns/exit" to="ui/margin/items/btns/exit" method="_onClicked"]

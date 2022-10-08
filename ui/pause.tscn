@@ -21,6 +21,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_77q4l")
 
 [node name="margin" type="MarginContainer" parent="root"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,12 +29,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="items" type="VBoxContainer" parent="root/margin"]
+layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 470.0
 offset_bottom = 260.0
 
 [node name="title" type="Label" parent="root/margin/items"]
+layout_mode = 2
 offset_top = 47.0
 offset_right = 460.0
 offset_bottom = 72.0
@@ -45,6 +48,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="btns" type="VBoxContainer" parent="root/margin/items"]
+layout_mode = 2
 offset_top = 130.0
 offset_right = 460.0
 offset_bottom = 250.0
@@ -54,6 +58,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="end" type="Button" parent="root/margin/items/btns"]
+layout_mode = 2
 offset_top = 48.0
 offset_right = 460.0
 offset_bottom = 72.0
@@ -62,5 +67,4 @@ grow_vertical = 0
 text = "Exit"
 script = ExtResource("2_koidk")
 
-[connection signal="mouse_entered" from="root/margin/items/btns/end" to="root/margin/items/btns/end" method="_on_mouse_entered"]
 [connection signal="pressed" from="root/margin/items/btns/end" to="root/margin/items/btns/end" method="_onClicked"]
