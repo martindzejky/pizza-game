@@ -39,7 +39,7 @@ func open() -> void:
 
     # burst particles
     $particles.emitting = true
-    for i in range(randi() % 6 + 4):
+    for i in range($particles.amount):
         $particles.emit_particle(transform, Vector2.UP, Color(), Color(), 0)
 
 # close the fridge and destroy the dough inside if there is any

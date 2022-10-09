@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
             # smoke if overcooked (#reference)
             if node.isCookReady():
                 $particles.emitting = true
-                $particles.amount = 3
+                $particles.amount = 4
             elif node.isCookOvercooked():
                 $particles.emitting = true
                 $particles.amount = 15

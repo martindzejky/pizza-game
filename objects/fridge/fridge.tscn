@@ -56,7 +56,6 @@ position = Vector2(42, 52)
 position = Vector2(39, 44)
 z_index = 1000
 emitting = false
-amount = 6
 lifetime = 3.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_gad1t")
