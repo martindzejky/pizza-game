@@ -25,6 +25,32 @@ func wiggle(node: Node) -> void:
     tween.tween_property(node, "scale", Vector2(1, 1), 0.01).from_current()
 
 
+func swing(node: Node) -> void:
+    if not node.is_inside_tree(): return
+
+    # if there's a sprite, swing it instead
+    if node.has_node("sprite"):
+        node = node.get_node("sprite")
+
+    # meta to track swings
+    var swings = node.get_meta("swing")
+
+    if swings == null:
+        swings = 0
+
+    node.set_meta("swing", swings + 1)
+
+    node.rotation = -1
+    await get_tree().create_timer(0.1).timeout
+
+    var swingsAfterWait = node.get_meta("swing")
+    if swingsAfterWait <= 1:
+        # reset rotation only in the last swing effect
+        node.rotation = 0
+
+    node.set_meta("swing", swingsAfterWait - 1)
+
+
 func sound(name: String) -> void:
     if not Sounds or not Sounds.is_inside_tree(): return
 

@@ -40,6 +40,7 @@ func _onClick() -> bool:
 
     elif Hand.isCarryingDoughTool():
         # TODO: particles
+        Effects.swing(Hand.getCarriedItem())
         Effects.sound("dough")
         queue_free()
 

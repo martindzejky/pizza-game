@@ -87,6 +87,7 @@ func _onClick() -> bool:
 
 
 func onHitByDoughTool():
+    Effects.swing(Hand.getCarriedItem())
     Effects.wiggle(self)
     Effects.sound("dough")
 

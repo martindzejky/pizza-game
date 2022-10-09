@@ -8,9 +8,12 @@ radius = 23.0
 
 [node name="dough-tool" type="Sprite2D" groups=["click", "dough-tool", "tool"]]
 texture = ExtResource("1_ans6e")
+offset = Vector2(-8, -8)
 script = ExtResource("2_mmsdm")
+offset = Vector2(-8, -8)
 
 [node name="clickArea" type="Area2D" parent="."]
+position = Vector2(-8, -8)
 monitoring = false
 monitorable = false
 
