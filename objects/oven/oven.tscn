@@ -45,6 +45,7 @@ monitoring = false
 monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
+visible = false
 position = Vector2(-2.49548, 0)
 shape = SubResource("RectangleShape2D_p8e28")
 

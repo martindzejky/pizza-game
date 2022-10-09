@@ -74,9 +74,17 @@ func open() -> void:
             node.visible = true
 
     # burst particles
-    $particles.amount = randi() % 6 + 4
-    for i in range($particles.amount):
-        $particles.emit_particle(transform, Vector2.UP, Color(), Color(), 0)
+    var burstParticles: GPUParticles2D = $particles.duplicate()
+    add_child(burstParticles)
+
+    burstParticles.emitting = true
+    burstParticles.amount = randi() % 6 + 10
+    burstParticles.one_shot = true
+    burstParticles.explosiveness = 1
+
+    await get_tree().create_timer(burstParticles.lifetime).timeout
+    burstParticles.queue_free()
+
 
 func close() -> void:
     isOpen = false

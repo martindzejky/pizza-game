@@ -38,9 +38,16 @@ func open() -> void:
     add_child(newDough)
 
     # burst particles
-    $particles.emitting = true
-    for i in range($particles.amount):
-        $particles.emit_particle(transform, Vector2.UP, Color(), Color(), 0)
+    var burstParticles: GPUParticles2D = $particles.duplicate()
+    add_child(burstParticles)
+
+    burstParticles.emitting = true
+    burstParticles.amount = randi() % 6 + 6
+    burstParticles.one_shot = true
+    burstParticles.explosiveness = 1
+
+    await get_tree().create_timer(burstParticles.lifetime).timeout
+    burstParticles.queue_free()
 
 # close the fridge and destroy the dough inside if there is any
 func close() -> void:
