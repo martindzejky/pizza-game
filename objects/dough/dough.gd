@@ -157,6 +157,8 @@ func insertIngredient() -> bool:
     var color = ingredient.get_node("sprite").self_modulate
     ingredient.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
 
+    Effects.wiggle(self)
+
     return true
 
 func insertTomatoBase() -> bool:
@@ -181,5 +183,8 @@ func insertTomatoBase() -> bool:
     # fade out a little
     var color = tomatoBase.get_node("sprite").self_modulate
     tomatoBase.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
+
+    Effects.wiggle(self)
+    Effects.swing(Hand.getCarriedItem())
 
     return true
