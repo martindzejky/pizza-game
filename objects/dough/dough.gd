@@ -1,6 +1,9 @@
 extends Pickable
 
 
+@export var maskMaterial: Material
+
+
 # from raw to pizza dough
 const PROGRESS_READY = 6
 # TODO: PROGRESS_WELL_MADE for bonus points
@@ -27,6 +30,8 @@ const MAX_DAMAGE = 3
 @export var score := 0.0
 
 
+func _ready():
+    updateLightMask()
 
 func _process(delta):
     super(delta)
@@ -97,6 +102,7 @@ func onHitByDoughTool():
 
     if isRaw():
         progress += 1
+        updateLightMask()
     else:
         damage += 1
 
@@ -154,7 +160,12 @@ func insertIngredient() -> bool:
 
     # fade out a little
     var color = ingredient.get_node("sprite").self_modulate
-    ingredient.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
+    var ingredientSprite = ingredient.get_node("sprite")
+    ingredientSprite.self_modulate = Color(color.r, color.g, color.b, 0.7)
+
+    # make the ingredient respect the dough mask
+    ingredientSprite.light_mask = 2
+    ingredientSprite.material = maskMaterial
 
     return true
 
@@ -179,6 +190,32 @@ func insertTomatoBase() -> bool:
 
     # fade out a little
     var color = tomatoBase.get_node("sprite").self_modulate
-    tomatoBase.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
+    var ingredientSprite = tomatoBase.get_node("sprite")
+    ingredientSprite.self_modulate = Color(color.r, color.g, color.b, 0.7)
+
+    # make the ingredient respect the dough mask
+    ingredientSprite.light_mask = 2
+    ingredientSprite.material = maskMaterial
 
     return true
+
+# generates a new texture for the light mask using the current dough sprite
+func updateLightMask() -> void:
+    print("Updating light mask for: ", self)
+
+    # start by converting the dough texture to an image
+    # we can work with
+    var image: Image = $sprite.texture.get_image()
+
+    # figure out what rect we need
+    var height: int = image.get_height()
+    var width: int = image.get_width() / $sprite.hframes
+
+
+    # crop the image to the rect
+    var cropped := image.get_rect(Rect2i(progress * width, 0, width, height))
+
+    # DONE! set the mask texture
+    var maskTexture = ImageTexture.create_from_image(cropped)
+    $maskLight.texture = maskTexture
+
