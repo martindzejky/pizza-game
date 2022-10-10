@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqvrxgifrr854"]
+[gd_scene load_steps=20 format=3 uid="uid://cqvrxgifrr854"]
 
 [ext_resource type="PackedScene" uid="uid://b8eyata53lsrj" path="res://objects/clock/clock.tscn" id="1_pib6w"]
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
@@ -12,8 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://dkbmbeblbronj" path="res://objects/ingredients/corn.tscn" id="8_3uish"]
 [ext_resource type="PackedScene" uid="uid://ddnarasqey1fu" path="res://objects/ingredients/olive.tscn" id="9_ws6b4"]
 [ext_resource type="PackedScene" uid="uid://blwk8duhcsvmu" path="res://objects/ingredients/rukola.tscn" id="10_at2mo"]
+[ext_resource type="Texture2D" uid="uid://dowsu2vsbgsu2" path="res://sprites/corn.png" id="10_s6ks4"]
 [ext_resource type="PackedScene" uid="uid://btss4yon75m3i" path="res://objects/ingredients/cheese.tscn" id="11_2f2mh"]
 [ext_resource type="PackedScene" uid="uid://bpfs8o86rhkqy" path="res://objects/ingredients/salam.tscn" id="12_5byhq"]
+[ext_resource type="Texture2D" uid="uid://c0gc6u00h2raf" path="res://sprites/olive.png" id="12_qhlqq"]
+[ext_resource type="Texture2D" uid="uid://b2e1jn1vyoa2f" path="res://sprites/rukola.png" id="14_n7ce7"]
+[ext_resource type="Texture2D" uid="uid://di4juphvm5btp" path="res://sprites/cheese.png" id="16_5hwi3"]
+[ext_resource type="Texture2D" uid="uid://dtsk6pv1bpbn2" path="res://sprites/salam.png" id="18_ic16w"]
 
 [node name="level" type="Node"]
 script = ExtResource("1_ybgt5")
@@ -48,25 +53,54 @@ centered = false
 [node name="mushroom" parent="top/boxes" instance=ExtResource("3_x8ajh")]
 ingredient = ExtResource("7_t30ub")
 
+[node name="particles" parent="top/boxes/mushroom" index="1"]
+amount = 2
+
 [node name="corn" parent="top/boxes" instance=ExtResource("3_x8ajh")]
 position = Vector2(36, 0)
 ingredient = ExtResource("8_3uish")
+
+[node name="particles" parent="top/boxes/corn" index="1"]
+amount = 6
+texture = ExtResource("10_s6ks4")
 
 [node name="olive" parent="top/boxes" instance=ExtResource("3_x8ajh")]
 position = Vector2(71, 0)
 ingredient = ExtResource("9_ws6b4")
 
+[node name="particles" parent="top/boxes/olive" index="1"]
+texture = ExtResource("12_qhlqq")
+
 [node name="rukola" parent="top/boxes" instance=ExtResource("3_x8ajh")]
 position = Vector2(107, 0)
 ingredient = ExtResource("10_at2mo")
+
+[node name="particles" parent="top/boxes/rukola" index="1"]
+amount = 1
+texture = ExtResource("14_n7ce7")
 
 [node name="cheese" parent="top/boxes" instance=ExtResource("3_x8ajh")]
 position = Vector2(143, 0)
 ingredient = ExtResource("11_2f2mh")
 
+[node name="particles" parent="top/boxes/cheese" index="1"]
+amount = 4
+texture = ExtResource("16_5hwi3")
+
 [node name="salam" parent="top/boxes" instance=ExtResource("3_x8ajh")]
 position = Vector2(176, 0)
 ingredient = ExtResource("12_5byhq")
 
+[node name="particles" parent="top/boxes/salam" index="1"]
+amount = 2
+texture = ExtResource("18_ic16w")
+
 [node name="table" parent="." instance=ExtResource("4_tetf8")]
 position = Vector2(0, 80)
+
+[editable path="top/boxes/mushroom"]
+[editable path="top/boxes/corn"]
+[editable path="top/boxes/olive"]
+[editable path="top/boxes/rukola"]
+[editable path="top/boxes/cheese"]
+[editable path="top/boxes/salam"]

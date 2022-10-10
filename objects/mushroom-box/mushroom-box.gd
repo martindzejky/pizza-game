@@ -21,5 +21,16 @@ func _onClick() -> bool:
     Hand.pick(ing)
 
     Effects.sound("pickup")
+    burstParticles()
 
     return true
+
+func burstParticles() -> void:
+    var burstParticles: GPUParticles2D = $particles.duplicate()
+    add_child(burstParticles)
+
+    burstParticles.emitting = true
+    burstParticles.amount = burstParticles.amount + randi_range(0, 2)
+
+    await get_tree().create_timer(burstParticles.lifetime).timeout
+    burstParticles.queue_free()
