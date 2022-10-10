@@ -116,6 +116,9 @@ func isCarryingIngredient(group = "ingredient") -> bool:
     # all items matched the group
     return true
 
+func getNumberOfCarriedItems() -> int:
+    return get_child_count()
+
 func getCarriedItem() -> Node:
     if isEmpty(): return null
     return get_children().pop_back()

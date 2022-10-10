@@ -9,6 +9,10 @@ func _onClick() -> bool:
     # spawn a new ingredient that is picked
     var ing = ingredient.instantiate()
 
+    # check whether the hand is already full
+    if Hand.getNumberOfCarriedItems() >= 10:
+        return false
+
     # only allow picking the ingredient if the hand
     # is empty or already has the same ingredient
     if not Hand.isEmpty():
