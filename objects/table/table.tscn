@@ -24,7 +24,7 @@ position = Vector2(240, 100)
 shape = SubResource("RectangleShape2D_qmpfi")
 
 [node name="orders" parent="." instance=ExtResource("3_mtrua")]
-position = Vector2(458, 213)
+position = Vector2(460, 202)
 
 [node name="plate" parent="." instance=ExtResource("2_eynit")]
 position = Vector2(41, 41)

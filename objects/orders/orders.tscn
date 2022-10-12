@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpt3y827i5pe0"]
+[gd_scene load_steps=5 format=3 uid="uid://dpt3y827i5pe0"]
 
 [ext_resource type="Script" path="res://objects/orders/orders.gd" id="1_0nujt"]
 [ext_resource type="PackedScene" uid="uid://qn2hf24a86cg" path="res://objects/orders/order.tscn" id="2_1mna5"]
+[ext_resource type="Texture2D" uid="uid://dg7n56tkyfw5f" path="res://sprites/order.png" id="3_rnaqy"]
+[ext_resource type="Script" path="res://objects/orders/indicator.gd" id="4_ejc7x"]
 
 [node name="orders" type="Node2D" groups=["orders"]]
 script = ExtResource("1_0nujt")
@@ -11,6 +13,11 @@ orderObj = ExtResource("2_1mna5")
 wait_time = 10.0
 autostart = true
 
-[node name="order" parent="." instance=ExtResource("2_1mna5")]
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_rnaqy")
+
+[node name="indicator" type="Node2D" parent="."]
+script = ExtResource("4_ejc7x")
+distance = 60.0
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

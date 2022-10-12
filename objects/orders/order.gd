@@ -13,7 +13,7 @@ const OPTIONS = ["mushroom", "corn", "olive", "rukola", "cheese", "salam"]
 # Required ingredients for the recipe. If there is an ingredient multiple times, an extra amount is required.
 var recipe: Array
 
-# tweening
+# tweening the popup
 var tween: Tween
 var showPreview = false
 
@@ -23,13 +23,13 @@ func _ready():
 
     Effects.sound("order")
 
-    var x = -20
-    var newX = 20 + randf() * 30
-    var y = -70 + randf() * 140
-    var time = 0.2 + randf() * 0.4
-
     var tween := create_tween()
-    tween.tween_property(self, "position", Vector2(newX, y), time).from(Vector2(x, y)).set_ease(Tween.EASE_OUT)
+    tween.tween_property(self, "position:y", -60, 0.6).as_relative().set_ease(Tween.EASE_OUT)
+
+    # move all other orders up
+    for child in get_parent().get_children():
+        if child != self and child.is_in_group("order"):
+            child.moveUp()
 
     # generate recipe
     recipe = []
@@ -97,6 +97,19 @@ func _on_panel_gui_input(event: InputEvent) -> void:
                 _onClick()
 
 
+func moveUp() -> void:
+    # move up when a new order arrives, unless we are already done/failed
+    if not is_in_group("order"): return
+
+    var count = get_parent().get_child_count()
+    var delay = (count - get_index()) * 0.15 + 0.07
+
+    var time = 0.4
+    var tween := create_tween()
+    tween.tween_property(self, "position:y", -30, time).as_relative().set_delay(delay)
+
+
+
 # Called by Pizzas when a pizza fulfilling this order is delivered.
 func accept(score: float) -> void:
     $check.show()
@@ -127,5 +140,5 @@ func removeOrder() -> void:
     # leave transition
 
     var tween := create_tween()
-    tween.tween_property(self, "position:x", -100, 0.5).as_relative().set_ease(Tween.EASE_OUT).set_delay(3.0)
+    tween.tween_property(self, "position:x", 60, 0.4).as_relative().set_ease(Tween.EASE_IN).set_delay(3.0)
     tween.tween_callback(queue_free)
