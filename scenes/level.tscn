@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqvrxgifrr854"]
+[gd_scene load_steps=22 format=3 uid="uid://cqvrxgifrr854"]
 
 [ext_resource type="PackedScene" uid="uid://b8eyata53lsrj" path="res://objects/clock/clock.tscn" id="1_pib6w"]
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
@@ -19,6 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://b2e1jn1vyoa2f" path="res://sprites/rukola.png" id="14_n7ce7"]
 [ext_resource type="Texture2D" uid="uid://di4juphvm5btp" path="res://sprites/cheese.png" id="16_5hwi3"]
 [ext_resource type="Texture2D" uid="uid://dtsk6pv1bpbn2" path="res://sprites/salam.png" id="18_ic16w"]
+
+[sub_resource type="Gradient" id="Gradient_ipdu8"]
+colors = PackedColorArray(0, 0, 0, 0.45098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t72b6"]
+gradient = SubResource("Gradient_ipdu8")
+width = 40
 
 [node name="level" type="Node"]
 script = ExtResource("1_ybgt5")
@@ -94,6 +101,13 @@ ingredient = ExtResource("12_5byhq")
 [node name="particles" parent="top/boxes/salam" index="1"]
 amount = 2
 texture = ExtResource("18_ic16w")
+
+[node name="shadow" type="Sprite2D" parent="top"]
+position = Vector2(490, 74)
+rotation = -1.5708
+scale = Vector2(1, 500)
+z_index = 1
+texture = SubResource("GradientTexture1D_t72b6")
 
 [node name="table" parent="." instance=ExtResource("4_tetf8")]
 position = Vector2(0, 80)
