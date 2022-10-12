@@ -24,13 +24,13 @@ position = Vector2(240, 100)
 shape = SubResource("RectangleShape2D_qmpfi")
 
 [node name="orders" parent="." instance=ExtResource("3_mtrua")]
-position = Vector2(0, 100)
+position = Vector2(458, 213)
 
 [node name="plate" parent="." instance=ExtResource("2_eynit")]
-position = Vector2(447, 45)
+position = Vector2(41, 41)
 
 [node name="tomato" parent="." instance=ExtResource("3_mttq4")]
-position = Vector2(402, 93)
+position = Vector2(79, 136)
 
 [node name="dough-tool" parent="." instance=ExtResource("6_8hmyr")]
 position = Vector2(310, 144)
