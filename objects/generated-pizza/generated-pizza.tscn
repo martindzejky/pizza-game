@@ -1,0 +1,22 @@
+[gd_scene load_steps=10 format=3 uid="uid://d35u0kau47rjb"]
+
+[ext_resource type="Script" path="res://objects/generated-pizza/generated-pizza.gd" id="1_rc8u5"]
+[ext_resource type="Texture2D" uid="uid://bjubtkw5ihv2n" path="res://sprites/dough.png" id="2_1b3ke"]
+[ext_resource type="PackedScene" uid="uid://cy4sy1ygetyko" path="res://objects/ingredients/tomato-base.tscn" id="2_bnpj3"]
+[ext_resource type="PackedScene" uid="uid://btss4yon75m3i" path="res://objects/ingredients/cheese.tscn" id="3_6rlyl"]
+[ext_resource type="PackedScene" uid="uid://dkbmbeblbronj" path="res://objects/ingredients/corn.tscn" id="4_raust"]
+[ext_resource type="PackedScene" uid="uid://cxs3415am8mfp" path="res://objects/ingredients/mushroom.tscn" id="5_la1mu"]
+[ext_resource type="PackedScene" uid="uid://ddnarasqey1fu" path="res://objects/ingredients/olive.tscn" id="6_ofbou"]
+[ext_resource type="PackedScene" uid="uid://blwk8duhcsvmu" path="res://objects/ingredients/rukola.tscn" id="7_nyl5p"]
+[ext_resource type="PackedScene" uid="uid://bpfs8o86rhkqy" path="res://objects/ingredients/salam.tscn" id="8_cv7am"]
+
+[node name="generated-pizza" type="Node2D"]
+script = ExtResource("1_rc8u5")
+speed = 30
+tomatoBase = ExtResource("2_bnpj3")
+ingredients = [ExtResource("3_6rlyl"), ExtResource("4_raust"), ExtResource("5_la1mu"), ExtResource("6_ofbou"), ExtResource("7_nyl5p"), ExtResource("8_cv7am")]
+
+[node name="dough" type="Sprite2D" parent="."]
+texture = ExtResource("2_1b3ke")
+hframes = 16
+frame = 6

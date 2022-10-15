@@ -1,12 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbae4y17js5x4"]
+[gd_scene load_steps=7 format=3 uid="uid://bbae4y17js5x4"]
 
 [ext_resource type="Script" path="res://ui/start-btn.gd" id="1_iqrhl"]
 [ext_resource type="Texture2D" uid="uid://cvfyhejdairpv" path="res://sprites/menu-table.png" id="1_r3pgb"]
 [ext_resource type="Script" path="res://ui/exit-btn.gd" id="2_0d7lr"]
 [ext_resource type="Texture2D" uid="uid://fo0fntv5ipk1" path="res://sprites/dough-tool.png" id="2_g0yhm"]
-[ext_resource type="Texture2D" uid="uid://c87o1ymgjbtyr" path="res://sprites/tomato.png" id="3_1ku1b"]
+[ext_resource type="Texture2D" uid="uid://cncb4bnbw0vn6" path="res://sprites/tomato-spoon.png" id="3_nnwf1"]
+[ext_resource type="PackedScene" uid="uid://dy0bwjd5s76k" path="res://objects/pizza-showcase/pizza-showcase.tscn" id="4_lmj8s"]
 
 [node name="start" type="Node"]
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_r3pgb")
+centered = false
+
+[node name="dough-tool" type="Sprite2D" parent="background"]
+position = Vector2(387, 171)
+texture = ExtResource("2_g0yhm")
+
+[node name="tomato" type="Sprite2D" parent="background"]
+position = Vector2(59, 202)
+texture = ExtResource("3_nnwf1")
+
+[node name="pizza-showcase" parent="." instance=ExtResource("4_lmj8s")]
+position = Vector2(-33, 61)
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -15,42 +31,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="background" type="TextureRect" parent="ui"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_r3pgb")
-
-[node name="dough-tool" type="TextureRect" parent="ui/background"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -101.0
-offset_top = -72.0
-offset_right = -61.0
-offset_bottom = -32.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("2_g0yhm")
-
-[node name="dough-tool2" type="TextureRect" parent="ui/background"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 29.0
-offset_top = -110.0
-offset_right = 93.0
-offset_bottom = -46.0
-grow_vertical = 0
-texture = ExtResource("3_1ku1b")
 
 [node name="titleContainer" type="CenterContainer" parent="ui"]
 layout_mode = 1

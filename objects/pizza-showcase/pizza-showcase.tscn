@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy0bwjd5s76k"]
+
+[ext_resource type="Script" path="res://objects/pizza-showcase/pizza-showcase.gd" id="1_i3edm"]
+[ext_resource type="PackedScene" uid="uid://d35u0kau47rjb" path="res://objects/generated-pizza/generated-pizza.tscn" id="2_1j8pb"]
+
+[node name="pizza-showcase" type="Node2D"]
+script = ExtResource("1_i3edm")
+pizzaObj = ExtResource("2_1j8pb")
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="generated-pizza" parent="." instance=ExtResource("2_1j8pb")]
+
+[connection signal="timeout" from="timer" to="." method="createPizza"]
