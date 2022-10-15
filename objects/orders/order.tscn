@@ -1,14 +1,52 @@
-[gd_scene load_steps=8 format=3 uid="uid://qn2hf24a86cg"]
+[gd_scene load_steps=12 format=3 uid="uid://qn2hf24a86cg"]
 
 [ext_resource type="Texture2D" uid="uid://dg7n56tkyfw5f" path="res://sprites/order.png" id="1_f37gj"]
 [ext_resource type="Script" path="res://objects/orders/order.gd" id="2_h16tn"]
 [ext_resource type="PackedScene" uid="uid://cqgj0p2j51e1f" path="res://objects/orders/recipe-ingredient.tscn" id="3_hg8fs"]
+[ext_resource type="Texture2D" uid="uid://vnekmu17avu1" path="res://sprites/order-timer.png" id="4_1xl88"]
 [ext_resource type="Texture2D" uid="uid://b86n8wjf7bdt8" path="res://sprites/check.png" id="4_hc0yr"]
 [ext_resource type="Texture2D" uid="uid://dgktad4d88cmg" path="res://sprites/cross.png" id="5_6i4fb"]
 [ext_resource type="Texture2D" uid="uid://bjwn61djpog7d" path="res://sprites/stars.png" id="6_dnjkb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hulqw"]
 radius = 15.0
+
+[sub_resource type="Animation" id="Animation_vtynn"]
+resource_name = "clock"
+length = 35.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clock:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 13, 35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 0, 9]
+}
+
+[sub_resource type="Animation" id="Animation_fmrog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clock:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4es3r"]
+_data = {
+"RESET": SubResource("Animation_fmrog"),
+"clock": SubResource("Animation_vtynn")
+}
 
 [node name="order" type="Sprite2D" groups=["click", "order"]]
 texture = ExtResource("1_f37gj")
@@ -22,6 +60,7 @@ monitoring = false
 monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
+visible = false
 shape = SubResource("CircleShape2D_hulqw")
 
 [node name="failTimer" type="Timer" parent="."]
@@ -46,21 +85,36 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="container" type="VBoxContainer" parent="preview/panel"]
+layout_mode = 2
 offset_left = 20.0
 offset_top = 30.0
 offset_right = 380.0
 offset_bottom = 194.0
 
 [node name="title" type="Label" parent="preview/panel/container"]
+layout_mode = 2
 offset_right = 360.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 text = "Pizza order"
 
 [node name="recipe" type="HFlowContainer" parent="preview/panel/container"]
+layout_mode = 2
 offset_top = 35.0
 offset_right = 360.0
 offset_bottom = 35.0
+
+[node name="clock" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("4_1xl88")
+hframes = 10
+
+[node name="animation" type="AnimationPlayer" parent="clock"]
+root_node = NodePath("../..")
+autoplay = "clock"
+libraries = {
+"": SubResource("AnimationLibrary_4es3r")
+}
 
 [node name="check" type="Sprite2D" parent="."]
 visible = false

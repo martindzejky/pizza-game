@@ -112,6 +112,7 @@ func moveUp() -> void:
 
 # Called by Pizzas when a pizza fulfilling this order is delivered.
 func accept(score: float) -> void:
+    $clock.hide()
     $check.show()
     Effects.sound("orderDone")
 
@@ -122,6 +123,7 @@ func accept(score: float) -> void:
 
 # Called by the fail timer
 func fail() -> void:
+    $clock.hide()
     $cross.show()
     Effects.sound("orderFail")
     removeOrder()
