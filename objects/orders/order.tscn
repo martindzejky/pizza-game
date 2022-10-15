@@ -52,7 +52,7 @@ _data = {
 texture = ExtResource("1_f37gj")
 script = ExtResource("2_h16tn")
 panelPath = NodePath("preview/panel")
-recipePath = NodePath("preview/panel/container/recipe")
+recipePath = NodePath("preview/panel/background/container/recipe")
 recipeObj = ExtResource("3_hg8fs")
 
 [node name="clickArea" type="Area2D" parent="."]
@@ -71,32 +71,40 @@ autostart = true
 [node name="preview" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="panel" type="PanelContainer" parent="preview"]
-visible = false
+[node name="panel" type="Control" parent="preview"]
+layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = 30.0
-offset_right = -40.0
-offset_bottom = 234.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="container" type="VBoxContainer" parent="preview/panel"]
+[node name="background" type="PanelContainer" parent="preview/panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 70.0
+offset_right = -40.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="container" type="VBoxContainer" parent="preview/panel/background"]
 offset_left = 20.0
 offset_top = 30.0
 offset_right = 380.0
-offset_bottom = 194.0
+offset_bottom = 260.0
 
-[node name="title" type="Label" parent="preview/panel/container"]
+[node name="title" type="Label" parent="preview/panel/background/container"]
 offset_right = 360.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 text = "Pizza order"
 
-[node name="recipe" type="HFlowContainer" parent="preview/panel/container"]
+[node name="recipe" type="HFlowContainer" parent="preview/panel/background/container"]
 offset_top = 35.0
 offset_right = 360.0
 offset_bottom = 35.0

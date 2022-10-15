@@ -86,9 +86,9 @@ func togglePreview():
 
     if showPreview:
         tween.tween_property(panel, "visible", true, 0)
-        tween.tween_property(panel, "position:y", 66, 0.4).from_current().set_ease(Tween.EASE_OUT)
+        tween.tween_property(panel, "position:y", 0, 0.4).from_current().set_ease(Tween.EASE_OUT)
     else:
-        tween.tween_property(panel, "position:y", 300, 0.4).from_current().set_ease(Tween.EASE_IN)
+        tween.tween_property(panel, "position:y", 270, 0.4).from_current().set_ease(Tween.EASE_IN)
         tween.tween_property(panel, "visible", false, 0)
 
 func _on_panel_gui_input(event: InputEvent) -> void:
