@@ -71,9 +71,12 @@ func _ready():
 
 func _onClick() -> bool:
     # open the large preview
-
     Effects.sound("preview")
+    togglePreview()
+    return true
 
+
+func togglePreview():
     showPreview = not showPreview
 
     if tween: tween.kill()
@@ -87,8 +90,6 @@ func _onClick() -> bool:
     else:
         tween.tween_property(panel, "position:y", 300, 0.4).from_current().set_ease(Tween.EASE_IN)
         tween.tween_property(panel, "visible", false, 0)
-
-    return true
 
 func _on_panel_gui_input(event: InputEvent) -> void:
     if event is InputEventMouseButton:
@@ -114,6 +115,7 @@ func moveUp() -> void:
 func accept(score: float) -> void:
     $clock.hide()
     $check.show()
+    togglePreview()
     Effects.sound("orderDone")
 
     $stars.show()
@@ -125,6 +127,7 @@ func accept(score: float) -> void:
 func fail() -> void:
     $clock.hide()
     $cross.show()
+    togglePreview()
     Effects.sound("orderFail")
     removeOrder()
 
