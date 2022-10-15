@@ -1,7 +1,34 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://byysliwit3wgn"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://byysliwit3wgn"]
 
+[ext_resource type="Texture2D" uid="uid://bwmfn4bfqrsso" path="res://sprites/btn.png" id="1_1sbsv"]
 [ext_resource type="Texture2D" uid="uid://c8njfc8pej7pm" path="res://sprites/order-large.png" id="1_db2up"]
+[ext_resource type="StyleBox" uid="uid://w3erdo5af83" path="res://ui/btn-hover-stylebox.tres" id="1_ngcfk"]
 [ext_resource type="FontFile" uid="uid://cjg6wbdr4j87q" path="res://fonts/PixeloidMono-1G8ae.ttf" id="1_xbbro"]
+[ext_resource type="Texture2D" uid="uid://b5cqxajsalfs7" path="res://sprites/btn-pressed.png" id="3_7bmt5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i201x"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_1sbsv")
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 6.0
+margin_bottom = 6.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_moqv8"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+texture = ExtResource("3_7bmt5")
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 6.0
+margin_bottom = 6.0
+region_rect = Rect2(0, 0, 32, 32)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdl7b"]
 texture = ExtResource("1_db2up")
@@ -15,6 +42,10 @@ region_rect = Rect2(0, 0, 300, 300)
 default_font = ExtResource("1_xbbro")
 BoxContainer/constants/separation = 10
 Button/font_sizes/font_size = 13
+Button/styles/focus = ExtResource("1_ngcfk")
+Button/styles/hover = ExtResource("1_ngcfk")
+Button/styles/normal = SubResource("StyleBoxTexture_i201x")
+Button/styles/pressed = SubResource("StyleBoxTexture_moqv8")
 GameTitle/base_type = &"Label"
 GameTitle/colors/font_color = Color(0.729412, 0.458824, 0.415686, 1)
 GameTitle/colors/font_outline_color = Color(0.729412, 0.458824, 0.415686, 1)
@@ -30,3 +61,7 @@ MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_qdl7b")
+PauseTitle/base_type = &"Label"
+PauseTitle/colors/font_color = Color(1, 1, 1, 1)
+PauseTitle/colors/font_outline_color = Color(1, 1, 1, 1)
+PauseTitle/font_sizes/font_size = 31

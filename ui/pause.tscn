@@ -12,7 +12,6 @@ layer = 12
 script = ExtResource("1_16085")
 
 [node name="root" type="Panel" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -37,12 +36,13 @@ offset_bottom = 260.0
 
 [node name="title" type="Label" parent="root/margin/items"]
 layout_mode = 2
-offset_top = 47.0
+offset_top = 39.0
 offset_right = 460.0
-offset_bottom = 72.0
+offset_bottom = 80.0
 grow_horizontal = 2
 pivot_offset = Vector2(240, 30)
 size_flags_vertical = 6
+theme_type_variation = &"PauseTitle"
 text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -55,15 +55,18 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-alignment = 1
+alignment = 2
 
 [node name="end" type="Button" parent="root/margin/items/btns"]
 layout_mode = 2
-offset_top = 48.0
-offset_right = 460.0
-offset_bottom = 72.0
+offset_left = 204.0
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Exit"
 script = ExtResource("2_koidk")
 
