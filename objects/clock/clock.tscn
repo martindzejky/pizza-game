@@ -1,8 +1,135 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8eyata53lsrj"]
+[gd_scene load_steps=13 format=3 uid="uid://b8eyata53lsrj"]
 
 [ext_resource type="Texture2D" uid="uid://dimp1yqntdub1" path="res://sprites/clock.png" id="1_obsir"]
 [ext_resource type="Script" path="res://objects/clock/clock.gd" id="1_oip3x"]
 [ext_resource type="Texture2D" uid="uid://b7pocuro6x53p" path="res://sprites/clock-hand.png" id="2_2vbsq"]
+
+[sub_resource type="Animation" id="Animation_y7jy1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("smallHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_oveex"]
+resource_name = "smallHand"
+length = 180.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("smallHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 180),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 4.71239]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5udu"]
+_data = {
+"RESET": SubResource("Animation_y7jy1"),
+"smallHand": SubResource("Animation_oveex")
+}
+
+[sub_resource type="Animation" id="Animation_ynsfy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("largeHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_u8gft"]
+resource_name = "largeHand"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("largeHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 4.71239]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scaleAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["scale"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a72jf"]
+_data = {
+"RESET": SubResource("Animation_ynsfy"),
+"largeHand": SubResource("Animation_u8gft")
+}
+
+[sub_resource type="Animation" id="Animation_g54b3"]
+resource_name = "scale"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.435275, 0.435275),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hynpd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o76gd"]
+_data = {
+"RESET": SubResource("Animation_hynpd"),
+"scale": SubResource("Animation_g54b3")
+}
 
 [node name="clock" type="Node2D"]
 script = ExtResource("1_oip3x")
@@ -10,7 +137,14 @@ script = ExtResource("1_oip3x")
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_obsir")
 
-[node name="hand" type="Sprite2D" parent="."]
+[node name="smallHand" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.621247, 1)
+texture = ExtResource("2_2vbsq")
+centered = false
+offset = Vector2(0, -1)
+
+[node name="largeHand" type="Sprite2D" parent="."]
 rotation = -1.5708
 texture = ExtResource("2_2vbsq")
 centered = false
@@ -20,5 +154,22 @@ offset = Vector2(0, -1)
 wait_time = 180.0
 one_shot = true
 autostart = true
+
+[node name="smallHandAnimation" type="AnimationPlayer" parent="."]
+autoplay = "smallHand"
+libraries = {
+"": SubResource("AnimationLibrary_p5udu")
+}
+
+[node name="largeHandAnimation" type="AnimationPlayer" parent="."]
+autoplay = "largeHand"
+libraries = {
+"": SubResource("AnimationLibrary_a72jf")
+}
+
+[node name="scaleAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o76gd")
+}
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
