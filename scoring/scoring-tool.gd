@@ -24,6 +24,7 @@ func _process(delta):
     # find all dough and score them
     var pizzas = get_tree().get_nodes_in_group("dough")
     for pizza in pizzas:
+        if not pizza.visible: continue
         var score = get_node("scorer").score(pizza, true)
         pizza.score = score
 
@@ -35,6 +36,7 @@ func _draw():
     # find all dough and draw their score
     var pizzas = get_tree().get_nodes_in_group("dough")
     for pizza in pizzas:
+        if not pizza.visible: continue
         var position = Vector2(pizza.position.x - starsTexture.get_width()/2, pizza.position.y + 40)
         var src = Rect2(Vector2(), starsTexture.get_size())
         var rect = Rect2(position, starsTexture.get_size())

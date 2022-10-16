@@ -28,6 +28,7 @@ position = Vector2(169, 163)
 recipe = ["mushroom", "rukola"]
 
 [node name="dough" parent="." instance=ExtResource("5_qyveq")]
+visible = false
 position = Vector2(68, 42)
 progress = 8
 cookProgress = 6.0
@@ -38,9 +39,11 @@ self_modulate = Color(0.857143, 0.857143, 0.857143, 1)
 frame = 8
 
 [node name="dough2" parent="." instance=ExtResource("5_qyveq")]
+visible = false
 position = Vector2(173, 48)
 progress = 10
 cookProgress = 7.0
+score = 1.0
 
 [node name="sprite" parent="dough2" index="0"]
 self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
@@ -52,24 +55,30 @@ frame = 10
 position = Vector2(271, 45)
 progress = 10
 cookProgress = 7.0
+score = 3.0
 
 [node name="sprite" parent="dough3" index="0"]
 self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
 frame = 10
 
 [node name="tomato-base" parent="dough3" instance=ExtResource("7_ykq64")]
+cookProgress = 5.0
 
 [node name="rukola" parent="dough3" instance=ExtResource("8_otcij")]
 position = Vector2(-8, -12)
+cookProgress = 5.0
 
 [node name="rukola2" parent="dough3" instance=ExtResource("8_otcij")]
 position = Vector2(13, 9)
+cookProgress = 5.0
 
 [node name="mushroom" parent="dough3" instance=ExtResource("9_h67fx")]
 position = Vector2(-7, 9)
+cookProgress = 5.0
 
 [node name="mushroom2" parent="dough3" instance=ExtResource("9_h67fx")]
 position = Vector2(15, -16)
+cookProgress = 5.0
 
 [editable path="dough"]
 [editable path="dough2"]
