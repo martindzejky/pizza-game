@@ -1,6 +1,9 @@
 @tool
 extends Node2D
 
+# because this is an autoload, hard-code the path to the data resource
+var scoringData: ScoringData = preload("res://scoring/scoring-data.tres")
+
 func _ready():
     # hidden collection of submitted pizzas
     if not Engine.is_editor_hint(): hide()
@@ -48,8 +51,11 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
     if not 'recipe' in order: return 0.0
     if order.recipe.size() == 0: return 0.0
 
+    var score = 5.0
+
     print("------------")
     print("Pizza scoring:")
+    print("Starting score: ", score)
 
     # INGREDIENTS
 
@@ -68,60 +74,72 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 
         ingredients += 1
 
-        var score := 0.0
+        # TODO: tweakable
+        var ingredientScore := 0.0
         if count <= 2:
-            score = clamp(count / 2.0, 0.0, 1.0)
+            ingredientScore = clamp(count / 2.0, 0.0, 1.0)
         else:
-            score = clamp((4 - count) / 2.0, 0.0, 1.0)
+            ingredientScore = clamp((4 - count) / 2.0, 0.0, 1.0)
 
 
         print("Ingredient: ", order.recipe[i], " count: ", count)
-        print("Ingredient score: ", score)
+        print("Ingredient score: ", ingredientScore)
 
-        fulfilledIngredients += score
+        fulfilledIngredients += ingredientScore
         previousIngredient = order.recipe[i]
 
-    # TODO: extra ingredients are not counted
+    # TODO: unrequested ingredients are not counted yet
 
     var ingredientScore =  float(fulfilledIngredients) / ingredients
 
     print("Ingredients total score: ", ingredientScore)
-    print("Ingredients: ", ingredients)
-    print("Fulfilled ingredients: ", fulfilledIngredients)
+    score *= ingredientScore # TODO: easing
+    print("Score after ingredients: ", score)
 
     # DOUGH PROCESS and COOKING
 
-    var dougScore = (pizza.getProgress() + pizza.getCookProgress()) / 2.0
+    var dougScore = pizza.getProgress()
+    var doughCookScore = pizza.getCookProgress()
 
     print("Dough score: ", dougScore)
-    print("Dough progress: ", pizza.getProgress())
-    print("Dough cook progress: ", pizza.getCookProgress())
+    print("Dough cook score: ", doughCookScore)
+
+    score *= dougScore # TODO: easing
+    print("Score after dough: ", score)
+    score *= doughCookScore # TODO: easing
+    print("Score after dough cook: ", score)
 
     # INGREDIENTS COOKING
 
     var ingredientsScore = pizza.get_children().filter(func(node): return node.is_in_group("ingredient")).reduce(func(acc, node): return acc * node.getCookProgress(), 1.0)
 
     print("Ingredients cook score: ", ingredientsScore)
+    score *= ingredientsScore # TODO: easing
+    print("Score after ingredients cook: ", score)
 
-    # TOMATE BASE
+    # TOMATO BASE
 
     var hasBase = _pizzaHasTomatoBase(pizza)
     if hasBase:
         print("Pizza has tomato base")
+        # no changes to the score
     else:
         print("Pizza has no tomato base")
+        score *= 0.5 # TODO: tweakable
+        print("Score after tomato base reduction: ", score)
 
-    # COMBINE
-
-    var score = (ingredientScore + dougScore + ingredientsScore) / 3.0 * 5.0
-
-    if not hasBase:
-        score *= 0.7
-        print("Pizza has no tomato base, score reduced by 30%")
+    # FINAL MODIFICATIONS
 
     if pizza.isCookOvercooked():
         score *= 0.2
-        print("Pizza is burnt, score reduced by 80%")
+        print("Pizza is burnt, score reduced by 80% to: ", score)
+
+    for ingredient in pizza.get_children().filter(func(node): return node.is_in_group("ingredient")):
+        if ingredient.isCookOvercooked():
+            score *= 0.8
+            print("Ingredient is burnt, score reduced by 20% to: ", score)
+
+    # TOTAL
 
     print("Total score: ", score)
     print("------------")

@@ -128,7 +128,7 @@ func getProgress():
 
     p = p / (PROGRESS_OVERDONE - PROGRESS_READY)
 
-    return clamp(1.0 - p / 2, 0.0, 1.0)
+    return clamp(1.0 - p, 0.0, 1.0)
 
 func getCookProgress():
     var p = float(cookProgress) - COOK_PROGRESS_READY
@@ -136,7 +136,7 @@ func getCookProgress():
 
     p = p / (COOK_PROGRESS_OVERCOOKED - COOK_PROGRESS_READY)
 
-    return clamp(1.0 - p / 2, 0.0, 1.0)
+    return clamp(1.0 - p, 0.0, 1.0)
 
 
 func insertIngredient() -> bool:

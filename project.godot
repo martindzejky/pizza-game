@@ -18,10 +18,16 @@ _global_script_classes=[{
 "class": &"Pickable",
 "language": &"GDScript",
 "path": "res://scripts/pickable.gd"
+}, {
+"base": "Resource",
+"class": &"ScoringData",
+"language": &"GDScript",
+"path": "res://scoring/scoring-data.gd"
 }]
 _global_script_class_icons={
 "ExitBtn": "",
-"Pickable": ""
+"Pickable": "",
+"ScoringData": ""
 }
 
 [application]
