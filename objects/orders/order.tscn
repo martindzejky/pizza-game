@@ -146,3 +146,4 @@ region_rect = Rect2(0, 0, 80, 16)
 
 [connection signal="timeout" from="failTimer" to="." method="fail"]
 [connection signal="gui_input" from="preview/panel" to="." method="_on_panel_gui_input"]
+[connection signal="gui_input" from="preview/panel/background" to="." method="_on_panel_gui_input"]
