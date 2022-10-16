@@ -4,17 +4,17 @@
 
 [resource]
 script = ExtResource("1_jgpju")
-requiredIngredients = 2
-requiredExtraIngredients = 3
-requiredIngredientsEasing = 0.378928
-requiredExtraIngredientsEasing = 0.757857
-unrequestedIngredientPenalty = 0.14
+requiredIngredients = 3
+requiredExtraIngredients = 5
+requiredIngredientsEasing = 0.203063
+requiredExtraIngredientsEasing = 0.615571
+unrequestedIngredientPenalty = 0.16
 rawTime = 1.0
 requiredCookingTime = 5.0
 overcookedTime = 12.0
 doughEasing = 0.188203
-cookingEasing = 0.100856
-ingredientEasing = 0.0332701
+cookingEasing = 0.13308
+ingredientEasing = 0.0620842
 noTomatoBasePenalty = 0.45
 overcookedPenalty = 0.8
 overcookedIngredientPenalty = 0.1
