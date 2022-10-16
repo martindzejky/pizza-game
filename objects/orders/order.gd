@@ -115,7 +115,7 @@ func moveUp() -> void:
 func accept(score: float) -> void:
     $clock.hide()
     $check.show()
-    togglePreview()
+    if showPreview: togglePreview()
     Effects.sound("orderDone")
 
     $stars.show()
@@ -127,7 +127,7 @@ func accept(score: float) -> void:
 func fail() -> void:
     $clock.hide()
     $cross.show()
-    togglePreview()
+    if showPreview: togglePreview()
     Effects.sound("orderFail")
     removeOrder()
 
