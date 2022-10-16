@@ -33,10 +33,9 @@ func swing(node: Node) -> void:
         node = node.get_node("sprite")
 
     # meta to track swings
-    var swings = node.get_meta("swing")
-
-    if swings == null:
-        swings = 0
+    var swings = 0
+    if node.has_meta("swing"):
+        swings = node.get_meta("swing")
 
     node.set_meta("swing", swings + 1)
 
