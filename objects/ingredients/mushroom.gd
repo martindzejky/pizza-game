@@ -24,9 +24,11 @@ func _process(delta):
     var color = 1
 
     if cookProgress <= scoringData.requiredCookingTime:
-        color = lerp(1.0, 0.95, cookProgress / scoringData.requiredCookingTime)
-    elif cookProgress <= scoringData.overcookedTime:
-        color = lerp(0.95, 0.3, (cookProgress - scoringData.requiredCookingTime) / (scoringData.overcookedTime - scoringData.requiredCookingTime))
+        color = lerp(1.0, 0.9, cookProgress / scoringData.requiredCookingTime)
+    elif cookProgress <= scoringData.overcookedTime :
+        var value = (cookProgress - scoringData.requiredCookingTime) / (scoringData.overcookedTime - scoringData.requiredCookingTime)
+        var valueEased = 1-ease(1-value, scoringData.ingredientEasing)
+        color = lerp(0.9, 0.3, valueEased)
     else:
         color = 0.2
 

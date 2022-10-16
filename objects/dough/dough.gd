@@ -37,12 +37,14 @@ func _process(delta):
     $sprite.frame = progress
 
     # update saturation based on cook progress
-    var color = 1
+    var color = 1.0
 
     if cookProgress <= scoringData.requiredCookingTime:
-        color = lerp(1.0, 0.95, cookProgress / scoringData.requiredCookingTime)
+        color = lerp(1.0, 0.9, cookProgress / scoringData.requiredCookingTime)
     elif cookProgress <= scoringData.overcookedTime :
-        color = lerp(0.95, 0.3, (cookProgress - scoringData.requiredCookingTime) / (scoringData.overcookedTime  - scoringData.requiredCookingTime))
+        var value = (cookProgress - scoringData.requiredCookingTime) / (scoringData.overcookedTime - scoringData.requiredCookingTime)
+        var valueEased = 1-ease(1-value, scoringData.cookingEasing)
+        color = lerp(0.9, 0.3, valueEased)
     else:
         color = 0.2
 

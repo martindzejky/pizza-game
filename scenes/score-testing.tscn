@@ -27,16 +27,16 @@ centered = false
 
 [node name="order" parent="." instance=ExtResource("6_kfjes")]
 position = Vector2(169, 163)
-recipe = ["mushroom", "rukola", "rukola"]
+recipe = ["mushroom", "rukola"]
 
 [node name="dough" parent="." instance=ExtResource("5_qyveq")]
 position = Vector2(271, 45)
 progress = 8
 cookProgress = 7.0
-score = 3.82178
+score = 4.97087
 
 [node name="sprite" parent="dough" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="tomato-base" parent="dough" instance=ExtResource("7_ykq64")]
@@ -62,10 +62,10 @@ cookProgress = 7.0
 position = Vector2(362, 44)
 progress = 8
 cookProgress = 7.0
-score = 2.10198
+score = 2.73398
 
 [node name="sprite" parent="dough2" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="rukola" parent="dough2" instance=ExtResource("8_otcij")]
@@ -88,10 +88,10 @@ cookProgress = 7.0
 position = Vector2(359, 140)
 progress = 8
 cookProgress = 7.0
-score = 1.75523
+score = 2.28297
 
 [node name="sprite" parent="dough3" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="tomato-base" parent="dough3" instance=ExtResource("7_ykq64")]
@@ -145,10 +145,10 @@ cookProgress = 16.0
 position = Vector2(274, 137)
 progress = 8
 cookProgress = 7.0
-score = 1.03451
+score = 2.32709
 
 [node name="sprite" parent="dough5" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="tomato-base" parent="dough5" instance=ExtResource("7_ykq64")]
@@ -162,10 +162,10 @@ cookProgress = 7.0
 position = Vector2(274, 226)
 progress = 8
 cookProgress = 7.0
-score = 1.90295
+score = 4.33822
 
 [node name="sprite" parent="dough6" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="tomato-base" parent="dough6" instance=ExtResource("7_ykq64")]
@@ -183,10 +183,10 @@ cookProgress = 7.0
 position = Vector2(172, 46)
 progress = 8
 cookProgress = 7.0
-score = 2.67525
+score = 3.47961
 
 [node name="sprite" parent="dough7" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="tomato-base" parent="dough7" instance=ExtResource("7_ykq64")]
@@ -207,10 +207,10 @@ position = Vector2(15, -16)
 position = Vector2(67, 46)
 progress = 8
 cookProgress = 7.0
-score = 4.99355
+score = 4.99316
 
 [node name="sprite" parent="dough8" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="tomato-base" parent="dough8" instance=ExtResource("7_ykq64")]
@@ -252,10 +252,10 @@ cookProgress = 7.0
 position = Vector2(67, 136)
 progress = 8
 cookProgress = 7.0
-score = 2.82659
+score = 3.50744
 
 [node name="sprite" parent="dough9" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="tomato-base" parent="dough9" instance=ExtResource("7_ykq64")]
@@ -288,10 +288,10 @@ cookProgress = 7.0
 position = Vector2(68, 226)
 progress = 8
 cookProgress = 7.0
-score = 1.54617
+score = 1.74626
 
 [node name="sprite" parent="dough10" index="0"]
-self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+self_modulate = Color(0.899951, 0.899951, 0.899951, 1)
 frame = 8
 
 [node name="tomato-base" parent="dough10" instance=ExtResource("7_ykq64")]
@@ -336,6 +336,15 @@ cookProgress = 7.0
 position = Vector2(-5, -15)
 cookProgress = 7.0
 
+[node name="dough11" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(176, 223)
+progress = 11
+cookProgress = 12.862
+
+[node name="sprite" parent="dough11" index="0"]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+frame = 11
+
 [editable path="dough"]
 [editable path="dough2"]
 [editable path="dough3"]
@@ -346,3 +355,4 @@ cookProgress = 7.0
 [editable path="dough8"]
 [editable path="dough9"]
 [editable path="dough10"]
+[editable path="dough11"]
