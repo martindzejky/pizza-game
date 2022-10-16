@@ -11,8 +11,8 @@ extends Node2D
 
 func _ready():
     # dough
-    #$dough.rotation = randf_range(-PI/3, PI/3)
-    $dough.frame = randi_range($dough.frame, $dough.hframes - 4)
+    $dough.progress = randi_range(6, 12)
+    $dough.cookProgress = randf_range(2.0, 14.0)
 
     # tomato base
     if randf() < 0.9:
@@ -21,7 +21,8 @@ func _ready():
         tomato.position.x = -2 + randi() % 4
         tomato.get_node("sprite").rotation = randf() * PI * 2
         tomato.get_node("sprite").self_modulate.a = 0.7
-        add_child(tomato)
+        tomato.cookProgress = $dough.cookProgress + randf_range(-2.0, 2.0)
+        $dough.add_child(tomato)
 
     # ingredients
     for i in range(randi_range(3, 8)):
@@ -30,7 +31,8 @@ func _ready():
         ingredient.position.y = randf_range(-17, 17)
         ingredient.get_node("sprite").rotation = randf() * PI * 2
         ingredient.get_node("sprite").self_modulate.a = 0.7
-        add_child(ingredient)
+        ingredient.cookProgress = $dough.cookProgress + randf_range(-2.0, 2.0)
+        $dough.add_child(ingredient)
 
 
 func _process(delta):
