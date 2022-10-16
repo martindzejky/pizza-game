@@ -9,10 +9,7 @@ const PROGRESS_OVERDONE = 13
 @export var progress := 0
 
 # cooking in the oven
-const COOK_PROGRESS_RAW = 1.0
-const COOK_PROGRESS_READY = 5.0
-# TODO: COOK_PROGRESS_WELL_MADE for bonus points
-const COOK_PROGRESS_OVERCOOKED = 12.0
+@export var scoringData: ScoringData
 @export var cookProgress := 0.0
 
 # damage from hitting cooked dough
@@ -42,10 +39,10 @@ func _process(delta):
     # update saturation based on cook progress
     var color = 1
 
-    if cookProgress <= COOK_PROGRESS_READY:
-        color = lerp(1.0, 0.95, cookProgress / COOK_PROGRESS_READY)
-    elif cookProgress <= COOK_PROGRESS_OVERCOOKED:
-        color = lerp(0.95, 0.3, (cookProgress - COOK_PROGRESS_READY) / (COOK_PROGRESS_OVERCOOKED - COOK_PROGRESS_READY))
+    if cookProgress <= scoringData.requiredCookingTime:
+        color = lerp(1.0, 0.95, cookProgress / scoringData.requiredCookingTime)
+    elif cookProgress <= scoringData.overcookedTime :
+        color = lerp(0.95, 0.3, (cookProgress - scoringData.requiredCookingTime) / (scoringData.overcookedTime  - scoringData.requiredCookingTime))
     else:
         color = 0.2
 
@@ -108,7 +105,7 @@ func onHitByDoughTool():
             queue_free()
 
 func isRaw():
-    return cookProgress < COOK_PROGRESS_RAW
+    return cookProgress < scoringData.rawTime
 
 func isReady():
     return progress >= PROGRESS_READY and progress < PROGRESS_OVERDONE
@@ -117,10 +114,10 @@ func isOverdone():
     return progress >= PROGRESS_OVERDONE
 
 func isCookReady():
-    return cookProgress >= COOK_PROGRESS_READY and cookProgress < COOK_PROGRESS_OVERCOOKED
+    return cookProgress >= scoringData.requiredCookingTime and cookProgress < scoringData.overcookedTime
 
 func isCookOvercooked():
-    return cookProgress >= COOK_PROGRESS_OVERCOOKED
+    return cookProgress >= scoringData.overcookedTime
 
 func getProgress():
     var p = float(progress) - PROGRESS_READY
@@ -131,10 +128,10 @@ func getProgress():
     return clamp(1.0 - p, 0.0, 1.0)
 
 func getCookProgress():
-    var p = float(cookProgress) - COOK_PROGRESS_READY
+    var p = float(cookProgress) - scoringData.requiredCookingTime
     if p < 0: return 0.0
 
-    p = p / (COOK_PROGRESS_OVERCOOKED - COOK_PROGRESS_READY)
+    p = p / (scoringData.overcookedTime  - scoringData.requiredCookingTime)
 
     return clamp(1.0 - p, 0.0, 1.0)
 

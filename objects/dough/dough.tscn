@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://k3ssjquq313h"]
+[gd_scene load_steps=14 format=3 uid="uid://k3ssjquq313h"]
 
 [ext_resource type="Script" path="res://objects/dough/dough.gd" id="1_lfh2g"]
 [ext_resource type="Texture2D" uid="uid://bjubtkw5ihv2n" path="res://sprites/dough.png" id="1_pxcur"]
+[ext_resource type="Resource" uid="uid://dab7bbifycg5y" path="res://scoring/scoring-data.tres" id="2_2ni0n"]
 [ext_resource type="PackedScene" uid="uid://cy4sy1ygetyko" path="res://objects/ingredients/tomato-base.tscn" id="2_brcuq"]
 [ext_resource type="Texture2D" uid="uid://bkj7r2l37k6ty" path="res://sprites/smoke-particle.png" id="3_h0464"]
 [ext_resource type="Texture2D" uid="uid://c1cmdna4pc423" path="res://sprites/warm-particle.png" id="3_rfbpu"]
@@ -56,6 +57,7 @@ color_initial_ramp = SubResource("GradientTexture1D_2qeyh")
 
 [node name="dough" type="Node2D" groups=["click", "dough"]]
 script = ExtResource("1_lfh2g")
+scoringData = ExtResource("2_2ni0n")
 tomatoBaseObj = ExtResource("2_brcuq")
 
 [node name="sprite" type="Sprite2D" parent="."]

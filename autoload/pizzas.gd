@@ -11,23 +11,23 @@ func _ready():
 
 # Score pizza based on open orders. Use the best rating order.
 # If there's no order, the score is 0. Scoring is 0 (worst) - 5 (best).
-func score(pizza: Node, testMode = false) -> int:
+func score(pizza: Node, testMode = false) -> float:
 
     if pizza.isRaw():
         # who would eat that...
-        pizza.score = 0
+        if not testMode: pizza.score = 0.0
         print("Raw pizza!")
-        return 0
+        return 0.0
 
     var openOrders = get_tree().get_nodes_in_group("order")
 
     if openOrders.size() == 0:
         # :'( no one to eat it...
-        pizza.score = 0
+        if not testMode: pizza.score = 0.0
         print("No orders, pizza scored 0")
-        return 0
+        return 0.0
 
-    var bestScore = 0
+    var bestScore = 0.0
     var bestOrder = openOrders[0]
 
     for order in openOrders:
@@ -112,7 +112,7 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
             ingredientScore *= 1.0 - scoringData.unrequestedIngredientPenalty
 
     print("Ingredients total score: ", ingredientScore)
-    score *= ingredientScore # TODO: easing
+    score *= ingredientScore
     print("Score after ingredients: ", score)
 
     # DOUGH PROCESS and COOKING
@@ -123,17 +123,26 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
     print("Dough score: ", dougScore)
     print("Dough cook score: ", doughCookScore)
 
-    score *= dougScore # TODO: easing
+    score *= ease(dougScore, scoringData.doughEasing)
     print("Score after dough: ", score)
-    score *= doughCookScore # TODO: easing
+    score *= ease(doughCookScore, scoringData.cookingEasing)
     print("Score after dough cook: ", score)
 
     # INGREDIENTS COOKING
 
-    var ingredientsScore = _pizzaGetIngredients(pizza).reduce(func(acc, node): return acc * node.getCookProgress(), 1.0)
+    print("Ingredients cooking:")
+    var ingredientCookingScore = 1.0
 
-    print("Ingredients cook score: ", ingredientsScore)
-    score *= ingredientsScore # TODO: easing
+    #_pizzaGetIngredients(pizza).reduce(func(acc, node): return acc * node.getCookProgress(), 1.0)
+    for pizzaIngredient in pizzaIngredients:
+        var ingCookScore = pizzaIngredient.getCookProgress()
+        print("  ", pizzaIngredient.name, " cooking score: ", ingCookScore)
+        ingredientCookingScore *= ease(ingCookScore, scoringData.ingredientEasing)
+        print("  ingredient cooking score: ", ingredientCookingScore)
+
+    print("Ingredients cooking total score: ", ingredientCookingScore)
+    var ingredientCookingWeightedScore = 1.0 - scoringData.ingredientCookingScoreWeight + scoringData.ingredientCookingScoreWeight * ingredientCookingScore
+    score *= ingredientCookingWeightedScore
     print("Score after ingredients cook: ", score)
 
     # TOMATO BASE
@@ -144,19 +153,19 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
         # no changes to the score
     else:
         print("Pizza has no tomato base")
-        score *= 0.5 # TODO: tweakable
+        score *= 1.0 - scoringData.noTomatoBasePenalty
         print("Score after tomato base reduction: ", score)
 
     # FINAL MODIFICATIONS
 
     if pizza.isCookOvercooked():
-        score *= 0.2
-        print("Pizza is burnt, score reduced by 80% to: ", score)
+        score *= 1.0 - scoringData.overcookedPenalty
+        print("Pizza is burnt, score reduced to: ", score)
 
     for ingredient in _pizzaGetIngredients(pizza):
         if ingredient.isCookOvercooked():
-            score *= 0.8
-            print("Ingredient is burnt, score reduced by 20% to: ", score)
+            score *= 1.0 - scoringData.overcookedIngredientPenalty
+            print("Ingredient is burnt, score reduced to: ", score)
 
     # TOTAL
 

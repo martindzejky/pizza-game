@@ -13,3 +13,28 @@ class_name ScoringData
 
 # how much does ingredient score decrease with each unrequested ingredient
 @export var unrequestedIngredientPenalty := 0.0
+
+# how long until a dough/ingredient is considered raw
+@export var rawTime := 0.0
+# how long a dough/ingredient needs to be cooked to be ready (full score)
+@export var requiredCookingTime := 0.0
+# how long a dough/ingredient needs to be cooked to be overcooked (no score)
+@export var overcookedTime := 0.0
+
+# easing between perfect dough and smashed dough
+@export_exp_easing("attenuation") var doughEasing := 0.0
+# easing between full cooking score and overcooked no score
+@export_exp_easing("attenuation") var cookingEasing := 0.0
+# easing between perfect ingredient and overcooked ingredient
+@export_exp_easing("attenuation") var ingredientEasing := 0.0
+
+# penalty for not including a tomato base
+@export var noTomatoBasePenalty := 0.0
+
+# penalty for burning the pizza
+@export var overcookedPenalty := 0.0
+# penalty for burning an ingredient
+@export var overcookedIngredientPenalty := 0.0
+
+# how much ingredient cooking score contributes to total score
+@export var ingredientCookingScoreWeight := 0.0
