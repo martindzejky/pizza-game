@@ -33,7 +33,7 @@ func _process(delta):
     super(delta)
 
     # update sprite frame based on progress
-    if progress >= $sprite.hframes:
+    if progress >= $sprite.hframes and not Engine.is_editor_hint():
         queue_free()
         return
 

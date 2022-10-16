@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://1ily55xqq4nj"]
+[gd_scene load_steps=10 format=3 uid="uid://1ily55xqq4nj"]
 
 [ext_resource type="Texture2D" uid="uid://cvfyhejdairpv" path="res://sprites/menu-table.png" id="1_8hbce"]
 [ext_resource type="Script" path="res://scoring/scoring-tool.gd" id="1_550ce"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bjwn61djpog7d" path="res://sprites/stars.png" id="2_o2scp"]
 [ext_resource type="PackedScene" uid="uid://k3ssjquq313h" path="res://objects/dough/dough.tscn" id="5_qyveq"]
 [ext_resource type="PackedScene" uid="uid://qn2hf24a86cg" path="res://objects/orders/order.tscn" id="6_kfjes"]
+[ext_resource type="PackedScene" uid="uid://cy4sy1ygetyko" path="res://objects/ingredients/tomato-base.tscn" id="7_ykq64"]
+[ext_resource type="PackedScene" uid="uid://blwk8duhcsvmu" path="res://objects/ingredients/rukola.tscn" id="8_otcij"]
+[ext_resource type="PackedScene" uid="uid://cxs3415am8mfp" path="res://objects/ingredients/mushroom.tscn" id="9_h67fx"]
 
 [node name="score-testing" type="Node2D"]
 editor_description = "This scene is used for tweaking the scoring system and seeing the results in real time in the editor."
@@ -22,7 +25,7 @@ centered = false
 
 [node name="order" parent="." instance=ExtResource("6_kfjes")]
 position = Vector2(169, 163)
-recipe = ["mushroom"]
+recipe = ["mushroom", "rukola"]
 
 [node name="dough" parent="." instance=ExtResource("5_qyveq")]
 position = Vector2(68, 42)
@@ -34,4 +37,40 @@ score = 2.0
 self_modulate = Color(0.857143, 0.857143, 0.857143, 1)
 frame = 8
 
+[node name="dough2" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(173, 48)
+progress = 10
+cookProgress = 7.0
+
+[node name="sprite" parent="dough2" index="0"]
+self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+frame = 10
+
+[node name="tomato-base" parent="dough2" instance=ExtResource("7_ykq64")]
+
+[node name="dough3" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(271, 45)
+progress = 10
+cookProgress = 7.0
+
+[node name="sprite" parent="dough3" index="0"]
+self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+frame = 10
+
+[node name="tomato-base" parent="dough3" instance=ExtResource("7_ykq64")]
+
+[node name="rukola" parent="dough3" instance=ExtResource("8_otcij")]
+position = Vector2(-8, -12)
+
+[node name="rukola2" parent="dough3" instance=ExtResource("8_otcij")]
+position = Vector2(13, 9)
+
+[node name="mushroom" parent="dough3" instance=ExtResource("9_h67fx")]
+position = Vector2(-7, 9)
+
+[node name="mushroom2" parent="dough3" instance=ExtResource("9_h67fx")]
+position = Vector2(15, -16)
+
 [editable path="dough"]
+[editable path="dough2"]
+[editable path="dough3"]

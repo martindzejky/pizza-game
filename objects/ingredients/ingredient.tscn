@@ -17,6 +17,7 @@ monitoring = false
 monitorable = false
 
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
+visible = false
 shape = SubResource("CircleShape2D_uv58m")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
