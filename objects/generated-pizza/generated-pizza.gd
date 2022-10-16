@@ -14,6 +14,9 @@ func _ready():
     $dough.progress = randi_range(6, 12)
     $dough.cookProgress = randf_range(2.0, 14.0)
 
+    # disable the warm particles, they don't look good in the menu where pizzas scroll horizontally
+    $dough.get_node("particlesWarm").hide()
+
     # tomato base
     if randf() < 0.9:
         var tomato = tomatoBase.instantiate()
