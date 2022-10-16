@@ -6,3 +6,6 @@
 script = ExtResource("1_jgpju")
 requiredIngredients = 2
 requiredExtraIngredients = 3
+requiredIngredientsEasing = 1.0
+requiredExtraIngredientsEasing = 1.0
+unrequestedIngredientPenalty = 0.06

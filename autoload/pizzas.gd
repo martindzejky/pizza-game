@@ -59,38 +59,57 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 
     # INGREDIENTS
 
-    var ingredients = 0.0
-    var fulfilledIngredients = 0.0
+    print("Ingredients:")
+    var ingredientScore = 1.0
 
-    var previousIngredient
-    for i in range(order.recipe.size()):
-        var count = _pizzaIngredientCount(pizza, order.recipe[i])
+    var pizzaIngredients = _pizzaGetIngredients(pizza)
+    var recipeIngredients = order.recipe.reduce(_reduceOrderIngredients, {})
 
-        # detect extra ingredients
-        if previousIngredient == order.recipe[i] and count > 3:
-            print("Extra ingredient fulfilled: ", order.recipe[i])
-            fulfilledIngredients += 0.4 # BONUS!
-            continue
+    # first check the recipe ingredients
+    for recipeIngredient in recipeIngredients:
+        var onPizza = _pizzaIngredientCount(pizza, recipeIngredient)
 
-        ingredients += 1
+        if recipeIngredients[recipeIngredient] > 1:
+            # extra required
+            var ingScore = 0.0
 
-        # TODO: tweakable
-        var ingredientScore := 0.0
-        if count <= 2:
-            ingredientScore = clamp(count / 2.0, 0.0, 1.0)
+            if onPizza >= scoringData.requiredExtraIngredients:
+                ingScore = 1.0
+            elif onPizza <= 0:
+                ingScore = 0.0
+            else:
+                var value = onPizza / scoringData.requiredExtraIngredients
+                ingScore = ease(value, scoringData.requiredExtraIngredientsEasing)
+
+            print("  ", recipeIngredient, " (extra) score: ", ingScore)
+            ingredientScore *= ingScore
+            print("  ingredient score: ", ingredientScore)
+
         else:
-            ingredientScore = clamp((4 - count) / 2.0, 0.0, 1.0)
+            # normal required
+            var ingScore = 0.0
 
+            if onPizza >= scoringData.requiredIngredients:
+                ingScore = 1.0
+            elif onPizza <= 0:
+                ingScore = 0.0
+            else:
+                var value = onPizza / scoringData.requiredIngredients
+                ingScore = ease(value, scoringData.requiredIngredientsEasing)
 
-        print("Ingredient: ", order.recipe[i], " count: ", count)
-        print("Ingredient score: ", ingredientScore)
+            print("  ", recipeIngredient, " score: ", ingScore)
+            ingredientScore *= ingScore
+            print("  ingredient score: ", ingredientScore)
 
-        fulfilledIngredients += ingredientScore
-        previousIngredient = order.recipe[i]
+    # now check ingredients that weren't requested by the recipe
+    for pizzaIngredient in pizzaIngredients:
+        # ignore tomato base
+        if pizzaIngredient.is_in_group("tomato-base"): continue
 
-    # TODO: unrequested ingredients are not counted yet
-
-    var ingredientScore =  float(fulfilledIngredients) / ingredients
+        var groups = pizzaIngredient.get_groups().filter(func (g): return g in recipeIngredients)
+        if groups.size() == 0:
+            print("  unrequested: ", pizzaIngredient)
+            ingredientScore *= 1.0 - scoringData.unrequestedIngredientPenalty
 
     print("Ingredients total score: ", ingredientScore)
     score *= ingredientScore # TODO: easing
@@ -111,7 +130,7 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 
     # INGREDIENTS COOKING
 
-    var ingredientsScore = pizza.get_children().filter(func(node): return node.is_in_group("ingredient")).reduce(func(acc, node): return acc * node.getCookProgress(), 1.0)
+    var ingredientsScore = _pizzaGetIngredients(pizza).reduce(func(acc, node): return acc * node.getCookProgress(), 1.0)
 
     print("Ingredients cook score: ", ingredientsScore)
     score *= ingredientsScore # TODO: easing
@@ -134,7 +153,7 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
         score *= 0.2
         print("Pizza is burnt, score reduced by 80% to: ", score)
 
-    for ingredient in pizza.get_children().filter(func(node): return node.is_in_group("ingredient")):
+    for ingredient in _pizzaGetIngredients(pizza):
         if ingredient.isCookOvercooked():
             score *= 0.8
             print("Ingredient is burnt, score reduced by 20% to: ", score)
@@ -146,9 +165,18 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
 
     return score
 
+func _pizzaGetIngredients(pizza: Node) -> Array:
+    return pizza.get_children().filter(func(node): return node.is_in_group("ingredient"))
 
 func _pizzaIngredientCount(pizza: Node, name: String) -> int:
     return pizza.get_children().filter(func (node): return node.is_in_group(name)).size()
 
 func _pizzaHasTomatoBase(pizza: Node) -> bool:
     return pizza.get_children().filter(func (node): return node.is_in_group("tomato-base")).size() > 0
+
+func _reduceOrderIngredients(acc, ingredient):
+    if ingredient in acc:
+        acc[ingredient] += 1
+    else:
+        acc[ingredient] = 1
+    return acc

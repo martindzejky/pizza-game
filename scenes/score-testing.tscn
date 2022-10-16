@@ -55,7 +55,6 @@ frame = 10
 position = Vector2(271, 45)
 progress = 8
 cookProgress = 6.0
-score = 1.0
 
 [node name="sprite" parent="dough3" index="0"]
 self_modulate = Color(0.857143, 0.857143, 0.857143, 1)
