@@ -40,7 +40,7 @@ func burstParticles() -> void:
     add_child(burstParticles)
 
     burstParticles.emitting = true
-    burstParticles.amount = burstParticles.amount + randi_range(-1, 1)
+    burstParticles.amount = burstParticles.amount + randi_range(0, 2)
 
     await get_tree().create_timer(burstParticles.lifetime).timeout
     burstParticles.queue_free()
