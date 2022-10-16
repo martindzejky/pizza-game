@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1ily55xqq4nj"]
+[gd_scene load_steps=12 format=3 uid="uid://1ily55xqq4nj"]
 
 [ext_resource type="Texture2D" uid="uid://cvfyhejdairpv" path="res://sprites/menu-table.png" id="1_8hbce"]
 [ext_resource type="Script" path="res://scoring/scoring-tool.gd" id="1_550ce"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cy4sy1ygetyko" path="res://objects/ingredients/tomato-base.tscn" id="7_ykq64"]
 [ext_resource type="PackedScene" uid="uid://blwk8duhcsvmu" path="res://objects/ingredients/rukola.tscn" id="8_otcij"]
 [ext_resource type="PackedScene" uid="uid://cxs3415am8mfp" path="res://objects/ingredients/mushroom.tscn" id="9_h67fx"]
+[ext_resource type="PackedScene" uid="uid://btss4yon75m3i" path="res://objects/ingredients/cheese.tscn" id="10_dgax3"]
+[ext_resource type="PackedScene" uid="uid://ddnarasqey1fu" path="res://objects/ingredients/olive.tscn" id="11_cdqk7"]
 
 [node name="score-testing" type="Node2D"]
 editor_description = "This scene is used for tweaking the scoring system and seeing the results in real time in the editor."
@@ -25,14 +27,13 @@ centered = false
 
 [node name="order" parent="." instance=ExtResource("6_kfjes")]
 position = Vector2(169, 163)
-recipe = ["mushroom", "rukola"]
+recipe = ["mushroom", "rukola", "rukola"]
 
 [node name="dough" parent="." instance=ExtResource("5_qyveq")]
-visible = false
 position = Vector2(271, 45)
 progress = 8
 cookProgress = 7.0
-score = 4.99355
+score = 3.82178
 
 [node name="sprite" parent="dough" index="0"]
 self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
@@ -58,11 +59,10 @@ position = Vector2(15, -16)
 cookProgress = 7.0
 
 [node name="dough2" parent="." instance=ExtResource("5_qyveq")]
-visible = false
 position = Vector2(362, 44)
 progress = 8
 cookProgress = 7.0
-score = 2.74645
+score = 2.10198
 
 [node name="sprite" parent="dough2" index="0"]
 self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
@@ -85,11 +85,10 @@ position = Vector2(15, -16)
 cookProgress = 7.0
 
 [node name="dough3" parent="." instance=ExtResource("5_qyveq")]
-visible = false
 position = Vector2(359, 140)
 progress = 8
 cookProgress = 7.0
-score = 2.94864
+score = 1.75523
 
 [node name="sprite" parent="dough3" index="0"]
 self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
@@ -115,7 +114,6 @@ position = Vector2(15, -16)
 cookProgress = 16.0
 
 [node name="dough4" parent="." instance=ExtResource("5_qyveq")]
-visible = false
 position = Vector2(437, 162)
 progress = 8
 cookProgress = 15.0
@@ -147,6 +145,7 @@ cookProgress = 16.0
 position = Vector2(274, 137)
 progress = 8
 cookProgress = 7.0
+score = 1.03451
 
 [node name="sprite" parent="dough5" index="0"]
 self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
@@ -159,8 +158,191 @@ cookProgress = 7.0
 position = Vector2(-8, -12)
 cookProgress = 7.0
 
+[node name="dough6" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(274, 226)
+progress = 8
+cookProgress = 7.0
+score = 1.90295
+
+[node name="sprite" parent="dough6" index="0"]
+self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+frame = 8
+
+[node name="tomato-base" parent="dough6" instance=ExtResource("7_ykq64")]
+cookProgress = 7.0
+
+[node name="rukola" parent="dough6" instance=ExtResource("8_otcij")]
+position = Vector2(-8, -12)
+cookProgress = 7.0
+
+[node name="mushroom" parent="dough6" instance=ExtResource("9_h67fx")]
+position = Vector2(-7, 9)
+cookProgress = 7.0
+
+[node name="dough7" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(172, 46)
+progress = 8
+cookProgress = 7.0
+score = 2.67525
+
+[node name="sprite" parent="dough7" index="0"]
+self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+frame = 8
+
+[node name="tomato-base" parent="dough7" instance=ExtResource("7_ykq64")]
+
+[node name="rukola" parent="dough7" instance=ExtResource("8_otcij")]
+position = Vector2(-8, -12)
+
+[node name="rukola2" parent="dough7" instance=ExtResource("8_otcij")]
+position = Vector2(13, 9)
+
+[node name="mushroom" parent="dough7" instance=ExtResource("9_h67fx")]
+position = Vector2(-7, 9)
+
+[node name="mushroom2" parent="dough7" instance=ExtResource("9_h67fx")]
+position = Vector2(15, -16)
+
+[node name="dough8" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(67, 46)
+progress = 8
+cookProgress = 7.0
+score = 4.99355
+
+[node name="sprite" parent="dough8" index="0"]
+self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+frame = 8
+
+[node name="tomato-base" parent="dough8" instance=ExtResource("7_ykq64")]
+cookProgress = 7.0
+
+[node name="rukola" parent="dough8" instance=ExtResource("8_otcij")]
+position = Vector2(-8, -12)
+cookProgress = 7.0
+
+[node name="rukola2" parent="dough8" instance=ExtResource("8_otcij")]
+position = Vector2(13, 9)
+rotation = -1.02835
+cookProgress = 7.0
+
+[node name="rukola3" parent="dough8" instance=ExtResource("8_otcij")]
+position = Vector2(6, -3)
+rotation = 1.17191
+cookProgress = 7.0
+
+[node name="rukola4" parent="dough8" instance=ExtResource("8_otcij")]
+position = Vector2(-15, 5)
+rotation = 2.72432
+cookProgress = 7.0
+
+[node name="mushroom" parent="dough8" instance=ExtResource("9_h67fx")]
+position = Vector2(-7, 9)
+cookProgress = 7.0
+
+[node name="mushroom3" parent="dough8" instance=ExtResource("9_h67fx")]
+position = Vector2(4, 17)
+rotation = -1.44517
+cookProgress = 7.0
+
+[node name="mushroom2" parent="dough8" instance=ExtResource("9_h67fx")]
+position = Vector2(15, -16)
+cookProgress = 7.0
+
+[node name="dough9" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(67, 136)
+progress = 8
+cookProgress = 7.0
+score = 2.82659
+
+[node name="sprite" parent="dough9" index="0"]
+self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+frame = 8
+
+[node name="tomato-base" parent="dough9" instance=ExtResource("7_ykq64")]
+cookProgress = 7.0
+
+[node name="rukola" parent="dough9" instance=ExtResource("8_otcij")]
+position = Vector2(-8, -12)
+cookProgress = 7.0
+
+[node name="rukola2" parent="dough9" instance=ExtResource("8_otcij")]
+position = Vector2(13, 9)
+cookProgress = 7.0
+
+[node name="mushroom" parent="dough9" instance=ExtResource("9_h67fx")]
+position = Vector2(-7, 9)
+cookProgress = 7.0
+
+[node name="mushroom2" parent="dough9" instance=ExtResource("9_h67fx")]
+position = Vector2(15, -16)
+cookProgress = 7.0
+
+[node name="cheese" parent="dough9" instance=ExtResource("10_dgax3")]
+cookProgress = 7.0
+
+[node name="olive" parent="dough9" instance=ExtResource("11_cdqk7")]
+position = Vector2(15, -6)
+cookProgress = 7.0
+
+[node name="dough10" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(68, 226)
+progress = 8
+cookProgress = 7.0
+score = 1.54617
+
+[node name="sprite" parent="dough10" index="0"]
+self_modulate = Color(0.764286, 0.764286, 0.764286, 1)
+frame = 8
+
+[node name="tomato-base" parent="dough10" instance=ExtResource("7_ykq64")]
+cookProgress = 7.0
+
+[node name="rukola" parent="dough10" instance=ExtResource("8_otcij")]
+position = Vector2(-8, -12)
+cookProgress = 7.0
+
+[node name="rukola2" parent="dough10" instance=ExtResource("8_otcij")]
+position = Vector2(13, 9)
+cookProgress = 7.0
+
+[node name="mushroom" parent="dough10" instance=ExtResource("9_h67fx")]
+position = Vector2(-7, 9)
+cookProgress = 7.0
+
+[node name="mushroom2" parent="dough10" instance=ExtResource("9_h67fx")]
+position = Vector2(15, -16)
+cookProgress = 7.0
+
+[node name="cheese" parent="dough10" instance=ExtResource("10_dgax3")]
+cookProgress = 7.0
+
+[node name="olive" parent="dough10" instance=ExtResource("11_cdqk7")]
+position = Vector2(15, -6)
+cookProgress = 7.0
+
+[node name="olive2" parent="dough10" instance=ExtResource("11_cdqk7")]
+position = Vector2(10, 6)
+cookProgress = 7.0
+
+[node name="olive3" parent="dough10" instance=ExtResource("11_cdqk7")]
+position = Vector2(-6, 14)
+cookProgress = 7.0
+
+[node name="olive4" parent="dough10" instance=ExtResource("11_cdqk7")]
+position = Vector2(-17, 0)
+cookProgress = 7.0
+
+[node name="olive5" parent="dough10" instance=ExtResource("11_cdqk7")]
+position = Vector2(-5, -15)
+cookProgress = 7.0
+
 [editable path="dough"]
 [editable path="dough2"]
 [editable path="dough3"]
 [editable path="dough4"]
 [editable path="dough5"]
+[editable path="dough6"]
+[editable path="dough7"]
+[editable path="dough8"]
+[editable path="dough9"]
+[editable path="dough10"]

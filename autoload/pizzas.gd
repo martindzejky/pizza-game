@@ -78,12 +78,12 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
             elif onPizza <= 0:
                 ingScore = 0.0
             else:
-                var value = onPizza / scoringData.requiredExtraIngredients
+                var value = 1.0 * onPizza / scoringData.requiredExtraIngredients
                 ingScore = ease(value, scoringData.requiredExtraIngredientsEasing)
 
             print("  ", recipeIngredient, " (extra) score: ", ingScore)
             ingredientScore *= ingScore
-            print("  ingredient score: ", ingredientScore)
+            print("= ingredient score: ", ingredientScore)
 
         else:
             # normal required
@@ -94,12 +94,15 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
             elif onPizza <= 0:
                 ingScore = 0.0
             else:
-                var value = onPizza / scoringData.requiredIngredients
+                var value = 1.0 * onPizza / scoringData.requiredIngredients
                 ingScore = ease(value, scoringData.requiredIngredientsEasing)
 
+            var weight = 1.0 / recipeIngredients.size()
+            var weightedIngScore = 1.0 - weight + ingScore * weight
+
             print("  ", recipeIngredient, " score: ", ingScore)
-            ingredientScore *= ingScore
-            print("  ingredient score: ", ingredientScore)
+            ingredientScore *= weightedIngScore
+            print("= ingredient score: ", ingredientScore)
 
     # now check ingredients that weren't requested by the recipe
     for pizzaIngredient in pizzaIngredients:
@@ -138,7 +141,7 @@ func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:
         var ingCookScore = pizzaIngredient.getCookProgress()
         print("  ", pizzaIngredient.name, " cooking score: ", ingCookScore)
         ingredientCookingScore *= ease(ingCookScore, scoringData.ingredientEasing)
-        print("  ingredient cooking score: ", ingredientCookingScore)
+        print("= ingredient cooking score: ", ingredientCookingScore)
 
     print("Ingredients cooking total score: ", ingredientCookingScore)
     var ingredientCookingWeightedScore = 1.0 - scoringData.ingredientCookingScoreWeight + scoringData.ingredientCookingScoreWeight * ingredientCookingScore
