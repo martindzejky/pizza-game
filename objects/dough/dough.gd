@@ -1,3 +1,4 @@
+@tool
 extends Pickable
 
 
@@ -51,8 +52,9 @@ func _process(delta):
     $sprite.self_modulate = Color(color, color, color, 1)
 
     # update particles state
-    $particlesWarm.emitting = isCookReady()
-    $particlesOvercooked.emitting = isCookOvercooked()
+    if not Engine.is_editor_hint():
+        $particlesWarm.emitting = isCookReady()
+        $particlesOvercooked.emitting = isCookOvercooked()
 
 
 func _onClick() -> bool:

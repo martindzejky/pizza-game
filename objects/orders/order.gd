@@ -11,7 +11,7 @@ extends Sprite2D
 const OPTIONS = ["mushroom", "corn", "olive", "rukola", "cheese", "salam"]
 
 # Required ingredients for the recipe. If there is an ingredient multiple times, an extra amount is required.
-var recipe: Array
+@export var recipe: Array[String]
 
 # tweening the popup
 var tween: Tween

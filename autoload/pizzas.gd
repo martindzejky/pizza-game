@@ -1,19 +1,20 @@
+@tool
 extends Node2D
 
 func _ready():
     # hidden collection of submitted pizzas
-    hide()
+    if not Engine.is_editor_hint(): hide()
 
 
 # Score pizza based on open orders. Use the best rating order.
 # If there's no order, the score is 0. Scoring is 0 (worst) - 5 (best).
-func score(pizza: Node):
+func score(pizza: Node, testMode = false) -> int:
 
     if pizza.isRaw():
         # who would eat that...
         pizza.score = 0
         print("Raw pizza!")
-        return
+        return 0
 
     var openOrders = get_tree().get_nodes_in_group("order")
 
@@ -21,7 +22,7 @@ func score(pizza: Node):
         # :'( no one to eat it...
         pizza.score = 0
         print("No orders, pizza scored 0")
-        return
+        return 0
 
     var bestScore = 0
     var bestOrder = openOrders[0]
@@ -33,10 +34,12 @@ func score(pizza: Node):
             bestOrder = order
 
     # accept best order
-    bestOrder.accept(bestScore)
-    pizza.score = bestScore
+    if not testMode:
+        bestOrder.accept(bestScore)
+        pizza.score = bestScore
 
     print("Pizza scored: ", bestScore)
+    return bestScore
 
 
 func _scoreBasedOnOrder(pizza: Node, order: Node) -> float:

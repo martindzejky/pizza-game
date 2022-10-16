@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://1ily55xqq4nj"]
+
+[ext_resource type="Texture2D" uid="uid://cvfyhejdairpv" path="res://sprites/menu-table.png" id="1_8hbce"]
+[ext_resource type="Script" path="res://scoring/scoring-tool.gd" id="1_550ce"]
+[ext_resource type="Script" path="res://autoload/pizzas.gd" id="2_404ot"]
+[ext_resource type="Texture2D" uid="uid://bjwn61djpog7d" path="res://sprites/stars.png" id="2_o2scp"]
+[ext_resource type="PackedScene" uid="uid://k3ssjquq313h" path="res://objects/dough/dough.tscn" id="5_qyveq"]
+[ext_resource type="PackedScene" uid="uid://qn2hf24a86cg" path="res://objects/orders/order.tscn" id="6_kfjes"]
+
+[node name="score-testing" type="Node2D"]
+editor_description = "This scene is used for tweaking the scoring system and seeing the results in real time in the editor."
+script = ExtResource("1_550ce")
+starsTexture = ExtResource("2_o2scp")
+
+[node name="scorer" type="Node2D" parent="."]
+script = ExtResource("2_404ot")
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -10
+texture = ExtResource("1_8hbce")
+centered = false
+
+[node name="order" parent="." instance=ExtResource("6_kfjes")]
+position = Vector2(169, 163)
+recipe = ["mushroom"]
+
+[node name="dough" parent="." instance=ExtResource("5_qyveq")]
+position = Vector2(68, 42)
+progress = 8
+cookProgress = 6.0
+score = 2.0
+
+[node name="sprite" parent="dough" index="0"]
+self_modulate = Color(0.857143, 0.857143, 0.857143, 1)
+frame = 8
+
+[editable path="dough"]
