@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://ui/exit-btn.gd" id="2_0d7lr"]
 [ext_resource type="Texture2D" uid="uid://fo0fntv5ipk1" path="res://sprites/dough-tool.png" id="2_g0yhm"]
 [ext_resource type="Texture2D" uid="uid://cncb4bnbw0vn6" path="res://sprites/tomato-spoon.png" id="3_nnwf1"]
-[ext_resource type="PackedScene" uid="uid://dy0bwjd5s76k" path="res://objects/pizza-showcase/pizza-showcase.tscn" id="4_lmj8s"]
+[ext_resource type="PackedScene" uid="uid://d35u0kau47rjb" path="res://objects/generated-pizza/generated-pizza.tscn" id="4_cooha"]
 
 [node name="start" type="Node"]
 
@@ -21,8 +21,25 @@ texture = ExtResource("2_g0yhm")
 position = Vector2(59, 202)
 texture = ExtResource("3_nnwf1")
 
-[node name="pizza-showcase" parent="." instance=ExtResource("4_lmj8s")]
-position = Vector2(-33, 61)
+[node name="pizzas" type="Node2D" parent="."]
+
+[node name="generated-pizza" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(44, 37)
+
+[node name="generated-pizza2" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(105, 78)
+
+[node name="generated-pizza3" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(185, 35)
+
+[node name="generated-pizza4" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(252, 84)
+
+[node name="generated-pizza5" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(336, 32)
+
+[node name="generated-pizza6" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(412, 89)
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -78,7 +95,7 @@ alignment = 1
 
 [node name="exit" type="Button" parent="ui/btns"]
 layout_mode = 2
-offset_right = 44.0
+offset_right = 52.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -87,8 +104,8 @@ script = ExtResource("2_0d7lr")
 
 [node name="start" type="Button" parent="ui/btns"]
 layout_mode = 2
-offset_left = 54.0
-offset_right = 107.0
+offset_left = 62.0
+offset_right = 123.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0

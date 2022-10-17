@@ -32,7 +32,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="PIzza Game"
+config/name="Pizza Game"
 config/description="A frantic game where you need to make pizza very quickly!
 
 Ludum Dare #51 submission.
