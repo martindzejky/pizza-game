@@ -1,18 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://v8ex7u2d0neq"]
+[gd_scene load_steps=3 format=3 uid="uid://v8ex7u2d0neq"]
 
 [ext_resource type="Script" path="res://ui/order-gallery.gd" id="1_clj7g"]
+[ext_resource type="PackedScene" uid="uid://b1tplrfm0yd6" path="res://ui/order-picture.tscn" id="2_cji1x"]
 
-[node name="order-gallery" type="CenterContainer"]
-custom_minimum_size = Vector2i(0, 30)
+[node name="order-gallery" type="HBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 script = ExtResource("1_clj7g")
+pictureObj = ExtResource("2_cji1x")
 
 [node name="none" type="Label" parent="."]
 visible = false
+layout_mode = 2
 offset_left = 87.0
 offset_top = 116.0
 offset_right = 393.0

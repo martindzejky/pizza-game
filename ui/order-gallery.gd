@@ -2,34 +2,20 @@ extends Control
 
 # Displays failed orders in the gallery.
 
+@export var pictureObj: PackedScene
+
 
 func _ready():
-    var orderCount = Orders.get_child_count()
-    if orderCount == 0:
+    if Orders.get_child_count() == 0:
         # no failed orders!!!
         $none.show()
+        return
 
-    # calculate whether we need to squash the orders
-    var width = get_size().x
-    var maxOrders = floor(width / 30)
-
-    var counter = 0
     for order in Orders.get_children():
-        # remove from parent
+        var picture = pictureObj.instantiate()
+
+        # add the order
         Orders.remove_child(order)
+        picture.get_node("container/center").add_child(order)
 
-        # add to this node
-        add_child(order)
-
-        # set correct position
-
-        if orderCount < maxOrders:
-            # no need to squash
-            order.position.y = 15
-            order.position.x = 12 + counter * 30
-        else:
-            # squash
-            order.position.y = 15 + randf_range(-3, 3)
-            order.position.x = 12 + counter * 8
-
-        counter += 1
+        add_child(picture)
