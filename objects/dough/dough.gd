@@ -158,6 +158,9 @@ func insertIngredient() -> bool:
     var color = ingredient.get_node("sprite").self_modulate
     ingredient.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
 
+    # reset the scale, fixes an issue when the ingredient is inserted into a dough that is in the oven
+    ingredient.scale = Vector2(1, 1)
+
     Effects.wiggle(self)
 
     return true
@@ -184,6 +187,9 @@ func insertTomatoBase() -> bool:
     # fade out a little
     var color = tomatoBase.get_node("sprite").self_modulate
     tomatoBase.get_node("sprite").self_modulate = Color(color.r, color.g, color.b, 0.7)
+
+    # reset the scale, fixes an issue when the tomato base is inserted into a dough that is in the oven
+    tomatoBase.scale = Vector2(1, 1)
 
     Effects.wiggle(self)
     Effects.swing(Hand.getCarriedItem())
