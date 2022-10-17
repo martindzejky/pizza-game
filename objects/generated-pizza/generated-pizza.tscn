@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d35u0kau47rjb"]
+[gd_scene load_steps=11 format=3 uid="uid://d35u0kau47rjb"]
 
 [ext_resource type="Script" path="res://objects/generated-pizza/generated-pizza.gd" id="1_rc8u5"]
 [ext_resource type="PackedScene" uid="uid://cy4sy1ygetyko" path="res://objects/ingredients/tomato-base.tscn" id="2_bnpj3"]
@@ -9,11 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://blwk8duhcsvmu" path="res://objects/ingredients/rukola.tscn" id="7_nyl5p"]
 [ext_resource type="PackedScene" uid="uid://bpfs8o86rhkqy" path="res://objects/ingredients/salam.tscn" id="8_cv7am"]
 [ext_resource type="PackedScene" uid="uid://k3ssjquq313h" path="res://objects/dough/dough.tscn" id="9_xqjrq"]
+[ext_resource type="Texture2D" uid="uid://cw2yu0lu7xc3r" path="res://sprites/plate.png" id="9_ygcpl"]
 
 [node name="generated-pizza" type="Node2D"]
 script = ExtResource("1_rc8u5")
-speed = 30
 tomatoBase = ExtResource("2_bnpj3")
 ingredients = [ExtResource("3_6rlyl"), ExtResource("4_raust"), ExtResource("5_la1mu"), ExtResource("6_ofbou"), ExtResource("7_nyl5p"), ExtResource("8_cv7am")]
+
+[node name="plate" type="Sprite2D" parent="."]
+texture = ExtResource("9_ygcpl")
 
 [node name="dough" parent="." instance=ExtResource("9_xqjrq")]

@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://4fei2hjxp84l"]
+[gd_scene load_steps=5 format=3 uid="uid://4fei2hjxp84l"]
 
 [ext_resource type="PackedScene" uid="uid://brwmjnnpq7kye" path="res://ui/pizza-gallery.tscn" id="1_auhlt"]
 [ext_resource type="Script" path="res://ui/start-btn.gd" id="1_iqrhl"]
+[ext_resource type="Texture2D" uid="uid://dbijxe85vh37b" path="res://sprites/end-table.png" id="1_p56sd"]
 [ext_resource type="Script" path="res://ui/exit-btn.gd" id="2_0d7lr"]
 
 [node name="end" type="Node"]
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_p56sd")
+centered = false
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -22,14 +27,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="items" type="VBoxContainer" parent="ui/margin"]
+[node name="scroll" type="ScrollContainer" parent="ui/margin"]
 layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 470.0
 offset_bottom = 260.0
+size_flags_vertical = 3
 
-[node name="title" type="Label" parent="ui/margin/items"]
+[node name="container" type="VBoxContainer" parent="ui/margin/scroll"]
+layout_mode = 2
+offset_right = 460.0
+offset_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="title" type="Label" parent="ui/margin/scroll/container"]
 layout_mode = 2
 offset_right = 460.0
 offset_bottom = 25.0
@@ -39,65 +52,103 @@ text = "All done for today!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="subtitle" type="Label" parent="ui/margin/items"]
+[node name="success" type="Label" parent="ui/margin/scroll/container"]
 layout_mode = 2
 offset_top = 35.0
 offset_right = 460.0
-offset_bottom = 73.0
+offset_bottom = 54.0
 grow_horizontal = 2
 pivot_offset = Vector2(240, 30)
-theme_override_font_sizes/font_size = 13
-text = "Don't forget to screenshot your collection and post into the comments..."
+theme_type_variation = &"SmallText"
+text = "Successful orders"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
-[node name="scroll" type="ScrollContainer" parent="ui/margin/items"]
+[node name="success-centering" type="HBoxContainer" parent="ui/margin/scroll/container"]
 layout_mode = 2
-offset_top = 83.0
+offset_top = 64.0
 offset_right = 460.0
-offset_bottom = 216.0
-size_flags_vertical = 3
+offset_bottom = 64.0
+alignment = 1
 
-[node name="pizza-gallery" parent="ui/margin/items/scroll" instance=ExtResource("1_auhlt")]
+[node name="pizza-gallery" parent="ui/margin/scroll/container/success-centering" instance=ExtResource("1_auhlt")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 460.0
-offset_bottom = 133.0
 grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 3
 
-[node name="btns" type="HBoxContainer" parent="ui/margin/items"]
+[node name="fail" type="Label" parent="ui/margin/scroll/container"]
 layout_mode = 2
-offset_top = 226.0
+offset_top = 74.0
 offset_right = 460.0
-offset_bottom = 250.0
+offset_bottom = 93.0
 grow_horizontal = 2
-grow_vertical = 2
+pivot_offset = Vector2(240, 30)
+theme_type_variation = &"SmallText"
+text = "Failed orders"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fail-centering" type="HBoxContainer" parent="ui/margin/scroll/container"]
+layout_mode = 2
+offset_top = 103.0
+offset_right = 460.0
+offset_bottom = 103.0
 alignment = 1
 
-[node name="restart" type="Button" parent="ui/margin/items/btns"]
+[node name="bottom-space" type="Control" parent="ui/margin/scroll/container"]
+custom_minimum_size = Vector2i(0, 40)
 layout_mode = 2
-offset_right = 406.0
+anchors_preset = 0
+offset_top = 113.0
+offset_right = 460.0
+offset_bottom = 153.0
+
+[node name="menu" type="Control" parent="ui/margin"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 260.0
+offset_right = 470.0
+offset_bottom = 260.0
+size_flags_vertical = 8
+
+[node name="btns" type="HBoxContainer" parent="ui/margin/menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -24.0
+offset_right = 75.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="restart" type="Button" parent="ui/margin/menu/btns"]
+layout_mode = 2
+offset_right = 88.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 3
 text = "Next day"
 script = ExtResource("1_iqrhl")
 
-[node name="exit" type="Button" parent="ui/margin/items/btns"]
+[node name="exit" type="Button" parent="ui/margin/menu/btns"]
 layout_mode = 2
-offset_left = 416.0
-offset_right = 460.0
+offset_left = 98.0
+offset_right = 150.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Exit"
 script = ExtResource("2_0d7lr")
 
-[connection signal="pressed" from="ui/margin/items/btns/restart" to="ui/margin/items/btns/restart" method="_onClicked"]
-[connection signal="pressed" from="ui/margin/items/btns/exit" to="ui/margin/items/btns/exit" method="_onClicked"]
+[connection signal="pressed" from="ui/margin/menu/btns/restart" to="ui/margin/menu/btns/restart" method="_onClicked"]
+[connection signal="pressed" from="ui/margin/menu/btns/exit" to="ui/margin/menu/btns/exit" method="_onClicked"]

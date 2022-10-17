@@ -1,34 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://bttutyy6cfnbt"]
+[gd_scene load_steps=3 format=3 uid="uid://bttutyy6cfnbt"]
 
+[ext_resource type="Texture2D" uid="uid://cw2yu0lu7xc3r" path="res://sprites/plate.png" id="1_a0ak2"]
 [ext_resource type="Texture2D" uid="uid://bjwn61djpog7d" path="res://sprites/stars.png" id="2_23p0d"]
 
-[node name="pizza-picture" type="Panel"]
+[node name="pizza-picture" type="VBoxContainer"]
 custom_minimum_size = Vector2i(90, 90)
 offset_right = 64.0
 offset_bottom = 64.0
 
 [node name="container" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2i(64, 64)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
+custom_minimum_size = Vector2i(80, 80)
+layout_mode = 2
+offset_right = 90.0
+offset_bottom = 80.0
 grow_horizontal = 2
 
 [node name="center" type="Control" parent="container"]
 layout_mode = 2
 anchors_preset = 0
 offset_left = 45.0
-offset_top = 32.0
+offset_top = 40.0
 offset_right = 45.0
-offset_bottom = 32.0
+offset_bottom = 40.0
+
+[node name="plate" type="Sprite2D" parent="container/center"]
+texture = ExtResource("1_a0ak2")
 
 [node name="rating" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2i(64, 22)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+custom_minimum_size = Vector2i(80, 22)
+layout_mode = 2
+offset_top = 90.0
+offset_right = 90.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -42,13 +45,13 @@ offset_bottom = 11.0
 
 [node name="stars-dark" type="Sprite2D" parent="rating/center"]
 self_modulate = Color(0.129412, 0.129412, 0.129412, 1)
-position = Vector2(-40, -10)
+position = Vector2(-40, -8)
 texture = ExtResource("2_23p0d")
 centered = false
 region_rect = Rect2(0, 0, 80, 16)
 
 [node name="stars" type="Sprite2D" parent="rating/center"]
-position = Vector2(-40, -10)
+position = Vector2(-40, -8)
 texture = ExtResource("2_23p0d")
 centered = false
 region_enabled = true

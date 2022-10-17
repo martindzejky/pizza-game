@@ -65,3 +65,7 @@ PauseTitle/base_type = &"Label"
 PauseTitle/colors/font_color = Color(1, 1, 1, 1)
 PauseTitle/colors/font_outline_color = Color(1, 1, 1, 1)
 PauseTitle/font_sizes/font_size = 31
+SmallText/base_type = &"Label"
+SmallText/font_sizes/font_size = 13
+Title/base_type = &"Label"
+Title/font_sizes/font_size = 22
