@@ -15,14 +15,13 @@ pictureObj = ExtResource("2_cji1x")
 
 [node name="none" type="Label" parent="."]
 visible = false
-layout_mode = 2
 offset_left = 87.0
 offset_top = 116.0
 offset_right = 393.0
 offset_bottom = 154.0
 theme_type_variation = &"SmallText"
 theme_override_colors/font_color = Color(0, 0, 0, 0.415686)
-text = "You managed to fulfill all orders.
+text = "You did not fail any order.
 Fantastic job!"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -6,6 +6,12 @@ extends GridContainer
 
 
 func _ready():
+    if Pizzas.get_child_count() == 0:
+        # no pizzas made
+        $none.show()
+        columns = 1
+        return
+
     for pizza in Pizzas.get_children():
         var picture = pictureObj.instantiate()
 

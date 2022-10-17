@@ -13,3 +13,16 @@ size_flags_vertical = 3
 columns = 4
 script = ExtResource("1_48nfw")
 pictureObj = ExtResource("2_b1lss")
+
+[node name="none" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_right = 279.0
+offset_bottom = 19.0
+size_flags_horizontal = 3
+theme_type_variation = &"SmallText"
+theme_override_colors/font_color = Color(0, 0, 0, 0.415686)
+text = "You did not complete any order.
+Try harder tomorrow."
+horizontal_alignment = 1
+vertical_alignment = 1
