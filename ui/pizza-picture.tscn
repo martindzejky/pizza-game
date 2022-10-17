@@ -26,6 +26,10 @@ offset_bottom = 40.0
 [node name="plate" type="Sprite2D" parent="container/center"]
 texture = ExtResource("1_a0ak2")
 
+[node name="order" type="Marker2D" parent="container/center"]
+position = Vector2(26, 30)
+z_index = 1
+
 [node name="rating" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2i(80, 22)
 layout_mode = 2

@@ -38,8 +38,8 @@ func score(pizza: Node, testMode = false) -> float:
 
     # accept best order
     if not testMode:
-        bestOrder.accept(bestScore)
         pizza.score = bestScore
+        bestOrder.accept(pizza)
 
     print("Pizza scored: ", bestScore)
     return bestScore

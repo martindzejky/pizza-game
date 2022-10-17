@@ -9,9 +9,17 @@ func _ready():
     for pizza in Pizzas.get_children():
         var picture = pictureObj.instantiate()
 
+        # add the pizza
         Pizzas.remove_child(pizza)
         picture.get_node("container/center").add_child(pizza)
 
+        # move the order if there is any
+        for child in pizza.get_children():
+            if child.is_in_group("order-success"):
+                pizza.remove_child(child)
+                picture.get_node("container/center/order").add_child(child)
+
+        # set the correct rating
         var stars = picture.get_node("rating/center/stars")
         stars.region_rect.size.x = floor(pizza.score * 16)
 

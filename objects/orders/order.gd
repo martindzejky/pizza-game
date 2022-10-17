@@ -8,6 +8,11 @@ extends Sprite2D
 # recipe object for the preview UI
 @export var recipeObj: PackedScene
 
+# when succeded, this is the associated pizza
+@export var associatedPizza: Node
+@export var status: String # "success" or "fail"
+var animateOutTween: Tween
+
 const OPTIONS = ["mushroom", "corn", "olive", "rukola", "cheese", "salam"]
 
 # Required ingredients for the recipe. If there is an ingredient multiple times, an extra amount is required.
@@ -112,16 +117,19 @@ func moveUp() -> void:
 
 
 # Called by Pizzas when a pizza fulfilling this order is delivered.
-func accept(score: float) -> void:
+func accept(pizza: Node) -> void:
     $clock.hide()
     $check.show()
     if showPreview: togglePreview()
     Effects.sound("orderDone")
 
     $stars.show()
-    $stars.region_rect.size.x = floor(score * 16)
+    $stars.region_rect.size.x = floor(pizza.score * 16)
 
-    removeOrder()
+    associatedPizza = pizza
+    status = "success"
+
+    animateOut()
 
 # Called by the fail timer
 func fail() -> void:
@@ -129,9 +137,13 @@ func fail() -> void:
     $cross.show()
     if showPreview: togglePreview()
     Effects.sound("orderFail")
-    removeOrder()
 
-func removeOrder() -> void:
+    associatedPizza = null
+    status = "fail"
+
+    animateOut()
+
+func animateOut() -> void:
     # move to the end of the parent to be rendered on top of other orders
     get_parent().move_child(self, -1)
 
@@ -140,10 +152,42 @@ func removeOrder() -> void:
     remove_from_group("order")
     remove_from_group("click")
 
+    # this is so that we can track orders which still need to be handled at the end of the level
+    add_to_group("order-animating")
+
     $failTimer.stop()
 
     # leave transition
+    animateOutTween = create_tween()
+    animateOutTween.tween_property(self, "position:x", 60, 0.4).as_relative().set_ease(Tween.EASE_IN).set_delay(3.0)
+    animateOutTween.tween_callback(finalizeOrder)
 
-    var tween := create_tween()
-    tween.tween_property(self, "position:x", 60, 0.4).as_relative().set_ease(Tween.EASE_IN).set_delay(3.0)
-    tween.tween_callback(queue_free)
+func finalizeOrder() -> void:
+
+    # add the 'click' group again so it can be clicked in the gallery
+    add_to_group("click")
+    remove_from_group("order-animating")
+
+    $stars.hide()
+    position = Vector2()
+
+    # cancel animation
+    if animateOutTween: animateOutTween.kill()
+
+    if status == "success":
+        # move to the associated pizza
+        get_parent().remove_child(self)
+        associatedPizza.add_child(self)
+        add_to_group("order-success")
+        return
+
+    if status == "fail":
+        # track failed orders
+        get_parent().remove_child(self)
+        Orders.add_child(self)
+        add_to_group("order-fail")
+        return
+
+    # this should never happen but "just in case..."
+    queue_free()
+    return

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4fei2hjxp84l"]
+[gd_scene load_steps=6 format=3 uid="uid://4fei2hjxp84l"]
 
 [ext_resource type="PackedScene" uid="uid://brwmjnnpq7kye" path="res://ui/pizza-gallery.tscn" id="1_auhlt"]
 [ext_resource type="Script" path="res://ui/start-btn.gd" id="1_iqrhl"]
 [ext_resource type="Texture2D" uid="uid://dbijxe85vh37b" path="res://sprites/end-table.png" id="1_p56sd"]
 [ext_resource type="Script" path="res://ui/exit-btn.gd" id="2_0d7lr"]
+[ext_resource type="PackedScene" uid="uid://v8ex7u2d0neq" path="res://ui/order-gallery.tscn" id="3_8on1u"]
 
 [node name="end" type="Node"]
 
@@ -20,7 +21,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="margin" type="MarginContainer" parent="ui"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,7 +28,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="scroll" type="ScrollContainer" parent="ui/margin"]
-layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 470.0
@@ -36,14 +35,12 @@ offset_bottom = 260.0
 size_flags_vertical = 3
 
 [node name="container" type="VBoxContainer" parent="ui/margin/scroll"]
-layout_mode = 2
 offset_right = 460.0
 offset_bottom = 250.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="title" type="Label" parent="ui/margin/scroll/container"]
-layout_mode = 2
 offset_right = 460.0
 offset_bottom = 25.0
 grow_horizontal = 2
@@ -53,7 +50,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="success" type="Label" parent="ui/margin/scroll/container"]
-layout_mode = 2
 offset_top = 35.0
 offset_right = 460.0
 offset_bottom = 54.0
@@ -65,14 +61,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="success-centering" type="HBoxContainer" parent="ui/margin/scroll/container"]
-layout_mode = 2
 offset_top = 64.0
 offset_right = 460.0
 offset_bottom = 64.0
 alignment = 1
 
 [node name="pizza-gallery" parent="ui/margin/scroll/container/success-centering" instance=ExtResource("1_auhlt")]
-layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -82,7 +76,6 @@ grow_vertical = 1
 size_flags_horizontal = 3
 
 [node name="fail" type="Label" parent="ui/margin/scroll/container"]
-layout_mode = 2
 offset_top = 74.0
 offset_right = 460.0
 offset_bottom = 93.0
@@ -94,22 +87,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="fail-centering" type="HBoxContainer" parent="ui/margin/scroll/container"]
-layout_mode = 2
 offset_top = 103.0
 offset_right = 460.0
-offset_bottom = 103.0
+offset_bottom = 123.0
 alignment = 1
+
+[node name="order-gallery" parent="ui/margin/scroll/container/fail-centering" instance=ExtResource("3_8on1u")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 460.0
+offset_bottom = 20.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 3
 
 [node name="bottom-space" type="Control" parent="ui/margin/scroll/container"]
 custom_minimum_size = Vector2i(0, 40)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
-offset_top = 113.0
+offset_top = 133.0
 offset_right = 460.0
-offset_bottom = 153.0
+offset_bottom = 173.0
 
 [node name="menu" type="Control" parent="ui/margin"]
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_left = 10.0
 offset_top = 260.0
@@ -118,7 +120,6 @@ offset_bottom = 260.0
 size_flags_vertical = 8
 
 [node name="btns" type="HBoxContainer" parent="ui/margin/menu"]
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -132,7 +133,6 @@ grow_vertical = 0
 alignment = 1
 
 [node name="restart" type="Button" parent="ui/margin/menu/btns"]
-layout_mode = 2
 offset_right = 88.0
 offset_bottom = 24.0
 grow_horizontal = 2
@@ -141,7 +141,6 @@ text = "Next day"
 script = ExtResource("1_iqrhl")
 
 [node name="exit" type="Button" parent="ui/margin/menu/btns"]
-layout_mode = 2
 offset_left = 98.0
 offset_right = 150.0
 offset_bottom = 24.0
