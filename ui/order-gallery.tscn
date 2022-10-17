@@ -13,7 +13,6 @@ script = ExtResource("1_clj7g")
 
 [node name="none" type="Label" parent="."]
 visible = false
-layout_mode = 2
 offset_left = 87.0
 offset_top = 116.0
 offset_right = 393.0
