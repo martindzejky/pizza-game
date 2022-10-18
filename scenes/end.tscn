@@ -119,7 +119,18 @@ offset_top = 113.0
 offset_right = 460.0
 offset_bottom = 153.0
 
-[node name="menu" type="Control" parent="ui/margin"]
+[node name="menu-layer" type="CanvasLayer" parent="ui"]
+layer = 10
+
+[node name="margin" type="MarginContainer" parent="ui/menu-layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="menu" type="Control" parent="ui/menu-layer/margin"]
 layout_mode = 2
 anchors_preset = 0
 offset_left = 10.0
@@ -127,8 +138,9 @@ offset_top = 260.0
 offset_right = 470.0
 offset_bottom = 260.0
 size_flags_vertical = 8
+mouse_filter = 2
 
-[node name="btns" type="HBoxContainer" parent="ui/margin/menu"]
+[node name="btns" type="HBoxContainer" parent="ui/menu-layer/margin/menu"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -142,7 +154,7 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="restart" type="Button" parent="ui/margin/menu/btns"]
+[node name="restart" type="Button" parent="ui/menu-layer/margin/menu/btns"]
 layout_mode = 2
 offset_right = 88.0
 offset_bottom = 24.0
@@ -151,7 +163,7 @@ grow_vertical = 0
 text = "Next day"
 script = ExtResource("1_iqrhl")
 
-[node name="exit" type="Button" parent="ui/margin/menu/btns"]
+[node name="exit" type="Button" parent="ui/menu-layer/margin/menu/btns"]
 layout_mode = 2
 offset_left = 98.0
 offset_right = 150.0
@@ -161,5 +173,5 @@ grow_vertical = 0
 text = "Exit"
 script = ExtResource("2_0d7lr")
 
-[connection signal="pressed" from="ui/margin/menu/btns/restart" to="ui/margin/menu/btns/restart" method="_onClicked"]
-[connection signal="pressed" from="ui/margin/menu/btns/exit" to="ui/margin/menu/btns/exit" method="_onClicked"]
+[connection signal="pressed" from="ui/menu-layer/margin/menu/btns/restart" to="ui/menu-layer/margin/menu/btns/restart" method="_onClicked"]
+[connection signal="pressed" from="ui/menu-layer/margin/menu/btns/exit" to="ui/menu-layer/margin/menu/btns/exit" method="_onClicked"]
