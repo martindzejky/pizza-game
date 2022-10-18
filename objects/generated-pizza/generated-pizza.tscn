@@ -17,6 +17,7 @@ tomatoBase = ExtResource("2_bnpj3")
 ingredients = [ExtResource("3_6rlyl"), ExtResource("4_raust"), ExtResource("5_la1mu"), ExtResource("6_ofbou"), ExtResource("7_nyl5p"), ExtResource("8_cv7am")]
 
 [node name="plate" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("9_ygcpl")
 
 [node name="dough" parent="." instance=ExtResource("9_xqjrq")]
