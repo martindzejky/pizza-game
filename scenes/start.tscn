@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbae4y17js5x4"]
+[gd_scene load_steps=5 format=3 uid="uid://bbae4y17js5x4"]
 
 [ext_resource type="Script" path="res://ui/start-btn.gd" id="1_iqrhl"]
 [ext_resource type="Texture2D" uid="uid://cvfyhejdairpv" path="res://sprites/menu-table.png" id="1_r3pgb"]
 [ext_resource type="Script" path="res://ui/exit-btn.gd" id="2_0d7lr"]
-[ext_resource type="Texture2D" uid="uid://fo0fntv5ipk1" path="res://sprites/dough-tool.png" id="2_g0yhm"]
-[ext_resource type="Texture2D" uid="uid://cncb4bnbw0vn6" path="res://sprites/tomato-spoon.png" id="3_nnwf1"]
 [ext_resource type="PackedScene" uid="uid://d35u0kau47rjb" path="res://objects/generated-pizza/generated-pizza.tscn" id="4_cooha"]
 
 [node name="start" type="Node"]
@@ -12,14 +10,6 @@
 [node name="background" type="Sprite2D" parent="."]
 texture = ExtResource("1_r3pgb")
 centered = false
-
-[node name="dough-tool" type="Sprite2D" parent="background"]
-position = Vector2(387, 171)
-texture = ExtResource("2_g0yhm")
-
-[node name="tomato" type="Sprite2D" parent="background"]
-position = Vector2(59, 202)
-texture = ExtResource("3_nnwf1")
 
 [node name="pizzas" type="Node2D" parent="."]
 
@@ -40,6 +30,48 @@ position = Vector2(336, 32)
 
 [node name="generated-pizza6" parent="pizzas" instance=ExtResource("4_cooha")]
 position = Vector2(412, 89)
+
+[node name="generated-pizza7" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(343, 108)
+
+[node name="generated-pizza8" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(258, 12)
+
+[node name="generated-pizza9" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(406, 13)
+
+[node name="generated-pizza10" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(471, 55)
+
+[node name="generated-pizza11" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(471, 134)
+
+[node name="generated-pizza12" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(410, 171)
+
+[node name="generated-pizza13" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(469, 213)
+
+[node name="generated-pizza14" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(358, 221)
+
+[node name="generated-pizza15" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(178, 118)
+
+[node name="generated-pizza16" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(115, 4)
+
+[node name="generated-pizza17" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(9, 106)
+
+[node name="generated-pizza18" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(79, 144)
+
+[node name="generated-pizza19" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(6, 193)
+
+[node name="generated-pizza20" parent="pizzas" instance=ExtResource("4_cooha")]
+position = Vector2(79, 222)
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
