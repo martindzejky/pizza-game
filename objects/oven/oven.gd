@@ -128,9 +128,9 @@ func insertDough() -> bool:
     dough.set_global_transform($point.get_global_transform())
 
     # squash and position
-    if dough.progress < 4:
-        dough.scale.y = lerp(1.0, 0.5, dough.progress / 4.0)
-        dough.position.y -= lerp(10.0, 0.0, dough.progress / 4.0)
+    if dough.progress < 6:
+        dough.scale.y = lerp(1.0, 0.9, dough.progress / 6.0)
+        dough.position.y -= lerp(10.0, 9.0, dough.progress / 6.0)
     else:
         dough.scale.y = 0.5
 
