@@ -9,7 +9,8 @@ var wasReady := false
 
 
 func _process(delta: float) -> void:
-    $particles.emitting = false
+
+    var isCooking := false
 
     if not isOpen:
 
@@ -17,6 +18,7 @@ func _process(delta: float) -> void:
         for node in get_children():
             if not node.is_in_group("dough"): continue
 
+            isCooking = true
             node.cookProgress += delta
 
             # cook all ingredients on the dough
@@ -37,6 +39,16 @@ func _process(delta: float) -> void:
             if not wasReady and node.isCookReady():
                 Effects.sound("ovenBeep")
                 wasReady = true
+                $ovenLight/animations.play("blink")
+
+            if $ovenLight/animations.current_animation == "off":
+                $ovenLight/animations.play("on")
+
+    if not isCooking:
+        $particles.emitting = false
+
+        if $ovenLight/animations.current_animation != "off":
+            $ovenLight/animations.play("off")
 
 
 func _onClick() -> bool:
