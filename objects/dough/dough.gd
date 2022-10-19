@@ -71,6 +71,10 @@ func _onClick() -> bool:
         return true
 
     if Hand.isCarryingDoughTool():
+        # fix: ignore when inside the oven
+        if get_parent() and get_parent().is_in_group("oven"):
+            return true
+
         onHitByDoughTool()
         return true
 
