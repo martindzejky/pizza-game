@@ -42,6 +42,7 @@ run/main_scene="res://scenes/start.tscn"
 config/features=PackedStringArray("4.0")
 boot_splash/image="res://sprites/cover.png"
 boot_splash/use_filter=false
+boot_splash/bg_color=Color(0.141176, 0.133333, 0.203922, 1)
 config/icon="res://pizza.png"
 config/windows_native_icon="res://pizza.ico"
 boot_splash/minimum_display_time=1000
@@ -59,9 +60,14 @@ Orders="*res://autoload/orders.gd"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/window_width_override=960
-window/size/window_height_override=540
+window/size/mode=2
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 window/stretch/mode="viewport"
+
+[editor]
+
+node_naming/name_casing=1
 
 [gui]
 
