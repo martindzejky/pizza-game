@@ -139,9 +139,11 @@ texture = ExtResource("5_6i4fb")
 
 [node name="stars" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -25)
+position = Vector2(-17, -6)
+scale = Vector2(-1, 1)
 z_index = 1
 texture = ExtResource("6_dnjkb")
+centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 80, 16)
 
