@@ -12,3 +12,8 @@ func _onClicked():
 
     get_tree().paused = false
     get_tree().change_scene_to_file("res://scenes/end.tscn")
+
+    Effects.sound("click")
+
+func _onHover():
+    Effects.sound("hover")

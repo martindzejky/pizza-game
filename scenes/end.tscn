@@ -173,5 +173,7 @@ grow_vertical = 0
 text = "Exit"
 script = ExtResource("2_0d7lr")
 
+[connection signal="mouse_entered" from="ui/menu-layer/margin/menu/btns/restart" to="ui/menu-layer/margin/menu/btns/restart" method="_onHover"]
 [connection signal="pressed" from="ui/menu-layer/margin/menu/btns/restart" to="ui/menu-layer/margin/menu/btns/restart" method="_onClicked"]
+[connection signal="mouse_entered" from="ui/menu-layer/margin/menu/btns/exit" to="ui/menu-layer/margin/menu/btns/exit" method="_onHover"]
 [connection signal="pressed" from="ui/menu-layer/margin/menu/btns/exit" to="ui/menu-layer/margin/menu/btns/exit" method="_onClicked"]

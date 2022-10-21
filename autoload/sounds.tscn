@@ -63,6 +63,8 @@ stream = ExtResource("13_mg5q5")
 
 [node name="hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_spe23")
+volume_db = -10.0
 
 [node name="click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_kmydp")
+volume_db = -10.0
