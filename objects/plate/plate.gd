@@ -12,6 +12,7 @@ func _onClick() -> bool:
 
 func insertDough() -> bool:
     if $submitAnimation.is_playing(): return false
+    if $entryAnimation.is_playing(): return false
 
     # only one dough can be on the plate
     for node in get_children():
