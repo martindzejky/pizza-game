@@ -137,6 +137,7 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="titleContainer" type="CenterContainer" parent="ui"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -150,6 +151,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="title" type="Label" parent="ui/titleContainer"]
+layout_mode = 2
 offset_left = 9.0
 offset_top = 26.0
 offset_right = 219.0
@@ -162,6 +164,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="btns" type="HBoxContainer" parent="ui"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -178,6 +181,7 @@ size_flags_vertical = 4
 alignment = 1
 
 [node name="exit" type="Button" parent="ui/btns"]
+layout_mode = 2
 offset_right = 52.0
 offset_bottom = 24.0
 grow_horizontal = 2
@@ -186,6 +190,7 @@ text = "Exit"
 script = ExtResource("2_0d7lr")
 
 [node name="start" type="Button" parent="ui/btns"]
+layout_mode = 2
 offset_left = 62.0
 offset_right = 123.0
 offset_bottom = 24.0
