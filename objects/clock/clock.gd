@@ -8,6 +8,20 @@ func _on_timer_timeout():
     # reset carried items
     Hand.reset()
 
+    # stop the animation of the hands
+    get_parent().get_node("smallHandAnimation").stop()
+    get_parent().get_node("largeHandAnimation").stop()
+
+    # fail all remaining orders
+    get_tree().call_group("order", "fail")
+
+    # pause
+    get_tree().paused = true
+
+    # play a sounds and wait a little
+    Effects.sound("dayEnd")
+    await get_tree().create_timer(3).timeout
+
     # submit pizza on the plate if there's any
     get_tree().call_group("plate", "submitPizza")
     # finalize all animating orders

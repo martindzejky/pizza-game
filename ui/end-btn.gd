@@ -10,7 +10,6 @@ func _onClicked():
     # finalize all animating orders
     get_tree().call_group("order-animating", "finalizeOrder")
 
-    get_tree().paused = false
     Transitions.transitionTo("res://scenes/end.tscn", "Day ended")
 
     Effects.sound("click")

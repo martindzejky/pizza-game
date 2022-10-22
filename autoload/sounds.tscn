@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bs0a4yhc0ub0f"]
+[gd_scene load_steps=18 format=3 uid="uid://bs0a4yhc0ub0f"]
 
 [ext_resource type="AudioStream" uid="uid://dx326nh8ofhi3" path="res://sounds/oven-open.wav" id="1_ae8n1"]
 [ext_resource type="AudioStream" uid="uid://h5v0li1wtvn7" path="res://sounds/oven-close.wav" id="2_3eko8"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dcx838q3vu3t7" path="res://sounds/preview.wav" id="13_mg5q5"]
 [ext_resource type="AudioStream" uid="uid://djtf6hko1opj2" path="res://sounds/hover.wav" id="15_spe23"]
 [ext_resource type="AudioStream" uid="uid://cydw3dum22ut1" path="res://sounds/click.wav" id="16_kmydp"]
+[ext_resource type="AudioStream" uid="uid://c6qsx4jkgxfxv" path="res://sounds/day-end.wav" id="17_rcxgn"]
 
 [node name="sounds" type="Node2D"]
 
@@ -68,3 +69,6 @@ volume_db = -10.0
 [node name="click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_kmydp")
 volume_db = -10.0
+
+[node name="dayEnd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_rcxgn")
