@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://blwk8duhcsvmu"]
+[gd_scene load_steps=4 format=3 uid="uid://blwk8duhcsvmu"]
 
 [ext_resource type="PackedScene" uid="uid://djhnnfa4vlyvy" path="res://objects/ingredients/ingredient.tscn" id="1_bd46f"]
 [ext_resource type="Texture2D" uid="uid://b2e1jn1vyoa2f" path="res://sprites/rukola.png" id="2_h5qhk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmkr1"]
+atlas = ExtResource("2_h5qhk")
+region = Rect2(7.86805, 4.70803, 5.26749, 5.1358)
 
 [node name="rukola" groups=["rukola"] instance=ExtResource("1_bd46f")]
 
 [node name="sprite" parent="." index="0"]
 texture = ExtResource("2_h5qhk")
+
+[node name="particles" parent="." index="2"]
+texture = SubResource("AtlasTexture_qmkr1")

@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkbmbeblbronj"]
+[gd_scene load_steps=4 format=3 uid="uid://dkbmbeblbronj"]
 
 [ext_resource type="PackedScene" uid="uid://djhnnfa4vlyvy" path="res://objects/ingredients/ingredient.tscn" id="1_tcgfg"]
 [ext_resource type="Texture2D" uid="uid://dowsu2vsbgsu2" path="res://sprites/corn.png" id="2_o3l7e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2ex3"]
+atlas = ExtResource("2_o3l7e")
+region = Rect2(4.57587, 4.44465, 3.55555, 4.60905)
 
 [node name="corn" groups=["corn"] instance=ExtResource("1_tcgfg")]
 
 [node name="sprite" parent="." index="0"]
 texture = ExtResource("2_o3l7e")
+
+[node name="particles" parent="." index="2"]
+texture = SubResource("AtlasTexture_b2ex3")

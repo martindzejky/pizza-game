@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpfs8o86rhkqy"]
+[gd_scene load_steps=4 format=3 uid="uid://bpfs8o86rhkqy"]
 
 [ext_resource type="PackedScene" uid="uid://djhnnfa4vlyvy" path="res://objects/ingredients/ingredient.tscn" id="1_illar"]
 [ext_resource type="Texture2D" uid="uid://dtsk6pv1bpbn2" path="res://sprites/salam.png" id="2_ibdir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcams"]
+atlas = ExtResource("2_ibdir")
+region = Rect2(8.65817, 9.0537, 6.58437, 6.71605)
 
 [node name="salam" groups=["salam"] instance=ExtResource("1_illar")]
 
 [node name="sprite" parent="." index="0"]
 texture = ExtResource("2_ibdir")
+
+[node name="particles" parent="." index="2"]
+texture = SubResource("AtlasTexture_lcams")

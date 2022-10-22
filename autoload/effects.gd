@@ -61,3 +61,11 @@ func sound(name: String, pitchVariation := 0.0) -> void:
     effect.play()
     await effect.finished
     effect.queue_free()
+
+# adds a particle node and automatically destroys it after it's done
+func particles(node: GPUParticles2D, position: Vector2) -> void:
+    add_child(node)
+    node.emitting = true
+    node.position = position
+    await get_tree().create_timer(node.lifetime).timeout
+    node.queue_free()

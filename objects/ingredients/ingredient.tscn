@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://djhnnfa4vlyvy"]
+[gd_scene load_steps=7 format=3 uid="uid://djhnnfa4vlyvy"]
 
 [ext_resource type="Script" path="res://objects/ingredients/mushroom.gd" id="1_sbffm"]
 [ext_resource type="Texture2D" uid="uid://bfukq7miagkve" path="res://sprites/mushroom.png" id="2_ccehe"]
@@ -6,6 +6,25 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uv58m"]
 radius = 10.0499
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t0wet"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 46.6
+initial_velocity_max = 240.14
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 400.0
+damping_max = 1000.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.9
+scale_max = 1.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sa5e"]
+atlas = ExtResource("2_ccehe")
+region = Rect2(4.922, 5.333, 5, 5)
 
 [node name="ingredient" type="Node2D" groups=["click", "ingredient"]]
 script = ExtResource("1_sbffm")
@@ -21,5 +40,15 @@ monitorable = false
 [node name="shape" type="CollisionShape2D" parent="clickArea"]
 visible = false
 shape = SubResource("CircleShape2D_uv58m")
+
+[node name="particles" type="GPUParticles2D" parent="."]
+z_index = 4
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_t0wet")
+texture = SubResource("AtlasTexture_5sa5e")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]

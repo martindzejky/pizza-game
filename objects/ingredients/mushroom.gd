@@ -41,10 +41,9 @@ func _onClick() -> bool:
         return true
 
     elif Hand.isCarryingDoughTool():
-        # TODO: particles
         Effects.swing(Hand.getCarriedItem())
         Effects.sound("dough")
-        queue_free()
+        crash()
 
         return true
 
@@ -67,3 +66,16 @@ func getCookProgress():
     p = p / (scoringData.overcookedTime - scoringData.requiredCookingTime)
 
     return clamp(1.0 - p, 0.0, 1.0)
+
+func crash():
+    # destroy this ingredient
+    queue_free()
+
+    # play the particles
+    $particles.amount = randi_range(4, 8)
+    $particles.lifetime = randf_range(0.5, 1.0)
+
+    var node = $particles
+    var position = $particles.global_position
+    remove_child(node)
+    Effects.particles(node, position)
