@@ -96,6 +96,8 @@ func onHitByDoughTool():
     Effects.wiggle(self)
     Effects.sound("dough", .1)
 
+    _smashParticles()
+
     # remove all ingredients
     for child in get_children():
         if child.is_in_group("ingredient"):
@@ -107,7 +109,6 @@ func onHitByDoughTool():
         damage += 1
 
         if damage >= MAX_DAMAGE:
-            # TODO: spawn pieces of dough
             queue_free()
 
 func isRaw():
@@ -199,3 +200,12 @@ func insertTomatoBase() -> bool:
     Effects.swing(Hand.getCarriedItem())
 
     return true
+
+func _smashParticles():
+    var particles = $particlesSmash.duplicate()
+    var position = $particlesSmash.global_position
+
+    particles.amount = randi_range(6, 10)
+    particles.lifetime = randf_range(0.4, 0.7)
+
+    Effects.particles(particles, position)

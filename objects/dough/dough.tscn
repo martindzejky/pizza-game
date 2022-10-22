@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://k3ssjquq313h"]
+[gd_scene load_steps=16 format=3 uid="uid://k3ssjquq313h"]
 
 [ext_resource type="Script" path="res://objects/dough/dough.gd" id="1_lfh2g"]
 [ext_resource type="Texture2D" uid="uid://bjubtkw5ihv2n" path="res://sprites/dough.png" id="1_pxcur"]
@@ -55,6 +55,25 @@ scale_max = 0.8
 color = Color(1, 1, 1, 0.694118)
 color_initial_ramp = SubResource("GradientTexture1D_2qeyh")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gfjvd"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 157.71
+initial_velocity_max = 247.31
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 400.0
+damping_max = 1000.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.9
+scale_max = 1.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cepok"]
+atlas = ExtResource("1_pxcur")
+region = Rect2(29, 26, 4, 4)
+
 [node name="dough" type="Node2D" groups=["click", "dough"]]
 script = ExtResource("1_lfh2g")
 scoringData = ExtResource("2_2ni0n")
@@ -91,5 +110,16 @@ lifetime = 3.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_j1xvj")
 texture = ExtResource("3_h0464")
+
+[node name="particlesSmash" type="GPUParticles2D" parent="."]
+z_index = 4
+emitting = false
+amount = 10
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_gfjvd")
+texture = SubResource("AtlasTexture_cepok")
 
 [connection signal="input_event" from="clickArea" to="." method="_onInputEvent"]
