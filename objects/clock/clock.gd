@@ -13,4 +13,4 @@ func _on_timer_timeout():
     # finalize all animating orders
     get_tree().call_group("order-animating", "finalizeOrder")
 
-    get_tree().change_scene_to_file("res://scenes/end.tscn")
+    Transitions.transitionTo("res://scenes/end.tscn", "Day ended")

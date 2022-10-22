@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://di4gqsnhmwyb0"]
+
+[ext_resource type="Script" path="res://autoload/transitions.gd" id="1_upgyq"]
+
+[sub_resource type="Animation" id="Animation_v16sb"]
+resource_name = "transition"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("layer/cover:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"changeScene"
+}, {
+"args": [],
+"method": &"unpause"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("layer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rmvp3"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("layer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("layer/cover:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1g0h"]
+_data = {
+"RESET": SubResource("Animation_rmvp3"),
+"transition": SubResource("Animation_v16sb")
+}
+
+[node name="transitions" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_upgyq")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c1g0h")
+}
+
+[node name="layer" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+follow_viewport_enabled = true
+
+[node name="cover" type="ColorRect" parent="layer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.0784314, 0.129412, 1)
+
+[node name="center" type="CenterContainer" parent="layer/cover"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="layer/cover/center"]
+layout_mode = 2
+offset_left = 198.0
+offset_top = 114.0
+offset_right = 282.0
+offset_bottom = 155.0
+theme_type_variation = &"PauseTitle"
+text = "TEXT"

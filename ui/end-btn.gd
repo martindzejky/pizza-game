@@ -11,7 +11,7 @@ func _onClicked():
     get_tree().call_group("order-animating", "finalizeOrder")
 
     get_tree().paused = false
-    get_tree().change_scene_to_file("res://scenes/end.tscn")
+    Transitions.transitionTo("res://scenes/end.tscn", "Day ended")
 
     Effects.sound("click")
 

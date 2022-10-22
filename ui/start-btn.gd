@@ -3,7 +3,9 @@ extends Control
 
 func _onClicked():
     Effects.sound("click")
-    get_tree().change_scene_to_file("res://scenes/level.tscn")
+
+    Days.day += 1
+    Transitions.transitionTo("res://scenes/level.tscn", "Day " + str(Days.day))
 
 func _onHover():
     Effects.sound("hover")
