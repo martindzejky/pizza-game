@@ -50,8 +50,14 @@ func swing(node: Node) -> void:
     node.set_meta("swing", swingsAfterWait - 1)
 
 
-func sound(name: String) -> void:
+func sound(name: String, pitchVariation := 0.0) -> void:
     if not Sounds or not Sounds.is_inside_tree(): return
+    if not Sounds.has_node(name): return
 
-    if Sounds.has_node(name):
-        Sounds.get_node(name).play()
+    var effect = Sounds.get_node(name).duplicate()
+    effect.pitch_scale = 1 + randf_range(-pitchVariation, pitchVariation)
+
+    add_child(effect)
+    effect.play()
+    await effect.finished
+    effect.queue_free()

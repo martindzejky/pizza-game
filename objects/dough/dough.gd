@@ -80,12 +80,12 @@ func _onClick() -> bool:
 
     if Hand.isCarryingIngredient():
         if insertIngredient():
-            Effects.sound("ingredient")
+            Effects.sound("ingredient", .15)
             return true
 
     if Hand.isCarryingSpoon():
         if insertTomatoBase():
-            Effects.sound("ingredient")
+            Effects.sound("ingredient", .15)
             return true
 
     return false
@@ -94,7 +94,7 @@ func _onClick() -> bool:
 func onHitByDoughTool():
     Effects.swing(Hand.getCarriedItem())
     Effects.wiggle(self)
-    Effects.sound("dough")
+    Effects.sound("dough", .1)
 
     # remove all ingredients
     for child in get_children():
