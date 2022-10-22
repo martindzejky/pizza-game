@@ -13,11 +13,16 @@ orderObj = ExtResource("2_1mna5")
 wait_time = 10.0
 autostart = true
 
+[node name="stop" type="Timer" parent="timer"]
+wait_time = 175.0
+one_shot = true
+autostart = true
+
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_rnaqy")
 
 [node name="indicator" type="Node2D" parent="."]
 script = ExtResource("4_ejc7x")
-distance = 60.0
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer/stop" to="timer" method="stop"]
