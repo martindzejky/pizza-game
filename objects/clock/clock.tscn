@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8eyata53lsrj"]
+[gd_scene load_steps=16 format=3 uid="uid://b8eyata53lsrj"]
 
 [ext_resource type="Texture2D" uid="uid://dimp1yqntdub1" path="res://sprites/clock.png" id="1_obsir"]
 [ext_resource type="Script" path="res://objects/clock/clock.gd" id="1_oip3x"]
@@ -34,6 +34,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-1.5708, 4.71239]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../dayNearEndAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(149.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dayNearEnd"],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p5udu"]
@@ -76,7 +90,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("scaleAnimation")
+tracks/1/path = NodePath("../scaleAnimation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -92,6 +106,21 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_ynsfy"),
 "largeHand": SubResource("Animation_u8gft")
+}
+
+[sub_resource type="Animation" id="Animation_hynpd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_g54b3"]
@@ -110,41 +139,65 @@ tracks/0/keys = {
 "values": [Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_hynpd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o76gd"]
 _data = {
 "RESET": SubResource("Animation_hynpd"),
 "scale": SubResource("Animation_g54b3")
 }
 
+[sub_resource type="Animation" id="Animation_hkbiu"]
+resource_name = "dayNearEnd"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clock-object:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_aksvf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clock-object:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_erygo"]
+_data = {
+"RESET": SubResource("Animation_aksvf"),
+"dayNearEnd": SubResource("Animation_hkbiu")
+}
+
 [node name="clock" type="Node2D"]
+
+[node name="clock-object" type="Node2D" parent="."]
 script = ExtResource("1_oip3x")
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="clock-object"]
 texture = ExtResource("1_obsir")
 
-[node name="smallHand" type="Sprite2D" parent="."]
+[node name="smallHand" type="Sprite2D" parent="clock-object"]
 rotation = -1.5708
 scale = Vector2(0.621247, 1)
 texture = ExtResource("2_2vbsq")
 centered = false
 offset = Vector2(0, -1)
 
-[node name="largeHand" type="Sprite2D" parent="."]
+[node name="largeHand" type="Sprite2D" parent="clock-object"]
 rotation = -1.5708
 texture = ExtResource("2_2vbsq")
 centered = false
@@ -156,20 +209,32 @@ one_shot = true
 autostart = true
 
 [node name="smallHandAnimation" type="AnimationPlayer" parent="."]
+process_mode = 3
+root_node = NodePath("../clock-object")
 autoplay = "smallHand"
 libraries = {
 "": SubResource("AnimationLibrary_p5udu")
 }
 
 [node name="largeHandAnimation" type="AnimationPlayer" parent="."]
+process_mode = 3
+root_node = NodePath("../clock-object")
 autoplay = "largeHand"
 libraries = {
 "": SubResource("AnimationLibrary_a72jf")
 }
 
 [node name="scaleAnimation" type="AnimationPlayer" parent="."]
+process_mode = 3
+root_node = NodePath("../clock-object")
 libraries = {
 "": SubResource("AnimationLibrary_o76gd")
 }
 
-[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[node name="dayNearEndAnimation" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_erygo")
+}
+
+[connection signal="timeout" from="timer" to="clock-object" method="_on_timer_timeout"]
