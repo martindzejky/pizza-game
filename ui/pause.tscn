@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d30wuilo5aooa"]
+[gd_scene load_steps=6 format=3 uid="uid://d30wuilo5aooa"]
 
 [ext_resource type="Script" path="res://ui/pause.gd" id="1_16085"]
 [ext_resource type="Script" path="res://ui/end-btn.gd" id="2_koidk"]
+[ext_resource type="Texture2D" uid="uid://d1l37ntfqpf60" path="res://sprites/mouse-left.png" id="2_p2vm6"]
+[ext_resource type="Texture2D" uid="uid://dgmaexvrrwn8c" path="res://sprites/key.png" id="3_oxkpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77q4l"]
 bg_color = Color(0, 0, 0, 0.54902)
@@ -21,6 +23,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_77q4l")
 
 [node name="margin" type="MarginContainer" parent="root"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,25 +31,78 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="items" type="VBoxContainer" parent="root/margin"]
+layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 470.0
 offset_bottom = 260.0
 
-[node name="title" type="Label" parent="root/margin/items"]
-offset_top = 39.0
-offset_right = 460.0
-offset_bottom = 80.0
-grow_horizontal = 2
-pivot_offset = Vector2(240, 30)
+[node name="container" type="VBoxContainer" parent="root/margin/items"]
+layout_mode = 2
+offset_left = 95.0
+offset_top = 24.0
+offset_right = 365.0
+offset_bottom = 135.0
+size_flags_horizontal = 4
 size_flags_vertical = 6
+size_flags_stretch_ratio = 2.0
+
+[node name="text" type="Label" parent="root/margin/items/container"]
+layout_mode = 2
+offset_right = 270.0
+offset_bottom = 41.0
 theme_type_variation = &"PauseTitle"
 text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="mouse-info" type="HBoxContainer" parent="root/margin/items/container"]
+layout_mode = 2
+offset_top = 51.0
+offset_right = 270.0
+offset_bottom = 76.0
+
+[node name="icon" type="TextureRect" parent="root/margin/items/container/mouse-info"]
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 25.0
+texture = ExtResource("2_p2vm6")
+stretch_mode = 2
+
+[node name="text" type="Label" parent="root/margin/items/container/mouse-info"]
+layout_mode = 2
+offset_left = 30.0
+offset_right = 270.0
+offset_bottom = 25.0
+theme_type_variation = &"PauseText"
+text = "LMB for interactions"
+vertical_alignment = 1
+
+[node name="esc-info" type="HBoxContainer" parent="root/margin/items/container"]
+layout_mode = 2
+offset_top = 86.0
+offset_right = 270.0
+offset_bottom = 111.0
+
+[node name="icon" type="TextureRect" parent="root/margin/items/container/esc-info"]
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 25.0
+texture = ExtResource("3_oxkpc")
+stretch_mode = 2
+
+[node name="text" type="Label" parent="root/margin/items/container/esc-info"]
+layout_mode = 2
+offset_left = 30.0
+offset_right = 186.0
+offset_bottom = 25.0
+theme_type_variation = &"PauseText"
+text = "ESC for pause"
+vertical_alignment = 1
+
 [node name="btns" type="VBoxContainer" parent="root/margin/items"]
-offset_top = 130.0
+layout_mode = 2
+offset_top = 170.0
 offset_right = 460.0
 offset_bottom = 250.0
 grow_horizontal = 2
@@ -55,10 +111,11 @@ size_flags_vertical = 3
 alignment = 2
 
 [node name="end" type="Button" parent="root/margin/items/btns"]
+layout_mode = 2
 offset_left = 204.0
-offset_top = 96.0
+offset_top = 56.0
 offset_right = 256.0
-offset_bottom = 120.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4

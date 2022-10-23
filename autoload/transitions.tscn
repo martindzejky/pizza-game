@@ -1,6 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://di4gqsnhmwyb0"]
+[gd_scene load_steps=7 format=3 uid="uid://di4gqsnhmwyb0"]
 
 [ext_resource type="Script" path="res://autoload/transitions.gd" id="1_upgyq"]
+[ext_resource type="Texture2D" uid="uid://d1l37ntfqpf60" path="res://sprites/mouse-left.png" id="2_accpl"]
+[ext_resource type="Texture2D" uid="uid://dgmaexvrrwn8c" path="res://sprites/key.png" id="3_qr8ur"]
+
+[sub_resource type="Animation" id="Animation_rmvp3"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("layer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("layer/cover:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_v16sb"]
 resource_name = "transition"
@@ -47,34 +77,6 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_rmvp3"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("layer:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("layer/cover:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c1g0h"]
 _data = {
 "RESET": SubResource("Animation_rmvp3"),
@@ -105,18 +107,60 @@ grow_vertical = 2
 color = Color(0.0823529, 0.0784314, 0.129412, 1)
 
 [node name="center" type="CenterContainer" parent="layer/cover"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="text" type="Label" parent="layer/cover/center"]
-layout_mode = 2
-offset_left = 198.0
-offset_top = 114.0
-offset_right = 282.0
-offset_bottom = 155.0
+[node name="container" type="VBoxContainer" parent="layer/cover/center"]
+offset_left = 105.0
+offset_top = 79.0
+offset_right = 375.0
+offset_bottom = 190.0
+
+[node name="text" type="Label" parent="layer/cover/center/container"]
+offset_right = 270.0
+offset_bottom = 41.0
 theme_type_variation = &"PauseTitle"
 text = "TEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mouse-info" type="HBoxContainer" parent="layer/cover/center/container"]
+offset_top = 51.0
+offset_right = 270.0
+offset_bottom = 76.0
+
+[node name="icon" type="TextureRect" parent="layer/cover/center/container/mouse-info"]
+offset_right = 20.0
+offset_bottom = 25.0
+texture = ExtResource("2_accpl")
+stretch_mode = 2
+
+[node name="text" type="Label" parent="layer/cover/center/container/mouse-info"]
+offset_left = 30.0
+offset_right = 270.0
+offset_bottom = 25.0
+theme_type_variation = &"PauseText"
+text = "LMB for interactions"
+vertical_alignment = 1
+
+[node name="esc-info" type="HBoxContainer" parent="layer/cover/center/container"]
+offset_top = 86.0
+offset_right = 270.0
+offset_bottom = 111.0
+
+[node name="icon" type="TextureRect" parent="layer/cover/center/container/esc-info"]
+offset_right = 20.0
+offset_bottom = 25.0
+texture = ExtResource("3_qr8ur")
+stretch_mode = 2
+
+[node name="text" type="Label" parent="layer/cover/center/container/esc-info"]
+offset_left = 30.0
+offset_right = 186.0
+offset_bottom = 25.0
+theme_type_variation = &"PauseText"
+text = "ESC for pause"
+vertical_alignment = 1
