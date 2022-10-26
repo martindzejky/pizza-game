@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cqvrxgifrr854"]
+[gd_scene load_steps=23 format=3 uid="uid://cqvrxgifrr854"]
 
 [ext_resource type="PackedScene" uid="uid://b8eyata53lsrj" path="res://objects/clock/clock.tscn" id="1_pib6w"]
 [ext_resource type="PackedScene" uid="uid://db820lg5ebwsq" path="res://objects/oven/oven.tscn" id="1_v5n6d"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b2e1jn1vyoa2f" path="res://sprites/rukola.png" id="14_n7ce7"]
 [ext_resource type="Texture2D" uid="uid://di4juphvm5btp" path="res://sprites/cheese.png" id="16_5hwi3"]
 [ext_resource type="Texture2D" uid="uid://dtsk6pv1bpbn2" path="res://sprites/salam.png" id="18_ic16w"]
+[ext_resource type="AudioStream" uid="uid://cdomhard46nxg" path="res://music/level.wav" id="20_5c8ru"]
 
 [sub_resource type="Gradient" id="Gradient_ipdu8"]
 colors = PackedColorArray(0, 0, 0, 0.45098, 0, 0, 0, 0)
@@ -111,6 +112,10 @@ texture = SubResource("GradientTexture1D_t72b6")
 
 [node name="table" parent="." instance=ExtResource("4_tetf8")]
 position = Vector2(0, 80)
+
+[node name="music" type="AudioStreamPlayer" parent="." groups=["music"]]
+stream = ExtResource("20_5c8ru")
+bus = &"Music"
 
 [editable path="top/boxes/mushroom"]
 [editable path="top/boxes/corn"]

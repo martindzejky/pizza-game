@@ -38,3 +38,4 @@ func changeScene():
 # Called by the animation
 func unpause():
     get_tree().paused = false
+    get_tree().call_group("music", "play")
