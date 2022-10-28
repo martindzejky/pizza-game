@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bui3ugwivnhlp"]
+
+[ext_resource type="AudioStream" uid="uid://cdomhard46nxg" path="res://music/level.wav" id="1_n1ay7"]
+[ext_resource type="Script" path="res://objects/music/music.gd" id="2_0y0ej"]
+
+[node name="music" type="AudioStreamPlayer" groups=["music"]]
+stream = ExtResource("1_n1ay7")
+bus = &"Music"
+script = ExtResource("2_0y0ej")
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
+autostart = true
+
+[node name="beat" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="beat" to="." method="_on_beat_timeout"]
