@@ -18,6 +18,9 @@ func _on_timer_timeout():
     # pause
     get_tree().paused = true
 
+    # make sure that the music continues
+    get_tree().call_group("music", "set_process_mode", PROCESS_MODE_ALWAYS)
+
     # play a sounds and wait a little
     Effects.sound("dayEnd")
     await get_tree().create_timer(3).timeout
