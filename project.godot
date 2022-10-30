@@ -37,7 +37,10 @@ config/description="A frantic game where you need to make pizza very quickly!
 
 Ludum Dare #51 submission.
 https://ldjam.com/events/ludum-dare/51/pizza-game
-https://github.com/martindzejky/pizza-game"
+https://github.com/martindzejky/pizza-game
+
+This is a post-compo release with a soundtrack!
+https://soundcloud.com/martindzejky/pizza-game"
 run/main_scene="res://scenes/start.tscn"
 config/features=PackedStringArray("4.0")
 boot_splash/image="res://sprites/cover.png"
